@@ -9,12 +9,13 @@ export function Button({ variant = "default", className, ...props }: Props) {
   return (
     <button
       className={clsx(
-        "rounded-xl px-4 py-2 font-semibold transition",
-        variant === "default" ? "bg-cyan-400 text-slate-900 hover:bg-cyan-300" : "bg-slate-700 hover:bg-slate-600",
+        "inline-flex min-h-11 items-center justify-center rounded-xl px-4 py-2 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60",
+        variant === "default"
+          ? "bg-[#111827] text-white shadow-sm hover:bg-[#1f2937]"
+          : "border border-[#e4e7ec] bg-white text-[#344054] hover:bg-[#f8fafc]",
         className
       )}
       {...props}
     />
   );
 }
-

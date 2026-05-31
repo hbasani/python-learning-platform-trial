@@ -2,16 +2,16 @@
 
 import { ReactNode, useMemo, useState } from "react";
 import {
+  ArrowRight,
   BookOpen,
   Brain,
-  CheckCircle2,
+  Check,
   ChevronRight,
   CircleDollarSign,
   Code2,
   Flame,
   Lock,
   Play,
-  ShieldCheck,
   Sparkles,
   Star,
   Target,
@@ -28,30 +28,35 @@ const starterCode = `def greet(name):
 
 print(greet("Python learner"))`;
 
-const dailyQuests = [
-  { label: "Finish one lesson", progress: 75, reward: "+50 XP" },
-  { label: "Run one code mission", progress: 40, reward: "+25 XP" },
-  { label: "Ask for one explanation", progress: 20, reward: "+10 XP" }
+const onboardingSteps = [
+  { title: "Place into a track", detail: "Data Types", status: "done" },
+  { title: "Complete first mission", detail: "Run one snippet", status: "active" },
+  { title: "Unlock coach review", detail: "2 minutes left", status: "next" }
 ];
 
-const skillPath = [
-  { title: "Python Basics", status: "done", icon: BookOpen },
-  { title: "Variables", status: "done", icon: CheckCircle2 },
-  { title: "Data Types", status: "active", icon: Star },
-  { title: "Conditions", status: "open", icon: Target },
-  { title: "Loops", status: "locked", icon: Lock },
-  { title: "Functions", status: "locked", icon: Lock }
+const dailyPlan = [
+  { label: "Read: Data types in plain English", duration: "4 min", done: true },
+  { label: "Practice: Convert a string score", duration: "6 min", done: false },
+  { label: "Review: Ask coach for one improvement", duration: "3 min", done: false }
 ];
 
-type View = "mission" | "coach" | "league";
+const pathNodes = [
+  { title: "Basics", icon: BookOpen, state: "complete" },
+  { title: "Variables", icon: Check, state: "complete" },
+  { title: "Data Types", icon: Star, state: "current" },
+  { title: "Conditions", icon: Target, state: "ready" },
+  { title: "Loops", icon: Lock, state: "locked" }
+];
+
+type View = "mission" | "coach" | "progress";
 
 export default function HomePage() {
   const [view, setView] = useState<View>("mission");
   const [activeTrack, setActiveTrack] = useState(tracks[2]);
   const [code, setCode] = useState(starterCode);
-  const [output, setOutput] = useState("Run your code to unlock the mission reward.");
-  const [question, setQuestion] = useState("Explain Python data types using a simple analogy.");
-  const [coachReply, setCoachReply] = useState("Ask the coach for a hint, explanation, or review.");
+  const [output, setOutput] = useState("Run your solution to see output here.");
+  const [question, setQuestion] = useState("Explain Python data types using a grocery store analogy.");
+  const [coachReply, setCoachReply] = useState("Ask for a hint, a plain-English explanation, or code review.");
   const [xp, setXp] = useState(1480);
   const [coins, setCoins] = useState(520);
   const [busy, setBusy] = useState(false);
@@ -75,7 +80,7 @@ export default function HomePage() {
         setCoins((value) => value + 5);
       }
     } catch {
-      setOutput("The local runner is not connected yet. Your trial mission still advanced.");
+      setOutput("The local runner is not connected yet. Your mission progress still advanced for this trial.");
       setXp((value) => value + 15);
     } finally {
       setBusy(false);
@@ -84,7 +89,7 @@ export default function HomePage() {
 
   async function askCoach(mode: "hint" | "review" = "hint") {
     setBusy(true);
-    setCoachReply(mode === "hint" ? "Preparing a focused hint..." : "Reviewing your code...");
+    setCoachReply(mode === "hint" ? "Preparing a concise hint..." : "Reviewing your code...");
     try {
       const endpoint = mode === "hint" ? "tutor" : "review";
       const body = mode === "hint" ? { question, context: activeTrack.title } : { code };
@@ -99,8 +104,8 @@ export default function HomePage() {
     } catch {
       setCoachReply(
         mode === "hint"
-          ? "Hint: identify the type of each value before choosing an operation."
-          : "Review: keep the function pure, add one edge-case test, and name variables by intent."
+          ? "Hint: name the type of each value before choosing the operation. Text, whole numbers, decimals, and true/false values behave differently."
+          : "Review: keep the function pure, add one edge-case test, and use names that explain intent."
       );
     } finally {
       setBusy(false);
@@ -108,111 +113,139 @@ export default function HomePage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#f6f7fb] text-[#17202a]">
-      <div className="mx-auto grid max-w-[1500px] gap-5 p-4 lg:grid-cols-[280px_minmax(0,1fr)_340px] lg:p-6">
-        <aside className="space-y-4">
-          <ProfileCard level={level} progress={levelProgress} xp={xp} coins={coins} />
-          <section className="rounded-2xl border border-[#dfe4ee] bg-white p-4 shadow-sm">
-            <div className="mb-4 flex items-center justify-between">
-              <h2 className="text-sm font-black uppercase tracking-[0.14em] text-[#68778d]">Skill Path</h2>
-              <span className="rounded-full bg-[#eaf7ef] px-2 py-1 text-xs font-black text-[#257a42]">8 day streak</span>
-            </div>
+    <main className="min-h-screen text-[#111827]">
+      <div className="mx-auto grid max-w-[1440px] gap-5 p-4 md:p-6 xl:grid-cols-[272px_minmax(0,1fr)_324px]">
+        <aside className="space-y-5">
+          <BrandCard level={level} progress={levelProgress} xp={xp} coins={coins} />
+          <Panel title="Onboarding" meta="3 steps">
             <div className="space-y-3">
-              {skillPath.map((node, index) => {
+              {onboardingSteps.map((step, index) => (
+                <div key={step.title} className="flex gap-3">
+                  <div className={`mt-1 grid h-7 w-7 shrink-0 place-items-center rounded-full text-xs font-bold ${
+                    step.status === "done" ? "bg-[#111827] text-white" : step.status === "active" ? "bg-[#2563eb] text-white animate-soft-pulse" : "bg-[#eef2f7] text-[#667085]"
+                  }`}>
+                    {step.status === "done" ? <Check size={14} /> : index + 1}
+                  </div>
+                  <div>
+                    <div className="font-semibold">{step.title}</div>
+                    <div className="text-sm text-[#667085]">{step.detail}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Panel>
+          <Panel title="Path" meta="Level 4">
+            <div className="space-y-2">
+              {pathNodes.map((node) => {
                 const Icon = node.icon;
-                const active = node.status === "active";
                 return (
                   <button
                     key={node.title}
-                    onClick={() => {
-                      if (node.status !== "locked") {
-                        setActiveTrack(tracks[Math.min(index, tracks.length - 1)]);
-                        setView("mission");
-                      }
-                    }}
-                    className={`flex w-full items-center gap-3 rounded-xl border p-3 text-left transition ${
-                      active
-                        ? "border-[#2f80ed] bg-[#eef6ff]"
-                        : node.status === "locked"
-                          ? "border-[#e7ebf2] bg-[#f5f7fb] text-[#94a0b2]"
-                          : "border-[#e7ebf2] bg-white hover:border-[#2f80ed]"
+                    className={`flex w-full items-center gap-3 rounded-2xl border px-3 py-3 text-left transition ${
+                      node.state === "current"
+                        ? "border-[#2563eb] bg-[#eff6ff]"
+                        : node.state === "locked"
+                          ? "border-[#e4e7ec] bg-[#f8fafc] text-[#98a2b3]"
+                          : "border-transparent bg-white hover:border-[#e4e7ec] hover:bg-[#f9fafb]"
                     }`}
+                    onClick={() => {
+                      if (node.state !== "locked") setView("mission");
+                    }}
                   >
-                    <span className={`grid h-10 w-10 place-items-center rounded-xl ${active ? "bg-[#2f80ed] text-white" : "bg-[#eef2f7]"}`}>
-                      <Icon size={19} />
+                    <span className={`grid h-9 w-9 place-items-center rounded-xl ${node.state === "current" ? "bg-[#2563eb] text-white" : "bg-[#f2f4f7] text-[#475467]"}`}>
+                      <Icon size={17} />
                     </span>
-                    <span className="min-w-0">
-                      <span className="block truncate font-black">{node.title}</span>
-                      <span className="text-xs text-[#68778d]">{node.status === "locked" ? "Unlock soon" : active ? "Current mission" : "Ready"}</span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block truncate font-semibold">{node.title}</span>
+                      <span className="text-xs text-[#667085]">{node.state === "locked" ? "Locked" : node.state === "current" ? "In progress" : "Complete"}</span>
                     </span>
                   </button>
                 );
               })}
             </div>
-          </section>
+          </Panel>
         </aside>
 
         <section className="min-w-0 space-y-5">
-          <header className="rounded-3xl bg-[#101828] p-5 text-white shadow-xl lg:p-6">
-            <div className="flex flex-col gap-5 xl:flex-row xl:items-center xl:justify-between">
-              <div>
-                <p className="flex items-center gap-2 text-sm font-black uppercase tracking-[0.16em] text-[#8ee6a3]">
-                  <Sparkles size={16} /> Today&apos;s mission
+          <header className="animate-rise-in overflow-hidden rounded-[28px] border border-[#e4e7ec] bg-white shadow-[var(--shadow-panel)]">
+            <div className="grid gap-0 lg:grid-cols-[1fr_300px]">
+              <div className="p-6 md:p-8">
+                <div className="inline-flex items-center gap-2 rounded-full border border-[#dbeafe] bg-[#eff6ff] px-3 py-1 text-xs font-semibold text-[#1d4ed8]">
+                  <Sparkles size={14} /> Today&apos;s guided mission
+                </div>
+                <h1 className="mt-5 max-w-3xl text-4xl font-semibold tracking-normal text-[#111827] md:text-6xl">
+                  Build Python confidence one clear step at a time.
+                </h1>
+                <p className="mt-4 max-w-2xl text-base leading-7 text-[#667085]">
+                  Your next task is small, measurable, and tied to a real skill: {activeTrack.title.toLowerCase()}.
                 </p>
-                <h1 className="mt-3 max-w-3xl text-3xl font-black md:text-5xl">Learn Python by clearing bite-sized missions.</h1>
-                <p className="mt-3 max-w-2xl text-sm leading-6 text-[#c8d1df]">
-                  {activeTrack.title}: run code, get coaching, and earn progress without losing sight of real skill.
-                </p>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <Button onClick={() => setView("mission")}>
+                    <span className="inline-flex items-center gap-2"><Play size={16} /> Continue mission</span>
+                  </Button>
+                  <Button variant="secondary" onClick={() => setView("coach")}>
+                    Ask coach
+                  </Button>
+                </div>
               </div>
-              <div className="grid min-w-64 grid-cols-3 gap-2">
-                <MiniStat icon={<Flame size={18} />} label="Streak" value="8d" tone="red" />
-                <MiniStat icon={<Trophy size={18} />} label="League" value="Silver" tone="blue" />
-                <MiniStat icon={<ShieldCheck size={18} />} label="Accuracy" value="94%" tone="green" />
+              <div className="border-t border-[#e4e7ec] bg-[#f9fafb] p-6 lg:border-l lg:border-t-0">
+                <div className="text-sm font-semibold text-[#667085]">This session</div>
+                <div className="mt-5 grid gap-3">
+                  <SessionMetric icon={<Flame size={18} />} label="Streak" value="8 days" />
+                  <SessionMetric icon={<Trophy size={18} />} label="League" value="Silver" />
+                  <SessionMetric icon={<Target size={18} />} label="Accuracy" value="94%" />
+                </div>
               </div>
             </div>
           </header>
 
           <nav className="grid gap-2 sm:grid-cols-3">
-            <Segment active={view === "mission"} onClick={() => setView("mission")} icon={<Code2 size={18} />}>Mission</Segment>
-            <Segment active={view === "coach"} onClick={() => setView("coach")} icon={<Brain size={18} />}>Coach</Segment>
-            <Segment active={view === "league"} onClick={() => setView("league")} icon={<Trophy size={18} />}>League</Segment>
+            <Segment active={view === "mission"} onClick={() => setView("mission")} icon={<Code2 size={17} />}>Mission</Segment>
+            <Segment active={view === "coach"} onClick={() => setView("coach")} icon={<Brain size={17} />}>Coach</Segment>
+            <Segment active={view === "progress"} onClick={() => setView("progress")} icon={<Trophy size={17} />}>Progress</Segment>
           </nav>
 
           {view === "mission" && (
-            <section className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_360px]">
-              <Panel title="Code Mission" meta="+25 XP">
-                <div className="mb-4 rounded-2xl bg-[#fff6df] p-4 text-sm leading-6 text-[#694b00]">
-                  Build confidence with a small function. Run it, inspect the output, then ask the coach for feedback.
+            <section className="grid gap-5 2xl:grid-cols-[minmax(0,1fr)_360px]">
+              <Panel title="Code mission" meta="+25 XP">
+                <div className="mb-4 flex items-start gap-3 rounded-2xl border border-[#e4e7ec] bg-[#f9fafb] p-4">
+                  <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white text-[#2563eb] shadow-sm">
+                    <Code2 size={17} />
+                  </div>
+                  <div>
+                    <div className="font-semibold">Create and run a tiny function.</div>
+                    <p className="mt-1 text-sm leading-6 text-[#667085]">A short success loop: write, run, inspect output, then request a review.</p>
+                  </div>
                 </div>
                 <textarea
                   value={code}
                   onChange={(event) => setCode(event.target.value)}
-                  className="min-h-80 w-full resize-y rounded-2xl border border-[#dfe4ee] bg-[#111827] p-4 font-mono text-sm text-[#e5ffe9] outline-none focus:border-[#2f80ed]"
+                  className="min-h-80 w-full resize-y rounded-2xl border border-[#1f2937] bg-[#0b1220] p-4 font-mono text-sm leading-6 text-[#e5ffe9] outline-none transition focus:border-[#60a5fa] focus:ring-4 focus:ring-[#dbeafe]"
                   spellCheck={false}
                 />
                 <div className="mt-4 flex flex-wrap gap-3">
-                  <Button onClick={runCode} disabled={busy}><span className="inline-flex items-center gap-2"><Play size={16} />{busy ? "Running..." : "Run Code"}</span></Button>
+                  <Button onClick={runCode} disabled={busy}>
+                    <span className="inline-flex items-center gap-2"><Play size={16} />{busy ? "Running..." : "Run code"}</span>
+                  </Button>
                   <Button variant="secondary" onClick={() => askCoach("review")} disabled={busy}>Review</Button>
                   <Button variant="secondary" onClick={() => setCode(starterCode)}>Reset</Button>
                 </div>
               </Panel>
-
               <div className="space-y-5">
                 <Panel title="Output" meta="Live">
-                  <pre className="min-h-40 whitespace-pre-wrap rounded-2xl bg-[#101828] p-4 font-mono text-sm text-[#d9ffe4]">{output}</pre>
+                  <pre className="min-h-44 whitespace-pre-wrap rounded-2xl bg-[#0b1220] p-4 font-mono text-sm leading-6 text-[#e5ffe9]">{output}</pre>
                 </Panel>
-                <Panel title="Reward Track" meta={`Level ${level}`}>
+                <Panel title="Daily plan" meta="13 min">
                   <div className="space-y-3">
-                    {["Hint token", "Coin chest", "AI review pack"].map((reward, index) => (
-                      <div key={reward} className="flex items-center gap-3 rounded-2xl border border-[#e7ebf2] bg-[#f8fafc] p-3">
-                        <span className={`grid h-10 w-10 place-items-center rounded-xl ${index === 0 ? "bg-[#eaf7ef] text-[#257a42]" : "bg-[#eef6ff] text-[#2f80ed]"}`}>
-                          {index === 2 ? <Brain size={18} /> : <Star size={18} />}
+                    {dailyPlan.map((item) => (
+                      <div key={item.label} className="flex items-center gap-3 rounded-2xl border border-[#e4e7ec] p-3">
+                        <span className={`grid h-8 w-8 place-items-center rounded-full ${item.done ? "bg-[#111827] text-white" : "bg-[#f2f4f7] text-[#667085]"}`}>
+                          {item.done ? <Check size={15} /> : <ArrowRight size={15} />}
                         </span>
                         <div className="min-w-0 flex-1">
-                          <div className="font-black">{reward}</div>
-                          <div className="text-xs text-[#68778d]">{index === 0 ? "Unlocked" : "Next milestone"}</div>
+                          <div className="truncate text-sm font-semibold">{item.label}</div>
+                          <div className="text-xs text-[#667085]">{item.duration}</div>
                         </div>
-                        <ChevronRight size={18} className="text-[#8b98aa]" />
                       </div>
                     ))}
                   </div>
@@ -223,41 +256,41 @@ export default function HomePage() {
 
           {view === "coach" && (
             <section className="grid gap-5 xl:grid-cols-[380px_minmax(0,1fr)]">
-              <Panel title="Ask Coach" meta="+10 XP">
+              <Panel title="Ask coach" meta="+10 XP">
                 <textarea
                   value={question}
                   onChange={(event) => setQuestion(event.target.value)}
-                  className="min-h-48 w-full resize-y rounded-2xl border border-[#dfe4ee] bg-white p-4 text-sm outline-none focus:border-[#2f80ed]"
+                  className="min-h-52 w-full resize-y rounded-2xl border border-[#e4e7ec] bg-white p-4 text-sm leading-6 outline-none transition focus:border-[#2563eb] focus:ring-4 focus:ring-[#dbeafe]"
                 />
                 <Button className="mt-4" onClick={() => askCoach("hint")} disabled={busy}>
-                  <span className="inline-flex items-center gap-2"><Brain size={16} />{busy ? "Thinking..." : "Ask Coach"}</span>
+                  <span className="inline-flex items-center gap-2"><Brain size={16} />{busy ? "Thinking..." : "Ask coach"}</span>
                 </Button>
               </Panel>
-              <Panel title="Coach Response" meta="Guided">
-                <p className="whitespace-pre-wrap text-sm leading-7 text-[#46576d]">{coachReply}</p>
+              <Panel title="Coach response" meta="Guided">
+                <p className="whitespace-pre-wrap text-sm leading-7 text-[#475467]">{coachReply}</p>
               </Panel>
             </section>
           )}
 
-          {view === "league" && (
+          {view === "progress" && (
             <section className="grid gap-5 xl:grid-cols-2">
-              <Panel title="Silver League" meta="Top 10 advance">
+              <Panel title="League standing" meta="Top 10 advance">
                 {["Ada", "Grace", "Harshith", "Linus", "Maya"].map((name, index) => (
-                  <div key={name} className={`flex items-center justify-between rounded-2xl px-4 py-3 ${name === "Harshith" ? "bg-[#eef6ff]" : ""}`}>
-                    <span className="font-black">#{index + 1} {name}</span>
-                    <span className="font-black text-[#2f80ed]">{4200 - index * 260} XP</span>
+                  <div key={name} className={`flex items-center justify-between rounded-2xl px-4 py-3 ${name === "Harshith" ? "bg-[#eff6ff]" : ""}`}>
+                    <span className="font-semibold">#{index + 1} {name}</span>
+                    <span className="font-semibold text-[#2563eb]">{4200 - index * 260} XP</span>
                   </div>
                 ))}
               </Panel>
-              <Panel title="Achievement Shelf" meta="4/200">
+              <Panel title="Recent unlocks" meta="4/200">
                 <div className="grid gap-3 sm:grid-cols-2">
-                  {["First Run", "Quiz Perfect", "Debug Calm", "API Builder"].map((badge, index) => (
-                    <div key={badge} className="rounded-2xl border border-[#e7ebf2] bg-white p-4">
-                      <div className={`mb-3 grid h-11 w-11 place-items-center rounded-xl ${index % 2 === 0 ? "bg-[#fff2df] text-[#b85f00]" : "bg-[#eaf7ef] text-[#257a42]"}`}>
-                        <Trophy size={20} />
+                  {["First Run", "Quiz Perfect", "Debug Calm", "API Builder"].map((badge) => (
+                    <div key={badge} className="rounded-2xl border border-[#e4e7ec] p-4">
+                      <div className="mb-3 grid h-10 w-10 place-items-center rounded-xl bg-[#f2f4f7] text-[#111827]">
+                        <Trophy size={18} />
                       </div>
-                      <div className="font-black">{badge}</div>
-                      <div className="mt-1 text-xs text-[#68778d]">Unlocked achievement</div>
+                      <div className="font-semibold">{badge}</div>
+                      <div className="mt-1 text-xs text-[#667085]">Unlocked</div>
                     </div>
                   ))}
                 </div>
@@ -267,34 +300,34 @@ export default function HomePage() {
         </section>
 
         <aside className="space-y-5">
-          <Panel title="Daily Quests" meta="Chest 75%">
+          <Panel title="Quest progress" meta="75%">
             <div className="space-y-4">
-              {dailyQuests.map((quest) => (
-                <div key={quest.label}>
+              {dailyPlan.map((item, index) => (
+                <div key={item.label}>
                   <div className="flex items-center justify-between gap-3 text-sm">
-                    <span className="font-bold">{quest.label}</span>
-                    <span className="font-black text-[#257a42]">{quest.reward}</span>
+                    <span className="font-semibold">{item.label.split(":")[0]}</span>
+                    <span className="text-[#667085]">{index === 0 ? "Done" : "Open"}</span>
                   </div>
-                  <div className="mt-2 h-2 rounded-full bg-[#e7ebf2]">
-                    <div className="h-2 rounded-full bg-[#2f80ed]" style={{ width: `${quest.progress}%` }} />
+                  <div className="mt-2 h-2 rounded-full bg-[#eef2f7]">
+                    <div className="h-2 rounded-full bg-[#2563eb]" style={{ width: `${index === 0 ? 100 : index === 1 ? 46 : 20}%` }} />
                   </div>
                 </div>
               ))}
             </div>
           </Panel>
 
-          <Panel title="Active Track" meta={activeTrack.lessons + " lessons"}>
-            <div className="rounded-2xl bg-[#f8fafc] p-4">
-              <h3 className="text-xl font-black">{activeTrack.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-[#68778d]">A focused path with lessons, quizzes, code missions, projects, and coach feedback.</p>
+          <Panel title="Active track" meta={`${activeTrack.lessons} lessons`}>
+            <div className="rounded-2xl bg-[#f9fafb] p-4">
+              <h3 className="text-xl font-semibold">{activeTrack.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-[#667085]">Lessons, quizzes, code missions, and coach feedback in one guided path.</p>
               <Button className="mt-4 w-full" onClick={() => setView("mission")}>Continue</Button>
             </div>
           </Panel>
 
-          <Panel title="Coin Shop" meta={`${coins} coins`}>
-            <ShopItem title="Hint token" cost="40" icon={<Sparkles size={18} />} />
-            <ShopItem title="Streak freeze" cost="120" icon={<ShieldCheck size={18} />} />
-            <ShopItem title="Coach deep dive" cost="150" icon={<Brain size={18} />} />
+          <Panel title="Reward shop" meta={`${coins} coins`}>
+            <ShopItem title="Hint token" cost="40" icon={<Sparkles size={17} />} />
+            <ShopItem title="Streak freeze" cost="120" icon={<Flame size={17} />} />
+            <ShopItem title="Coach deep dive" cost="150" icon={<Brain size={17} />} />
           </Panel>
         </aside>
       </div>
@@ -302,41 +335,47 @@ export default function HomePage() {
   );
 }
 
-function ProfileCard({ level, progress, xp, coins }: { level: number; progress: number; xp: number; coins: number }) {
+function BrandCard({ level, progress, xp, coins }: { level: number; progress: number; xp: number; coins: number }) {
   return (
-    <section className="rounded-3xl bg-[#101828] p-5 text-white shadow-xl">
+    <section className="rounded-[var(--radius-panel)] border border-[#e4e7ec] bg-white p-5 shadow-[var(--shadow-panel)]">
       <div className="flex items-center gap-3">
-        <div className="grid h-14 w-14 place-items-center rounded-2xl bg-[#8ee6a3] text-2xl font-black text-[#102015]">{level}</div>
+        <div className="grid h-12 w-12 place-items-center rounded-2xl bg-[#111827] text-lg font-semibold text-white">{level}</div>
         <div>
-          <div className="text-sm text-[#c8d1df]">Current level</div>
-          <div className="text-xl font-black">Python Explorer</div>
+          <div className="text-sm text-[#667085]">Current level</div>
+          <div className="font-semibold">Python Explorer</div>
         </div>
       </div>
-      <div className="mt-5 h-3 rounded-full bg-white/10">
-        <div className="h-3 rounded-full bg-[#8ee6a3]" style={{ width: `${progress}%` }} />
+      <div className="mt-5 h-2 rounded-full bg-[#eef2f7]">
+        <div className="h-2 rounded-full bg-[#2563eb]" style={{ width: `${progress}%` }} />
       </div>
       <div className="mt-4 grid grid-cols-2 gap-2">
-        <MiniStat icon={<Star size={18} />} label="XP" value={xp} tone="green" />
-        <MiniStat icon={<CircleDollarSign size={18} />} label="Coins" value={coins} tone="gold" />
+        <CompactStat icon={<Star size={16} />} label="XP" value={xp} />
+        <CompactStat icon={<CircleDollarSign size={16} />} label="Coins" value={coins} />
       </div>
     </section>
   );
 }
 
-function MiniStat({ icon, label, value, tone }: { icon: ReactNode; label: string; value: string | number; tone: "red" | "blue" | "green" | "gold" }) {
-  const color = {
-    red: "bg-[#fff1f0] text-[#c02f2f]",
-    blue: "bg-[#eef6ff] text-[#2f80ed]",
-    green: "bg-[#eaf7ef] text-[#257a42]",
-    gold: "bg-[#fff6df] text-[#9a6400]"
-  }[tone];
+function CompactStat({ icon, label, value }: { icon: ReactNode; label: string; value: string | number }) {
   return (
-    <div className={`rounded-2xl p-3 ${color}`}>
+    <div className="rounded-2xl bg-[#f9fafb] p-3">
+      <div className="flex items-center gap-2 text-[#111827]">
+        {icon}
+        <span className="font-semibold">{value}</span>
+      </div>
+      <div className="mt-1 text-xs text-[#667085]">{label}</div>
+    </div>
+  );
+}
+
+function SessionMetric({ icon, label, value }: { icon: ReactNode; label: string; value: string }) {
+  return (
+    <div className="rounded-2xl bg-white p-3 text-[#111827]">
       <div className="flex items-center gap-2">
         {icon}
-        <span className="text-lg font-black">{value}</span>
+        <span className="font-semibold">{value}</span>
       </div>
-      <div className="mt-1 text-xs font-bold uppercase tracking-[0.12em] opacity-75">{label}</div>
+      <div className="mt-1 text-xs text-[#667085]">{label}</div>
     </div>
   );
 }
@@ -345,8 +384,8 @@ function Segment({ active, onClick, icon, children }: { active: boolean; onClick
   return (
     <button
       onClick={onClick}
-      className={`flex items-center justify-center gap-2 rounded-2xl border px-4 py-3 text-sm font-black transition ${
-        active ? "border-[#2f80ed] bg-[#2f80ed] text-white shadow-md" : "border-[#dfe4ee] bg-white text-[#46576d] hover:border-[#2f80ed]"
+      className={`flex min-h-12 items-center justify-center gap-2 rounded-2xl border px-4 py-3 text-sm font-semibold transition ${
+        active ? "border-[#111827] bg-[#111827] text-white shadow-sm" : "border-[#e4e7ec] bg-white text-[#475467] hover:bg-[#f9fafb]"
       }`}
     >
       {icon}
@@ -357,10 +396,10 @@ function Segment({ active, onClick, icon, children }: { active: boolean; onClick
 
 function Panel({ title, meta, children }: { title: string; meta: string; children: ReactNode }) {
   return (
-    <section className="rounded-3xl border border-[#dfe4ee] bg-white p-5 shadow-sm">
+    <section className="rounded-[var(--radius-panel)] border border-[#e4e7ec] bg-white p-5 shadow-[var(--shadow-panel)]">
       <div className="mb-4 flex items-center justify-between gap-3">
-        <h2 className="text-sm font-black uppercase tracking-[0.14em] text-[#68778d]">{title}</h2>
-        <span className="rounded-full bg-[#f1f4f9] px-3 py-1 text-xs font-black text-[#46576d]">{meta}</span>
+        <h2 className="text-sm font-semibold text-[#475467]">{title}</h2>
+        <span className="rounded-full bg-[#f2f4f7] px-3 py-1 text-xs font-semibold text-[#667085]">{meta}</span>
       </div>
       {children}
     </section>
@@ -369,12 +408,12 @@ function Panel({ title, meta, children }: { title: string; meta: string; childre
 
 function ShopItem({ title, cost, icon }: { title: string; cost: string; icon: ReactNode }) {
   return (
-    <div className="mt-3 flex items-center justify-between rounded-2xl border border-[#e7ebf2] p-3 first:mt-0">
+    <div className="mt-3 flex items-center justify-between rounded-2xl border border-[#e4e7ec] p-3 first:mt-0">
       <div className="flex items-center gap-3">
-        <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#f1f4f9] text-[#2f80ed]">{icon}</span>
-        <span className="font-bold">{title}</span>
+        <span className="grid h-9 w-9 place-items-center rounded-xl bg-[#f2f4f7] text-[#475467]">{icon}</span>
+        <span className="font-semibold">{title}</span>
       </div>
-      <span className="font-black text-[#9a6400]">{cost}</span>
+      <span className="font-semibold text-[#111827]">{cost}</span>
     </div>
   );
 }
