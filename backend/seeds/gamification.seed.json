@@ -1,0 +1,5843 @@
+{
+  "version": "1.0.0",
+  "design_principles": {
+    "inspiration": [
+      "Duolingo habit loops",
+      "Clash Royale progression clarity",
+      "Candy Crush level cadence",
+      "Pokemon Go collection and exploration"
+    ],
+    "ethical_guardrails": [
+      "Reward learning behavior rather than fear of loss.",
+      "Use streak freezes and recovery quests to reduce shame after missed days.",
+      "Avoid dark patterns, pay-to-win mechanics, loot boxes, and hidden odds.",
+      "Cap grindable rewards to protect learner wellbeing.",
+      "Make progress meaningful through mastery, projects, and confidence."
+    ],
+    "core_loop": [
+      "Choose a lesson",
+      "Practice in small challenge",
+      "Get immediate feedback",
+      "Earn XP and coins",
+      "Unlock next goal",
+      "Return through a humane streak nudge"
+    ],
+    "mastery_loop": [
+      "Attempt challenge",
+      "Receive AI/code feedback",
+      "Revise solution",
+      "Pass tests",
+      "Reflect on mistake pattern"
+    ]
+  },
+  "xp_system": {
+    "lesson_completion": {
+      "base_xp": 50,
+      "range": [
+        40,
+        120
+      ],
+      "notes": "Award on meaningful lesson completion with at least one interaction."
+    },
+    "quiz_correct_answer": {
+      "base_xp": 8,
+      "bonus_perfect_quiz": 35,
+      "notes": "Reward correctness without punishing experimentation."
+    },
+    "coding_challenge": {
+      "easy": 60,
+      "medium": 120,
+      "hard": 220,
+      "first_try_bonus": 40,
+      "notes": "Scale by difficulty and reward clean first-pass solutions."
+    },
+    "daily_login": {
+      "base_xp": 10,
+      "cap_per_day": 10,
+      "notes": "Small nudge only; learning actions carry the real value."
+    },
+    "streak_bonus": {
+      "day_3": 20,
+      "day_7": 75,
+      "day_14": 160,
+      "day_30": 400,
+      "notes": "Bonus triggers at milestones, not with pressure loops."
+    },
+    "project_submission": {
+      "small": 180,
+      "capstone": 500,
+      "revision_bonus": 75,
+      "notes": "Reward shipping and thoughtful iteration."
+    },
+    "peer_help": {
+      "helpful_answer": 25,
+      "accepted_answer": 60,
+      "cap_per_day": 150,
+      "notes": "Encourage community support with daily anti-farming caps."
+    }
+  },
+  "leveling_system": {
+    "max_level": 100,
+    "curve": "soft_exponential_with_regular_unlocks",
+    "levels": [
+      {
+        "level": 1,
+        "xp_required_total": 190,
+        "xp_required_from_previous": 190,
+        "rewards": [
+          {
+            "reward_type": "coin_bundle_small",
+            "label": "Small coin bundle",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 28
+          }
+        ],
+        "unlockables": [
+          "Bronze level cosmetics"
+        ]
+      },
+      {
+        "level": 2,
+        "xp_required_total": 351,
+        "xp_required_from_previous": 161,
+        "rewards": [
+          {
+            "reward_type": "hint_token",
+            "label": "Hint token",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 31
+          }
+        ],
+        "unlockables": [
+          "Daily goals"
+        ]
+      },
+      {
+        "level": 3,
+        "xp_required_total": 569,
+        "xp_required_from_previous": 218,
+        "rewards": [
+          {
+            "reward_type": "avatar_frame",
+            "label": "Avatar frame",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 34
+          }
+        ],
+        "unlockables": [
+          "AI hints"
+        ]
+      },
+      {
+        "level": 4,
+        "xp_required_total": 837,
+        "xp_required_from_previous": 268,
+        "rewards": [
+          {
+            "reward_type": "badge_slot",
+            "label": "Badge showcase slot",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 37
+          }
+        ],
+        "unlockables": [
+          "Bronze level cosmetics"
+        ]
+      },
+      {
+        "level": 5,
+        "xp_required_total": 1151,
+        "xp_required_from_previous": 314,
+        "rewards": [
+          {
+            "reward_type": "challenge_ticket",
+            "label": "Bonus challenge ticket",
+            "quantity": 2
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 40
+          }
+        ],
+        "unlockables": [
+          "Beginner league"
+        ]
+      },
+      {
+        "level": 6,
+        "xp_required_total": 1509,
+        "xp_required_from_previous": 358,
+        "rewards": [
+          {
+            "reward_type": "theme_accent",
+            "label": "Interface accent color",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 43
+          }
+        ],
+        "unlockables": [
+          "Bronze level cosmetics"
+        ]
+      },
+      {
+        "level": 7,
+        "xp_required_total": 1908,
+        "xp_required_from_previous": 399,
+        "rewards": [
+          {
+            "reward_type": "streak_freeze",
+            "label": "Streak freeze",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 46
+          }
+        ],
+        "unlockables": [
+          "Bronze level cosmetics"
+        ]
+      },
+      {
+        "level": 8,
+        "xp_required_total": 2346,
+        "xp_required_from_previous": 438,
+        "rewards": [
+          {
+            "reward_type": "project_template",
+            "label": "Project template unlock",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 49
+          }
+        ],
+        "unlockables": [
+          "Debugging exercises"
+        ]
+      },
+      {
+        "level": 9,
+        "xp_required_total": 2823,
+        "xp_required_from_previous": 477,
+        "rewards": [
+          {
+            "reward_type": "league_boost",
+            "label": "League XP boost",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 52
+          }
+        ],
+        "unlockables": [
+          "Bronze level cosmetics"
+        ]
+      },
+      {
+        "level": 10,
+        "xp_required_total": 3336,
+        "xp_required_from_previous": 513,
+        "rewards": [
+          {
+            "reward_type": "mentor_prompt_pack",
+            "label": "AI mentor prompt pack",
+            "quantity": 2
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 55
+          }
+        ],
+        "unlockables": [
+          "Calculator project",
+          "Bronze milestone badge"
+        ]
+      },
+      {
+        "level": 11,
+        "xp_required_total": 3886,
+        "xp_required_from_previous": 550,
+        "rewards": [
+          {
+            "reward_type": "coin_bundle_small",
+            "label": "Small coin bundle",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 58
+          }
+        ],
+        "unlockables": [
+          "Bronze level cosmetics"
+        ]
+      },
+      {
+        "level": 12,
+        "xp_required_total": 4470,
+        "xp_required_from_previous": 584,
+        "rewards": [
+          {
+            "reward_type": "hint_token",
+            "label": "Hint token",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 61
+          }
+        ],
+        "unlockables": [
+          "Bronze level cosmetics"
+        ]
+      },
+      {
+        "level": 13,
+        "xp_required_total": 5088,
+        "xp_required_from_previous": 618,
+        "rewards": [
+          {
+            "reward_type": "avatar_frame",
+            "label": "Avatar frame",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 64
+          }
+        ],
+        "unlockables": [
+          "Bronze level cosmetics"
+        ]
+      },
+      {
+        "level": 14,
+        "xp_required_total": 5739,
+        "xp_required_from_previous": 651,
+        "rewards": [
+          {
+            "reward_type": "badge_slot",
+            "label": "Badge showcase slot",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 67
+          }
+        ],
+        "unlockables": [
+          "Bronze level cosmetics"
+        ]
+      },
+      {
+        "level": 15,
+        "xp_required_total": 6422,
+        "xp_required_from_previous": 683,
+        "rewards": [
+          {
+            "reward_type": "challenge_ticket",
+            "label": "Bonus challenge ticket",
+            "quantity": 2
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 70
+          }
+        ],
+        "unlockables": [
+          "Weekly quests"
+        ]
+      },
+      {
+        "level": 16,
+        "xp_required_total": 7138,
+        "xp_required_from_previous": 716,
+        "rewards": [
+          {
+            "reward_type": "theme_accent",
+            "label": "Interface accent color",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 73
+          }
+        ],
+        "unlockables": [
+          "Bronze level cosmetics"
+        ]
+      },
+      {
+        "level": 17,
+        "xp_required_total": 7885,
+        "xp_required_from_previous": 747,
+        "rewards": [
+          {
+            "reward_type": "streak_freeze",
+            "label": "Streak freeze",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 76
+          }
+        ],
+        "unlockables": [
+          "Bronze level cosmetics"
+        ]
+      },
+      {
+        "level": 18,
+        "xp_required_total": 8663,
+        "xp_required_from_previous": 778,
+        "rewards": [
+          {
+            "reward_type": "project_template",
+            "label": "Project template unlock",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 79
+          }
+        ],
+        "unlockables": [
+          "Bronze level cosmetics"
+        ]
+      },
+      {
+        "level": 19,
+        "xp_required_total": 9471,
+        "xp_required_from_previous": 808,
+        "rewards": [
+          {
+            "reward_type": "league_boost",
+            "label": "League XP boost",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 82
+          }
+        ],
+        "unlockables": [
+          "Bronze level cosmetics"
+        ]
+      },
+      {
+        "level": 20,
+        "xp_required_total": 10309,
+        "xp_required_from_previous": 838,
+        "rewards": [
+          {
+            "reward_type": "mentor_prompt_pack",
+            "label": "AI mentor prompt pack",
+            "quantity": 2
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 85
+          }
+        ],
+        "unlockables": [
+          "Intermediate track",
+          "Silver milestone badge"
+        ]
+      },
+      {
+        "level": 21,
+        "xp_required_total": 11176,
+        "xp_required_from_previous": 867,
+        "rewards": [
+          {
+            "reward_type": "coin_bundle_small",
+            "label": "Small coin bundle",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 88
+          }
+        ],
+        "unlockables": [
+          "Silver level cosmetics"
+        ]
+      },
+      {
+        "level": 22,
+        "xp_required_total": 12073,
+        "xp_required_from_previous": 897,
+        "rewards": [
+          {
+            "reward_type": "hint_token",
+            "label": "Hint token",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 91
+          }
+        ],
+        "unlockables": [
+          "Silver level cosmetics"
+        ]
+      },
+      {
+        "level": 23,
+        "xp_required_total": 12998,
+        "xp_required_from_previous": 925,
+        "rewards": [
+          {
+            "reward_type": "avatar_frame",
+            "label": "Avatar frame",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 94
+          }
+        ],
+        "unlockables": [
+          "Silver level cosmetics"
+        ]
+      },
+      {
+        "level": 24,
+        "xp_required_total": 13951,
+        "xp_required_from_previous": 953,
+        "rewards": [
+          {
+            "reward_type": "badge_slot",
+            "label": "Badge showcase slot",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 97
+          }
+        ],
+        "unlockables": [
+          "Silver level cosmetics"
+        ]
+      },
+      {
+        "level": 25,
+        "xp_required_total": 14933,
+        "xp_required_from_previous": 982,
+        "rewards": [
+          {
+            "reward_type": "challenge_ticket",
+            "label": "Bonus challenge ticket",
+            "quantity": 2
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 100
+          }
+        ],
+        "unlockables": [
+          "Expense tracker project"
+        ]
+      },
+      {
+        "level": 26,
+        "xp_required_total": 15942,
+        "xp_required_from_previous": 1009,
+        "rewards": [
+          {
+            "reward_type": "theme_accent",
+            "label": "Interface accent color",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 103
+          }
+        ],
+        "unlockables": [
+          "Silver level cosmetics"
+        ]
+      },
+      {
+        "level": 27,
+        "xp_required_total": 16978,
+        "xp_required_from_previous": 1036,
+        "rewards": [
+          {
+            "reward_type": "streak_freeze",
+            "label": "Streak freeze",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 106
+          }
+        ],
+        "unlockables": [
+          "Silver level cosmetics"
+        ]
+      },
+      {
+        "level": 28,
+        "xp_required_total": 18042,
+        "xp_required_from_previous": 1064,
+        "rewards": [
+          {
+            "reward_type": "project_template",
+            "label": "Project template unlock",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 109
+          }
+        ],
+        "unlockables": [
+          "Silver level cosmetics"
+        ]
+      },
+      {
+        "level": 29,
+        "xp_required_total": 19132,
+        "xp_required_from_previous": 1090,
+        "rewards": [
+          {
+            "reward_type": "league_boost",
+            "label": "League XP boost",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 112
+          }
+        ],
+        "unlockables": [
+          "Silver level cosmetics"
+        ]
+      },
+      {
+        "level": 30,
+        "xp_required_total": 20249,
+        "xp_required_from_previous": 1117,
+        "rewards": [
+          {
+            "reward_type": "mentor_prompt_pack",
+            "label": "AI mentor prompt pack",
+            "quantity": 2
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 115
+          }
+        ],
+        "unlockables": [
+          "Code review rubric mode",
+          "Silver milestone badge"
+        ]
+      },
+      {
+        "level": 31,
+        "xp_required_total": 21392,
+        "xp_required_from_previous": 1143,
+        "rewards": [
+          {
+            "reward_type": "coin_bundle_small",
+            "label": "Small coin bundle",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 118
+          }
+        ],
+        "unlockables": [
+          "Silver level cosmetics"
+        ]
+      },
+      {
+        "level": 32,
+        "xp_required_total": 22561,
+        "xp_required_from_previous": 1169,
+        "rewards": [
+          {
+            "reward_type": "hint_token",
+            "label": "Hint token",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 121
+          }
+        ],
+        "unlockables": [
+          "Silver level cosmetics"
+        ]
+      },
+      {
+        "level": 33,
+        "xp_required_total": 23756,
+        "xp_required_from_previous": 1195,
+        "rewards": [
+          {
+            "reward_type": "avatar_frame",
+            "label": "Avatar frame",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 124
+          }
+        ],
+        "unlockables": [
+          "Silver level cosmetics"
+        ]
+      },
+      {
+        "level": 34,
+        "xp_required_total": 24977,
+        "xp_required_from_previous": 1221,
+        "rewards": [
+          {
+            "reward_type": "badge_slot",
+            "label": "Badge showcase slot",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 127
+          }
+        ],
+        "unlockables": [
+          "Silver level cosmetics"
+        ]
+      },
+      {
+        "level": 35,
+        "xp_required_total": 26223,
+        "xp_required_from_previous": 1246,
+        "rewards": [
+          {
+            "reward_type": "challenge_ticket",
+            "label": "Bonus challenge ticket",
+            "quantity": 2
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 130
+          }
+        ],
+        "unlockables": [
+          "Weather app project"
+        ]
+      },
+      {
+        "level": 36,
+        "xp_required_total": 27494,
+        "xp_required_from_previous": 1271,
+        "rewards": [
+          {
+            "reward_type": "theme_accent",
+            "label": "Interface accent color",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 133
+          }
+        ],
+        "unlockables": [
+          "Silver level cosmetics"
+        ]
+      },
+      {
+        "level": 37,
+        "xp_required_total": 28790,
+        "xp_required_from_previous": 1296,
+        "rewards": [
+          {
+            "reward_type": "streak_freeze",
+            "label": "Streak freeze",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 136
+          }
+        ],
+        "unlockables": [
+          "Silver level cosmetics"
+        ]
+      },
+      {
+        "level": 38,
+        "xp_required_total": 30111,
+        "xp_required_from_previous": 1321,
+        "rewards": [
+          {
+            "reward_type": "project_template",
+            "label": "Project template unlock",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 139
+          }
+        ],
+        "unlockables": [
+          "Silver level cosmetics"
+        ]
+      },
+      {
+        "level": 39,
+        "xp_required_total": 31456,
+        "xp_required_from_previous": 1345,
+        "rewards": [
+          {
+            "reward_type": "league_boost",
+            "label": "League XP boost",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 142
+          }
+        ],
+        "unlockables": [
+          "Silver level cosmetics"
+        ]
+      },
+      {
+        "level": 40,
+        "xp_required_total": 32826,
+        "xp_required_from_previous": 1370,
+        "rewards": [
+          {
+            "reward_type": "mentor_prompt_pack",
+            "label": "AI mentor prompt pack",
+            "quantity": 2
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 145
+          }
+        ],
+        "unlockables": [
+          "Advanced track",
+          "Gold milestone badge"
+        ]
+      },
+      {
+        "level": 41,
+        "xp_required_total": 34220,
+        "xp_required_from_previous": 1394,
+        "rewards": [
+          {
+            "reward_type": "coin_bundle_small",
+            "label": "Small coin bundle",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 148
+          }
+        ],
+        "unlockables": [
+          "Gold level cosmetics"
+        ]
+      },
+      {
+        "level": 42,
+        "xp_required_total": 35638,
+        "xp_required_from_previous": 1418,
+        "rewards": [
+          {
+            "reward_type": "hint_token",
+            "label": "Hint token",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 151
+          }
+        ],
+        "unlockables": [
+          "Gold level cosmetics"
+        ]
+      },
+      {
+        "level": 43,
+        "xp_required_total": 37080,
+        "xp_required_from_previous": 1442,
+        "rewards": [
+          {
+            "reward_type": "avatar_frame",
+            "label": "Avatar frame",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 154
+          }
+        ],
+        "unlockables": [
+          "Gold level cosmetics"
+        ]
+      },
+      {
+        "level": 44,
+        "xp_required_total": 38546,
+        "xp_required_from_previous": 1466,
+        "rewards": [
+          {
+            "reward_type": "badge_slot",
+            "label": "Badge showcase slot",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 157
+          }
+        ],
+        "unlockables": [
+          "Gold level cosmetics"
+        ]
+      },
+      {
+        "level": 45,
+        "xp_required_total": 40036,
+        "xp_required_from_previous": 1490,
+        "rewards": [
+          {
+            "reward_type": "challenge_ticket",
+            "label": "Bonus challenge ticket",
+            "quantity": 2
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 160
+          }
+        ],
+        "unlockables": [
+          "REST API project"
+        ]
+      },
+      {
+        "level": 46,
+        "xp_required_total": 41549,
+        "xp_required_from_previous": 1513,
+        "rewards": [
+          {
+            "reward_type": "theme_accent",
+            "label": "Interface accent color",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 163
+          }
+        ],
+        "unlockables": [
+          "Gold level cosmetics"
+        ]
+      },
+      {
+        "level": 47,
+        "xp_required_total": 43085,
+        "xp_required_from_previous": 1536,
+        "rewards": [
+          {
+            "reward_type": "streak_freeze",
+            "label": "Streak freeze",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 166
+          }
+        ],
+        "unlockables": [
+          "Gold level cosmetics"
+        ]
+      },
+      {
+        "level": 48,
+        "xp_required_total": 44644,
+        "xp_required_from_previous": 1559,
+        "rewards": [
+          {
+            "reward_type": "project_template",
+            "label": "Project template unlock",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 169
+          }
+        ],
+        "unlockables": [
+          "Gold level cosmetics"
+        ]
+      },
+      {
+        "level": 49,
+        "xp_required_total": 46227,
+        "xp_required_from_previous": 1583,
+        "rewards": [
+          {
+            "reward_type": "league_boost",
+            "label": "League XP boost",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 172
+          }
+        ],
+        "unlockables": [
+          "Gold level cosmetics"
+        ]
+      },
+      {
+        "level": 50,
+        "xp_required_total": 47832,
+        "xp_required_from_previous": 1605,
+        "rewards": [
+          {
+            "reward_type": "mentor_prompt_pack",
+            "label": "AI mentor prompt pack",
+            "quantity": 2
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 175
+          }
+        ],
+        "unlockables": [
+          "Gold league",
+          "Gold milestone badge"
+        ]
+      },
+      {
+        "level": 51,
+        "xp_required_total": 49461,
+        "xp_required_from_previous": 1629,
+        "rewards": [
+          {
+            "reward_type": "coin_bundle_small",
+            "label": "Small coin bundle",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 178
+          }
+        ],
+        "unlockables": [
+          "Gold level cosmetics"
+        ]
+      },
+      {
+        "level": 52,
+        "xp_required_total": 51111,
+        "xp_required_from_previous": 1650,
+        "rewards": [
+          {
+            "reward_type": "hint_token",
+            "label": "Hint token",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 181
+          }
+        ],
+        "unlockables": [
+          "Gold level cosmetics"
+        ]
+      },
+      {
+        "level": 53,
+        "xp_required_total": 52785,
+        "xp_required_from_previous": 1674,
+        "rewards": [
+          {
+            "reward_type": "avatar_frame",
+            "label": "Avatar frame",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 184
+          }
+        ],
+        "unlockables": [
+          "Gold level cosmetics"
+        ]
+      },
+      {
+        "level": 54,
+        "xp_required_total": 54480,
+        "xp_required_from_previous": 1695,
+        "rewards": [
+          {
+            "reward_type": "badge_slot",
+            "label": "Badge showcase slot",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 187
+          }
+        ],
+        "unlockables": [
+          "Gold level cosmetics"
+        ]
+      },
+      {
+        "level": 55,
+        "xp_required_total": 56198,
+        "xp_required_from_previous": 1718,
+        "rewards": [
+          {
+            "reward_type": "challenge_ticket",
+            "label": "Bonus challenge ticket",
+            "quantity": 2
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 190
+          }
+        ],
+        "unlockables": [
+          "Web scraper project"
+        ]
+      },
+      {
+        "level": 56,
+        "xp_required_total": 57939,
+        "xp_required_from_previous": 1741,
+        "rewards": [
+          {
+            "reward_type": "theme_accent",
+            "label": "Interface accent color",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 193
+          }
+        ],
+        "unlockables": [
+          "Gold level cosmetics"
+        ]
+      },
+      {
+        "level": 57,
+        "xp_required_total": 59701,
+        "xp_required_from_previous": 1762,
+        "rewards": [
+          {
+            "reward_type": "streak_freeze",
+            "label": "Streak freeze",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 196
+          }
+        ],
+        "unlockables": [
+          "Gold level cosmetics"
+        ]
+      },
+      {
+        "level": 58,
+        "xp_required_total": 61485,
+        "xp_required_from_previous": 1784,
+        "rewards": [
+          {
+            "reward_type": "project_template",
+            "label": "Project template unlock",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 199
+          }
+        ],
+        "unlockables": [
+          "Gold level cosmetics"
+        ]
+      },
+      {
+        "level": 59,
+        "xp_required_total": 63291,
+        "xp_required_from_previous": 1806,
+        "rewards": [
+          {
+            "reward_type": "league_boost",
+            "label": "League XP boost",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 202
+          }
+        ],
+        "unlockables": [
+          "Gold level cosmetics"
+        ]
+      },
+      {
+        "level": 60,
+        "xp_required_total": 65119,
+        "xp_required_from_previous": 1828,
+        "rewards": [
+          {
+            "reward_type": "mentor_prompt_pack",
+            "label": "AI mentor prompt pack",
+            "quantity": 2
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 205
+          }
+        ],
+        "unlockables": [
+          "Automation framework project",
+          "Platinum milestone badge"
+        ]
+      },
+      {
+        "level": 61,
+        "xp_required_total": 66969,
+        "xp_required_from_previous": 1850,
+        "rewards": [
+          {
+            "reward_type": "coin_bundle_small",
+            "label": "Small coin bundle",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 208
+          }
+        ],
+        "unlockables": [
+          "Platinum level cosmetics"
+        ]
+      },
+      {
+        "level": 62,
+        "xp_required_total": 68840,
+        "xp_required_from_previous": 1871,
+        "rewards": [
+          {
+            "reward_type": "hint_token",
+            "label": "Hint token",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 211
+          }
+        ],
+        "unlockables": [
+          "Platinum level cosmetics"
+        ]
+      },
+      {
+        "level": 63,
+        "xp_required_total": 70732,
+        "xp_required_from_previous": 1892,
+        "rewards": [
+          {
+            "reward_type": "avatar_frame",
+            "label": "Avatar frame",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 214
+          }
+        ],
+        "unlockables": [
+          "Platinum level cosmetics"
+        ]
+      },
+      {
+        "level": 64,
+        "xp_required_total": 72646,
+        "xp_required_from_previous": 1914,
+        "rewards": [
+          {
+            "reward_type": "badge_slot",
+            "label": "Badge showcase slot",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 217
+          }
+        ],
+        "unlockables": [
+          "Platinum level cosmetics"
+        ]
+      },
+      {
+        "level": 65,
+        "xp_required_total": 74581,
+        "xp_required_from_previous": 1935,
+        "rewards": [
+          {
+            "reward_type": "challenge_ticket",
+            "label": "Bonus challenge ticket",
+            "quantity": 2
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 220
+          }
+        ],
+        "unlockables": [
+          "Platinum level cosmetics"
+        ]
+      },
+      {
+        "level": 66,
+        "xp_required_total": 76537,
+        "xp_required_from_previous": 1956,
+        "rewards": [
+          {
+            "reward_type": "theme_accent",
+            "label": "Interface accent color",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 223
+          }
+        ],
+        "unlockables": [
+          "Platinum level cosmetics"
+        ]
+      },
+      {
+        "level": 67,
+        "xp_required_total": 78515,
+        "xp_required_from_previous": 1978,
+        "rewards": [
+          {
+            "reward_type": "streak_freeze",
+            "label": "Streak freeze",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 226
+          }
+        ],
+        "unlockables": [
+          "Platinum level cosmetics"
+        ]
+      },
+      {
+        "level": 68,
+        "xp_required_total": 80513,
+        "xp_required_from_previous": 1998,
+        "rewards": [
+          {
+            "reward_type": "project_template",
+            "label": "Project template unlock",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 229
+          }
+        ],
+        "unlockables": [
+          "Platinum level cosmetics"
+        ]
+      },
+      {
+        "level": 69,
+        "xp_required_total": 82532,
+        "xp_required_from_previous": 2019,
+        "rewards": [
+          {
+            "reward_type": "league_boost",
+            "label": "League XP boost",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 232
+          }
+        ],
+        "unlockables": [
+          "Platinum level cosmetics"
+        ]
+      },
+      {
+        "level": 70,
+        "xp_required_total": 84572,
+        "xp_required_from_previous": 2040,
+        "rewards": [
+          {
+            "reward_type": "mentor_prompt_pack",
+            "label": "AI mentor prompt pack",
+            "quantity": 2
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 235
+          }
+        ],
+        "unlockables": [
+          "Data science labs",
+          "Platinum milestone badge"
+        ]
+      },
+      {
+        "level": 71,
+        "xp_required_total": 86633,
+        "xp_required_from_previous": 2061,
+        "rewards": [
+          {
+            "reward_type": "coin_bundle_small",
+            "label": "Small coin bundle",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 238
+          }
+        ],
+        "unlockables": [
+          "Platinum level cosmetics"
+        ]
+      },
+      {
+        "level": 72,
+        "xp_required_total": 88714,
+        "xp_required_from_previous": 2081,
+        "rewards": [
+          {
+            "reward_type": "hint_token",
+            "label": "Hint token",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 241
+          }
+        ],
+        "unlockables": [
+          "Platinum level cosmetics"
+        ]
+      },
+      {
+        "level": 73,
+        "xp_required_total": 90816,
+        "xp_required_from_previous": 2102,
+        "rewards": [
+          {
+            "reward_type": "avatar_frame",
+            "label": "Avatar frame",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 244
+          }
+        ],
+        "unlockables": [
+          "Platinum level cosmetics"
+        ]
+      },
+      {
+        "level": 74,
+        "xp_required_total": 92939,
+        "xp_required_from_previous": 2123,
+        "rewards": [
+          {
+            "reward_type": "badge_slot",
+            "label": "Badge showcase slot",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 247
+          }
+        ],
+        "unlockables": [
+          "Platinum level cosmetics"
+        ]
+      },
+      {
+        "level": 75,
+        "xp_required_total": 95082,
+        "xp_required_from_previous": 2143,
+        "rewards": [
+          {
+            "reward_type": "challenge_ticket",
+            "label": "Bonus challenge ticket",
+            "quantity": 2
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 250
+          }
+        ],
+        "unlockables": [
+          "Platinum level cosmetics"
+        ]
+      },
+      {
+        "level": 76,
+        "xp_required_total": 97245,
+        "xp_required_from_previous": 2163,
+        "rewards": [
+          {
+            "reward_type": "theme_accent",
+            "label": "Interface accent color",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 253
+          }
+        ],
+        "unlockables": [
+          "Platinum level cosmetics"
+        ]
+      },
+      {
+        "level": 77,
+        "xp_required_total": 99428,
+        "xp_required_from_previous": 2183,
+        "rewards": [
+          {
+            "reward_type": "streak_freeze",
+            "label": "Streak freeze",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 256
+          }
+        ],
+        "unlockables": [
+          "Platinum level cosmetics"
+        ]
+      },
+      {
+        "level": 78,
+        "xp_required_total": 101632,
+        "xp_required_from_previous": 2204,
+        "rewards": [
+          {
+            "reward_type": "project_template",
+            "label": "Project template unlock",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 259
+          }
+        ],
+        "unlockables": [
+          "Platinum level cosmetics"
+        ]
+      },
+      {
+        "level": 79,
+        "xp_required_total": 103856,
+        "xp_required_from_previous": 2224,
+        "rewards": [
+          {
+            "reward_type": "league_boost",
+            "label": "League XP boost",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 262
+          }
+        ],
+        "unlockables": [
+          "Platinum level cosmetics"
+        ]
+      },
+      {
+        "level": 80,
+        "xp_required_total": 106099,
+        "xp_required_from_previous": 2243,
+        "rewards": [
+          {
+            "reward_type": "mentor_prompt_pack",
+            "label": "AI mentor prompt pack",
+            "quantity": 2
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 265
+          }
+        ],
+        "unlockables": [
+          "AI engineering labs",
+          "Master milestone badge"
+        ]
+      },
+      {
+        "level": 81,
+        "xp_required_total": 108363,
+        "xp_required_from_previous": 2264,
+        "rewards": [
+          {
+            "reward_type": "coin_bundle_small",
+            "label": "Small coin bundle",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 268
+          }
+        ],
+        "unlockables": [
+          "Master level cosmetics"
+        ]
+      },
+      {
+        "level": 82,
+        "xp_required_total": 110647,
+        "xp_required_from_previous": 2284,
+        "rewards": [
+          {
+            "reward_type": "hint_token",
+            "label": "Hint token",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 271
+          }
+        ],
+        "unlockables": [
+          "Master level cosmetics"
+        ]
+      },
+      {
+        "level": 83,
+        "xp_required_total": 112950,
+        "xp_required_from_previous": 2303,
+        "rewards": [
+          {
+            "reward_type": "avatar_frame",
+            "label": "Avatar frame",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 274
+          }
+        ],
+        "unlockables": [
+          "Master level cosmetics"
+        ]
+      },
+      {
+        "level": 84,
+        "xp_required_total": 115274,
+        "xp_required_from_previous": 2324,
+        "rewards": [
+          {
+            "reward_type": "badge_slot",
+            "label": "Badge showcase slot",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 277
+          }
+        ],
+        "unlockables": [
+          "Master level cosmetics"
+        ]
+      },
+      {
+        "level": 85,
+        "xp_required_total": 117617,
+        "xp_required_from_previous": 2343,
+        "rewards": [
+          {
+            "reward_type": "challenge_ticket",
+            "label": "Bonus challenge ticket",
+            "quantity": 2
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 280
+          }
+        ],
+        "unlockables": [
+          "Master level cosmetics"
+        ]
+      },
+      {
+        "level": 86,
+        "xp_required_total": 119979,
+        "xp_required_from_previous": 2362,
+        "rewards": [
+          {
+            "reward_type": "theme_accent",
+            "label": "Interface accent color",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 283
+          }
+        ],
+        "unlockables": [
+          "Master level cosmetics"
+        ]
+      },
+      {
+        "level": 87,
+        "xp_required_total": 122361,
+        "xp_required_from_previous": 2382,
+        "rewards": [
+          {
+            "reward_type": "streak_freeze",
+            "label": "Streak freeze",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 286
+          }
+        ],
+        "unlockables": [
+          "Master level cosmetics"
+        ]
+      },
+      {
+        "level": 88,
+        "xp_required_total": 124763,
+        "xp_required_from_previous": 2402,
+        "rewards": [
+          {
+            "reward_type": "project_template",
+            "label": "Project template unlock",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 289
+          }
+        ],
+        "unlockables": [
+          "Master level cosmetics"
+        ]
+      },
+      {
+        "level": 89,
+        "xp_required_total": 127184,
+        "xp_required_from_previous": 2421,
+        "rewards": [
+          {
+            "reward_type": "league_boost",
+            "label": "League XP boost",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 292
+          }
+        ],
+        "unlockables": [
+          "Master level cosmetics"
+        ]
+      },
+      {
+        "level": 90,
+        "xp_required_total": 129625,
+        "xp_required_from_previous": 2441,
+        "rewards": [
+          {
+            "reward_type": "mentor_prompt_pack",
+            "label": "AI mentor prompt pack",
+            "quantity": 2
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 295
+          }
+        ],
+        "unlockables": [
+          "Master league",
+          "Master milestone badge"
+        ]
+      },
+      {
+        "level": 91,
+        "xp_required_total": 132084,
+        "xp_required_from_previous": 2459,
+        "rewards": [
+          {
+            "reward_type": "coin_bundle_small",
+            "label": "Small coin bundle",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 298
+          }
+        ],
+        "unlockables": [
+          "Master level cosmetics"
+        ]
+      },
+      {
+        "level": 92,
+        "xp_required_total": 134563,
+        "xp_required_from_previous": 2479,
+        "rewards": [
+          {
+            "reward_type": "hint_token",
+            "label": "Hint token",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 301
+          }
+        ],
+        "unlockables": [
+          "Master level cosmetics"
+        ]
+      },
+      {
+        "level": 93,
+        "xp_required_total": 137062,
+        "xp_required_from_previous": 2499,
+        "rewards": [
+          {
+            "reward_type": "avatar_frame",
+            "label": "Avatar frame",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 304
+          }
+        ],
+        "unlockables": [
+          "Master level cosmetics"
+        ]
+      },
+      {
+        "level": 94,
+        "xp_required_total": 139579,
+        "xp_required_from_previous": 2517,
+        "rewards": [
+          {
+            "reward_type": "badge_slot",
+            "label": "Badge showcase slot",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 307
+          }
+        ],
+        "unlockables": [
+          "Master level cosmetics"
+        ]
+      },
+      {
+        "level": 95,
+        "xp_required_total": 142116,
+        "xp_required_from_previous": 2537,
+        "rewards": [
+          {
+            "reward_type": "challenge_ticket",
+            "label": "Bonus challenge ticket",
+            "quantity": 2
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 310
+          }
+        ],
+        "unlockables": [
+          "Master level cosmetics"
+        ]
+      },
+      {
+        "level": 96,
+        "xp_required_total": 144671,
+        "xp_required_from_previous": 2555,
+        "rewards": [
+          {
+            "reward_type": "theme_accent",
+            "label": "Interface accent color",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 313
+          }
+        ],
+        "unlockables": [
+          "Master level cosmetics"
+        ]
+      },
+      {
+        "level": 97,
+        "xp_required_total": 147246,
+        "xp_required_from_previous": 2575,
+        "rewards": [
+          {
+            "reward_type": "streak_freeze",
+            "label": "Streak freeze",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 316
+          }
+        ],
+        "unlockables": [
+          "Master level cosmetics"
+        ]
+      },
+      {
+        "level": 98,
+        "xp_required_total": 149839,
+        "xp_required_from_previous": 2593,
+        "rewards": [
+          {
+            "reward_type": "project_template",
+            "label": "Project template unlock",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 319
+          }
+        ],
+        "unlockables": [
+          "Master level cosmetics"
+        ]
+      },
+      {
+        "level": 99,
+        "xp_required_total": 152451,
+        "xp_required_from_previous": 2612,
+        "rewards": [
+          {
+            "reward_type": "league_boost",
+            "label": "League XP boost",
+            "quantity": 1
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 322
+          }
+        ],
+        "unlockables": [
+          "Master level cosmetics"
+        ]
+      },
+      {
+        "level": 100,
+        "xp_required_total": 155083,
+        "xp_required_from_previous": 2632,
+        "rewards": [
+          {
+            "reward_type": "mentor_prompt_pack",
+            "label": "AI mentor prompt pack",
+            "quantity": 2
+          },
+          {
+            "reward_type": "coins",
+            "label": "Coins",
+            "quantity": 325
+          }
+        ],
+        "unlockables": [
+          "Python career portfolio capstone",
+          "Master milestone badge"
+        ]
+      }
+    ]
+  },
+  "coin_economy": {
+    "earning_methods": [
+      {
+        "method": "Complete lesson",
+        "coins": 10,
+        "daily_cap": 200
+      },
+      {
+        "method": "Perfect quiz",
+        "coins": 25,
+        "daily_cap": 150
+      },
+      {
+        "method": "Solve coding challenge",
+        "coins": 20,
+        "daily_cap": 240
+      },
+      {
+        "method": "Maintain daily streak",
+        "coins": 15,
+        "daily_cap": 60
+      },
+      {
+        "method": "Submit project revision",
+        "coins": 50,
+        "daily_cap": 100
+      },
+      {
+        "method": "Helpful community answer",
+        "coins": 20,
+        "daily_cap": 100
+      }
+    ],
+    "spending_methods": [
+      {
+        "item": "Hint token",
+        "cost": 40,
+        "balancing_note": "Useful but not required; hints teach strategy."
+      },
+      {
+        "item": "Streak freeze",
+        "cost": 120,
+        "balancing_note": "Protects habit without punishing missed days."
+      },
+      {
+        "item": "Bonus challenge ticket",
+        "cost": 90,
+        "balancing_note": "Extra practice, no exclusive curriculum gating."
+      },
+      {
+        "item": "Avatar frame",
+        "cost": 250,
+        "balancing_note": "Cosmetic expression only."
+      },
+      {
+        "item": "Theme accent",
+        "cost": 400,
+        "balancing_note": "Cosmetic personalization."
+      },
+      {
+        "item": "AI review deep dive",
+        "cost": 150,
+        "balancing_note": "Can also be earned through project milestones."
+      },
+      {
+        "item": "Project template skin",
+        "cost": 300,
+        "balancing_note": "Cosmetic wrapper around free project templates."
+      }
+    ],
+    "balancing_rules": [
+      "A consistent learner should afford one hint token every 2-3 lessons.",
+      "Streak freezes are intentionally expensive enough to feel valuable but not punitive.",
+      "Core learning content is never locked behind coins.",
+      "Coins should drain mostly through optional support and cosmetics.",
+      "Daily caps prevent repetitive low-value farming."
+    ]
+  },
+  "streak_system": {
+    "daily": {
+      "qualifying_actions": [
+        "complete_lesson",
+        "pass_quiz",
+        "solve_challenge",
+        "submit_project_work"
+      ],
+      "minimum_effort_minutes": 5,
+      "grace_window_hours": 4,
+      "rewards": [
+        {
+          "day": 1,
+          "xp": 10,
+          "coins": 5
+        },
+        {
+          "day": 3,
+          "xp": 30,
+          "coins": 15
+        },
+        {
+          "day": 7,
+          "xp": 100,
+          "coins": 50,
+          "reward": "streak_freeze"
+        },
+        {
+          "day": 14,
+          "xp": 220,
+          "coins": 90
+        },
+        {
+          "day": 30,
+          "xp": 600,
+          "coins": 250,
+          "reward": "monthly_flame_badge"
+        }
+      ]
+    },
+    "weekly": {
+      "target_days_per_week": 4,
+      "rewards": {
+        "xp": 250,
+        "coins": 120,
+        "unlockable": "weekly_quest_chest"
+      },
+      "reset_behavior": "Weekly streak counts successful weeks, not perfect attendance."
+    },
+    "monthly": {
+      "target_active_days": 18,
+      "rewards": {
+        "xp": 900,
+        "coins": 400,
+        "unlockable": "monthly_mastery_badge"
+      },
+      "reset_behavior": "Monthly streaks reset each calendar month with a summary, not a loss message."
+    },
+    "recovery": {
+      "streak_freeze_limit": 2,
+      "comeback_quest": {
+        "xp": 75,
+        "coins": 35,
+        "requirement": "Complete one 10-minute review after a missed day."
+      },
+      "tone": "Encouraging, never shaming."
+    }
+  },
+  "achievements": [
+    {
+      "achievement_id": "ach-001",
+      "category": "Beginner",
+      "name": "First Print",
+      "description": "Complete 1 beginner milestone tied to first print.",
+      "trigger": {
+        "metric": "beginner",
+        "operator": ">=",
+        "target": 1
+      },
+      "rewards": {
+        "xp": 75,
+        "coins": 35,
+        "cosmetic": "beginner-badge-frame-1"
+      },
+      "visibility": "secret_until_unlocked",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-002",
+      "category": "Beginner",
+      "name": "Syntax Scout",
+      "description": "Complete 2 beginner milestones tied to syntax scout.",
+      "trigger": {
+        "metric": "beginner",
+        "operator": ">=",
+        "target": 2
+      },
+      "rewards": {
+        "xp": 85,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-003",
+      "category": "Beginner",
+      "name": "Variable Starter",
+      "description": "Complete 3 beginner milestones tied to variable starter.",
+      "trigger": {
+        "metric": "beginner",
+        "operator": ">=",
+        "target": 3
+      },
+      "rewards": {
+        "xp": 95,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-004",
+      "category": "Beginner",
+      "name": "Type Spotter",
+      "description": "Complete 4 beginner milestones tied to type spotter.",
+      "trigger": {
+        "metric": "beginner",
+        "operator": ">=",
+        "target": 4
+      },
+      "rewards": {
+        "xp": 105,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-005",
+      "category": "Beginner",
+      "name": "Condition Cadet",
+      "description": "Complete 5 beginner milestones tied to condition cadet.",
+      "trigger": {
+        "metric": "beginner",
+        "operator": ">=",
+        "target": 5
+      },
+      "rewards": {
+        "xp": 75,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-006",
+      "category": "Beginner",
+      "name": "Loop Learner",
+      "description": "Complete 1 beginner milestone tied to loop learner.",
+      "trigger": {
+        "metric": "beginner",
+        "operator": ">=",
+        "target": 1
+      },
+      "rewards": {
+        "xp": 85,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-007",
+      "category": "Beginner",
+      "name": "Function Rookie",
+      "description": "Complete 2 beginner milestones tied to function rookie.",
+      "trigger": {
+        "metric": "beginner",
+        "operator": ">=",
+        "target": 2
+      },
+      "rewards": {
+        "xp": 95,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-008",
+      "category": "Beginner",
+      "name": "Collection Starter",
+      "description": "Complete 3 beginner milestones tied to collection starter.",
+      "trigger": {
+        "metric": "beginner",
+        "operator": ">=",
+        "target": 3
+      },
+      "rewards": {
+        "xp": 105,
+        "coins": 35,
+        "cosmetic": "beginner-badge-frame-1"
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-009",
+      "category": "Beginner",
+      "name": "File Explorer",
+      "description": "Complete 4 beginner milestones tied to file explorer.",
+      "trigger": {
+        "metric": "beginner",
+        "operator": ">=",
+        "target": 4
+      },
+      "rewards": {
+        "xp": 75,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-010",
+      "category": "Beginner",
+      "name": "API Newcomer",
+      "description": "Complete 5 beginner milestones tied to api newcomer.",
+      "trigger": {
+        "metric": "beginner",
+        "operator": ">=",
+        "target": 5
+      },
+      "rewards": {
+        "xp": 85,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-011",
+      "category": "Beginner",
+      "name": "First Print 2",
+      "description": "Complete 5 beginner milestones tied to first print.",
+      "trigger": {
+        "metric": "beginner",
+        "operator": ">=",
+        "target": 5
+      },
+      "rewards": {
+        "xp": 120,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-012",
+      "category": "Beginner",
+      "name": "Syntax Scout 2",
+      "description": "Complete 10 beginner milestones tied to syntax scout.",
+      "trigger": {
+        "metric": "beginner",
+        "operator": ">=",
+        "target": 10
+      },
+      "rewards": {
+        "xp": 130,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "secret_until_unlocked",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-013",
+      "category": "Beginner",
+      "name": "Variable Starter 2",
+      "description": "Complete 15 beginner milestones tied to variable starter.",
+      "trigger": {
+        "metric": "beginner",
+        "operator": ">=",
+        "target": 15
+      },
+      "rewards": {
+        "xp": 100,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-014",
+      "category": "Beginner",
+      "name": "Type Spotter 2",
+      "description": "Complete 20 beginner milestones tied to type spotter.",
+      "trigger": {
+        "metric": "beginner",
+        "operator": ">=",
+        "target": 20
+      },
+      "rewards": {
+        "xp": 110,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-015",
+      "category": "Beginner",
+      "name": "Condition Cadet 2",
+      "description": "Complete 25 beginner milestones tied to condition cadet.",
+      "trigger": {
+        "metric": "beginner",
+        "operator": ">=",
+        "target": 25
+      },
+      "rewards": {
+        "xp": 120,
+        "coins": 50,
+        "cosmetic": "beginner-badge-frame-2"
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-016",
+      "category": "Beginner",
+      "name": "Loop Learner 2",
+      "description": "Complete 5 beginner milestones tied to loop learner.",
+      "trigger": {
+        "metric": "beginner",
+        "operator": ">=",
+        "target": 5
+      },
+      "rewards": {
+        "xp": 130,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-017",
+      "category": "Beginner",
+      "name": "Function Rookie 2",
+      "description": "Complete 10 beginner milestones tied to function rookie.",
+      "trigger": {
+        "metric": "beginner",
+        "operator": ">=",
+        "target": 10
+      },
+      "rewards": {
+        "xp": 100,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-018",
+      "category": "Beginner",
+      "name": "Collection Starter 2",
+      "description": "Complete 15 beginner milestones tied to collection starter.",
+      "trigger": {
+        "metric": "beginner",
+        "operator": ">=",
+        "target": 15
+      },
+      "rewards": {
+        "xp": 110,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-019",
+      "category": "Beginner",
+      "name": "File Explorer 2",
+      "description": "Complete 20 beginner milestones tied to file explorer.",
+      "trigger": {
+        "metric": "beginner",
+        "operator": ">=",
+        "target": 20
+      },
+      "rewards": {
+        "xp": 120,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-020",
+      "category": "Beginner",
+      "name": "API Newcomer 2",
+      "description": "Complete 25 beginner milestones tied to api newcomer.",
+      "trigger": {
+        "metric": "beginner",
+        "operator": ">=",
+        "target": 25
+      },
+      "rewards": {
+        "xp": 130,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-021",
+      "category": "Beginner",
+      "name": "First Print 3",
+      "description": "Complete 10 beginner milestones tied to first print.",
+      "trigger": {
+        "metric": "beginner",
+        "operator": ">=",
+        "target": 10
+      },
+      "rewards": {
+        "xp": 125,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-022",
+      "category": "Beginner",
+      "name": "Syntax Scout 3",
+      "description": "Complete 20 beginner milestones tied to syntax scout.",
+      "trigger": {
+        "metric": "beginner",
+        "operator": ">=",
+        "target": 20
+      },
+      "rewards": {
+        "xp": 135,
+        "coins": 65,
+        "cosmetic": "beginner-badge-frame-3"
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-023",
+      "category": "Beginner",
+      "name": "Variable Starter 3",
+      "description": "Complete 30 beginner milestones tied to variable starter.",
+      "trigger": {
+        "metric": "beginner",
+        "operator": ">=",
+        "target": 30
+      },
+      "rewards": {
+        "xp": 145,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "secret_until_unlocked",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-024",
+      "category": "Beginner",
+      "name": "Type Spotter 3",
+      "description": "Complete 40 beginner milestones tied to type spotter.",
+      "trigger": {
+        "metric": "beginner",
+        "operator": ">=",
+        "target": 40
+      },
+      "rewards": {
+        "xp": 155,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-025",
+      "category": "Beginner",
+      "name": "Condition Cadet 3",
+      "description": "Complete 50 beginner milestones tied to condition cadet.",
+      "trigger": {
+        "metric": "beginner",
+        "operator": ">=",
+        "target": 50
+      },
+      "rewards": {
+        "xp": 125,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-026",
+      "category": "Beginner",
+      "name": "Loop Learner 3",
+      "description": "Complete 10 beginner milestones tied to loop learner.",
+      "trigger": {
+        "metric": "beginner",
+        "operator": ">=",
+        "target": 10
+      },
+      "rewards": {
+        "xp": 135,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-027",
+      "category": "Beginner",
+      "name": "Function Rookie 3",
+      "description": "Complete 20 beginner milestones tied to function rookie.",
+      "trigger": {
+        "metric": "beginner",
+        "operator": ">=",
+        "target": 20
+      },
+      "rewards": {
+        "xp": 145,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-028",
+      "category": "Beginner",
+      "name": "Collection Starter 3",
+      "description": "Complete 30 beginner milestones tied to collection starter.",
+      "trigger": {
+        "metric": "beginner",
+        "operator": ">=",
+        "target": 30
+      },
+      "rewards": {
+        "xp": 155,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-029",
+      "category": "Consistency",
+      "name": "Three Day Spark",
+      "description": "Complete 1 consistency milestone tied to three day spark.",
+      "trigger": {
+        "metric": "consistency",
+        "operator": ">=",
+        "target": 1
+      },
+      "rewards": {
+        "xp": 75,
+        "coins": 35,
+        "cosmetic": "consistency-badge-frame-1"
+      },
+      "visibility": "secret_until_unlocked",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-030",
+      "category": "Consistency",
+      "name": "Seven Day Flame",
+      "description": "Complete 2 consistency milestones tied to seven day flame.",
+      "trigger": {
+        "metric": "consistency",
+        "operator": ">=",
+        "target": 2
+      },
+      "rewards": {
+        "xp": 85,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-031",
+      "category": "Consistency",
+      "name": "Two Week Rhythm",
+      "description": "Complete 3 consistency milestones tied to two week rhythm.",
+      "trigger": {
+        "metric": "consistency",
+        "operator": ">=",
+        "target": 3
+      },
+      "rewards": {
+        "xp": 95,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-032",
+      "category": "Consistency",
+      "name": "Monthly Momentum",
+      "description": "Complete 4 consistency milestones tied to monthly momentum.",
+      "trigger": {
+        "metric": "consistency",
+        "operator": ">=",
+        "target": 4
+      },
+      "rewards": {
+        "xp": 105,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-033",
+      "category": "Consistency",
+      "name": "Morning Coder",
+      "description": "Complete 5 consistency milestones tied to morning coder.",
+      "trigger": {
+        "metric": "consistency",
+        "operator": ">=",
+        "target": 5
+      },
+      "rewards": {
+        "xp": 75,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-034",
+      "category": "Consistency",
+      "name": "Evening Coder",
+      "description": "Complete 1 consistency milestone tied to evening coder.",
+      "trigger": {
+        "metric": "consistency",
+        "operator": ">=",
+        "target": 1
+      },
+      "rewards": {
+        "xp": 85,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-035",
+      "category": "Consistency",
+      "name": "Weekend Warrior",
+      "description": "Complete 2 consistency milestones tied to weekend warrior.",
+      "trigger": {
+        "metric": "consistency",
+        "operator": ">=",
+        "target": 2
+      },
+      "rewards": {
+        "xp": 95,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-036",
+      "category": "Consistency",
+      "name": "Steady Hands",
+      "description": "Complete 3 consistency milestones tied to steady hands.",
+      "trigger": {
+        "metric": "consistency",
+        "operator": ">=",
+        "target": 3
+      },
+      "rewards": {
+        "xp": 105,
+        "coins": 35,
+        "cosmetic": "consistency-badge-frame-1"
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-037",
+      "category": "Consistency",
+      "name": "No Zero Days",
+      "description": "Complete 4 consistency milestones tied to no zero days.",
+      "trigger": {
+        "metric": "consistency",
+        "operator": ">=",
+        "target": 4
+      },
+      "rewards": {
+        "xp": 75,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-038",
+      "category": "Consistency",
+      "name": "Comeback Builder",
+      "description": "Complete 5 consistency milestones tied to comeback builder.",
+      "trigger": {
+        "metric": "consistency",
+        "operator": ">=",
+        "target": 5
+      },
+      "rewards": {
+        "xp": 85,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-039",
+      "category": "Consistency",
+      "name": "Three Day Spark 2",
+      "description": "Complete 5 consistency milestones tied to three day spark.",
+      "trigger": {
+        "metric": "consistency",
+        "operator": ">=",
+        "target": 5
+      },
+      "rewards": {
+        "xp": 120,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-040",
+      "category": "Consistency",
+      "name": "Seven Day Flame 2",
+      "description": "Complete 10 consistency milestones tied to seven day flame.",
+      "trigger": {
+        "metric": "consistency",
+        "operator": ">=",
+        "target": 10
+      },
+      "rewards": {
+        "xp": 130,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "secret_until_unlocked",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-041",
+      "category": "Consistency",
+      "name": "Two Week Rhythm 2",
+      "description": "Complete 15 consistency milestones tied to two week rhythm.",
+      "trigger": {
+        "metric": "consistency",
+        "operator": ">=",
+        "target": 15
+      },
+      "rewards": {
+        "xp": 100,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-042",
+      "category": "Consistency",
+      "name": "Monthly Momentum 2",
+      "description": "Complete 20 consistency milestones tied to monthly momentum.",
+      "trigger": {
+        "metric": "consistency",
+        "operator": ">=",
+        "target": 20
+      },
+      "rewards": {
+        "xp": 110,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-043",
+      "category": "Consistency",
+      "name": "Morning Coder 2",
+      "description": "Complete 25 consistency milestones tied to morning coder.",
+      "trigger": {
+        "metric": "consistency",
+        "operator": ">=",
+        "target": 25
+      },
+      "rewards": {
+        "xp": 120,
+        "coins": 50,
+        "cosmetic": "consistency-badge-frame-2"
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-044",
+      "category": "Consistency",
+      "name": "Evening Coder 2",
+      "description": "Complete 5 consistency milestones tied to evening coder.",
+      "trigger": {
+        "metric": "consistency",
+        "operator": ">=",
+        "target": 5
+      },
+      "rewards": {
+        "xp": 130,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-045",
+      "category": "Consistency",
+      "name": "Weekend Warrior 2",
+      "description": "Complete 10 consistency milestones tied to weekend warrior.",
+      "trigger": {
+        "metric": "consistency",
+        "operator": ">=",
+        "target": 10
+      },
+      "rewards": {
+        "xp": 100,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-046",
+      "category": "Consistency",
+      "name": "Steady Hands 2",
+      "description": "Complete 15 consistency milestones tied to steady hands.",
+      "trigger": {
+        "metric": "consistency",
+        "operator": ">=",
+        "target": 15
+      },
+      "rewards": {
+        "xp": 110,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-047",
+      "category": "Consistency",
+      "name": "No Zero Days 2",
+      "description": "Complete 20 consistency milestones tied to no zero days.",
+      "trigger": {
+        "metric": "consistency",
+        "operator": ">=",
+        "target": 20
+      },
+      "rewards": {
+        "xp": 120,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-048",
+      "category": "Consistency",
+      "name": "Comeback Builder 2",
+      "description": "Complete 25 consistency milestones tied to comeback builder.",
+      "trigger": {
+        "metric": "consistency",
+        "operator": ">=",
+        "target": 25
+      },
+      "rewards": {
+        "xp": 130,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-049",
+      "category": "Consistency",
+      "name": "Three Day Spark 3",
+      "description": "Complete 10 consistency milestones tied to three day spark.",
+      "trigger": {
+        "metric": "consistency",
+        "operator": ">=",
+        "target": 10
+      },
+      "rewards": {
+        "xp": 125,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-050",
+      "category": "Consistency",
+      "name": "Seven Day Flame 3",
+      "description": "Complete 20 consistency milestones tied to seven day flame.",
+      "trigger": {
+        "metric": "consistency",
+        "operator": ">=",
+        "target": 20
+      },
+      "rewards": {
+        "xp": 135,
+        "coins": 65,
+        "cosmetic": "consistency-badge-frame-3"
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-051",
+      "category": "Consistency",
+      "name": "Two Week Rhythm 3",
+      "description": "Complete 30 consistency milestones tied to two week rhythm.",
+      "trigger": {
+        "metric": "consistency",
+        "operator": ">=",
+        "target": 30
+      },
+      "rewards": {
+        "xp": 145,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "secret_until_unlocked",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-052",
+      "category": "Consistency",
+      "name": "Monthly Momentum 3",
+      "description": "Complete 40 consistency milestones tied to monthly momentum.",
+      "trigger": {
+        "metric": "consistency",
+        "operator": ">=",
+        "target": 40
+      },
+      "rewards": {
+        "xp": 155,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-053",
+      "category": "Consistency",
+      "name": "Morning Coder 3",
+      "description": "Complete 50 consistency milestones tied to morning coder.",
+      "trigger": {
+        "metric": "consistency",
+        "operator": ">=",
+        "target": 50
+      },
+      "rewards": {
+        "xp": 125,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-054",
+      "category": "Consistency",
+      "name": "Evening Coder 3",
+      "description": "Complete 10 consistency milestones tied to evening coder.",
+      "trigger": {
+        "metric": "consistency",
+        "operator": ">=",
+        "target": 10
+      },
+      "rewards": {
+        "xp": 135,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-055",
+      "category": "Consistency",
+      "name": "Weekend Warrior 3",
+      "description": "Complete 20 consistency milestones tied to weekend warrior.",
+      "trigger": {
+        "metric": "consistency",
+        "operator": ">=",
+        "target": 20
+      },
+      "rewards": {
+        "xp": 145,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-056",
+      "category": "Consistency",
+      "name": "Steady Hands 3",
+      "description": "Complete 30 consistency milestones tied to steady hands.",
+      "trigger": {
+        "metric": "consistency",
+        "operator": ">=",
+        "target": 30
+      },
+      "rewards": {
+        "xp": 155,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-057",
+      "category": "Problem Solving",
+      "name": "Bug Finder",
+      "description": "Complete 1 problem solving milestone tied to bug finder.",
+      "trigger": {
+        "metric": "problem_solving",
+        "operator": ">=",
+        "target": 1
+      },
+      "rewards": {
+        "xp": 75,
+        "coins": 35,
+        "cosmetic": "problem-solving-badge-frame-1"
+      },
+      "visibility": "secret_until_unlocked",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-058",
+      "category": "Problem Solving",
+      "name": "Edge Case Hunter",
+      "description": "Complete 2 problem solving milestones tied to edge case hunter.",
+      "trigger": {
+        "metric": "problem_solving",
+        "operator": ">=",
+        "target": 2
+      },
+      "rewards": {
+        "xp": 85,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-059",
+      "category": "Problem Solving",
+      "name": "First Try Solve",
+      "description": "Complete 3 problem solving milestones tied to first try solve.",
+      "trigger": {
+        "metric": "problem_solving",
+        "operator": ">=",
+        "target": 3
+      },
+      "rewards": {
+        "xp": 95,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-060",
+      "category": "Problem Solving",
+      "name": "Refactor Win",
+      "description": "Complete 4 problem solving milestones tied to refactor win.",
+      "trigger": {
+        "metric": "problem_solving",
+        "operator": ">=",
+        "target": 4
+      },
+      "rewards": {
+        "xp": 105,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-061",
+      "category": "Problem Solving",
+      "name": "Trace Master",
+      "description": "Complete 5 problem solving milestones tied to trace master.",
+      "trigger": {
+        "metric": "problem_solving",
+        "operator": ">=",
+        "target": 5
+      },
+      "rewards": {
+        "xp": 75,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-062",
+      "category": "Problem Solving",
+      "name": "Logic Builder",
+      "description": "Complete 1 problem solving milestone tied to logic builder.",
+      "trigger": {
+        "metric": "problem_solving",
+        "operator": ">=",
+        "target": 1
+      },
+      "rewards": {
+        "xp": 85,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-063",
+      "category": "Problem Solving",
+      "name": "Algorithm Climber",
+      "description": "Complete 2 problem solving milestones tied to algorithm climber.",
+      "trigger": {
+        "metric": "problem_solving",
+        "operator": ">=",
+        "target": 2
+      },
+      "rewards": {
+        "xp": 95,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-064",
+      "category": "Problem Solving",
+      "name": "Debug Calm",
+      "description": "Complete 3 problem solving milestones tied to debug calm.",
+      "trigger": {
+        "metric": "problem_solving",
+        "operator": ">=",
+        "target": 3
+      },
+      "rewards": {
+        "xp": 105,
+        "coins": 35,
+        "cosmetic": "problem-solving-badge-frame-1"
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-065",
+      "category": "Problem Solving",
+      "name": "Puzzle Solver",
+      "description": "Complete 4 problem solving milestones tied to puzzle solver.",
+      "trigger": {
+        "metric": "problem_solving",
+        "operator": ">=",
+        "target": 4
+      },
+      "rewards": {
+        "xp": 75,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-066",
+      "category": "Problem Solving",
+      "name": "Pattern Reader",
+      "description": "Complete 5 problem solving milestones tied to pattern reader.",
+      "trigger": {
+        "metric": "problem_solving",
+        "operator": ">=",
+        "target": 5
+      },
+      "rewards": {
+        "xp": 85,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-067",
+      "category": "Problem Solving",
+      "name": "Bug Finder 2",
+      "description": "Complete 5 problem solving milestones tied to bug finder.",
+      "trigger": {
+        "metric": "problem_solving",
+        "operator": ">=",
+        "target": 5
+      },
+      "rewards": {
+        "xp": 120,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-068",
+      "category": "Problem Solving",
+      "name": "Edge Case Hunter 2",
+      "description": "Complete 10 problem solving milestones tied to edge case hunter.",
+      "trigger": {
+        "metric": "problem_solving",
+        "operator": ">=",
+        "target": 10
+      },
+      "rewards": {
+        "xp": 130,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "secret_until_unlocked",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-069",
+      "category": "Problem Solving",
+      "name": "First Try Solve 2",
+      "description": "Complete 15 problem solving milestones tied to first try solve.",
+      "trigger": {
+        "metric": "problem_solving",
+        "operator": ">=",
+        "target": 15
+      },
+      "rewards": {
+        "xp": 100,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-070",
+      "category": "Problem Solving",
+      "name": "Refactor Win 2",
+      "description": "Complete 20 problem solving milestones tied to refactor win.",
+      "trigger": {
+        "metric": "problem_solving",
+        "operator": ">=",
+        "target": 20
+      },
+      "rewards": {
+        "xp": 110,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-071",
+      "category": "Problem Solving",
+      "name": "Trace Master 2",
+      "description": "Complete 25 problem solving milestones tied to trace master.",
+      "trigger": {
+        "metric": "problem_solving",
+        "operator": ">=",
+        "target": 25
+      },
+      "rewards": {
+        "xp": 120,
+        "coins": 50,
+        "cosmetic": "problem-solving-badge-frame-2"
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-072",
+      "category": "Problem Solving",
+      "name": "Logic Builder 2",
+      "description": "Complete 5 problem solving milestones tied to logic builder.",
+      "trigger": {
+        "metric": "problem_solving",
+        "operator": ">=",
+        "target": 5
+      },
+      "rewards": {
+        "xp": 130,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-073",
+      "category": "Problem Solving",
+      "name": "Algorithm Climber 2",
+      "description": "Complete 10 problem solving milestones tied to algorithm climber.",
+      "trigger": {
+        "metric": "problem_solving",
+        "operator": ">=",
+        "target": 10
+      },
+      "rewards": {
+        "xp": 100,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-074",
+      "category": "Problem Solving",
+      "name": "Debug Calm 2",
+      "description": "Complete 15 problem solving milestones tied to debug calm.",
+      "trigger": {
+        "metric": "problem_solving",
+        "operator": ">=",
+        "target": 15
+      },
+      "rewards": {
+        "xp": 110,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-075",
+      "category": "Problem Solving",
+      "name": "Puzzle Solver 2",
+      "description": "Complete 20 problem solving milestones tied to puzzle solver.",
+      "trigger": {
+        "metric": "problem_solving",
+        "operator": ">=",
+        "target": 20
+      },
+      "rewards": {
+        "xp": 120,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-076",
+      "category": "Problem Solving",
+      "name": "Pattern Reader 2",
+      "description": "Complete 25 problem solving milestones tied to pattern reader.",
+      "trigger": {
+        "metric": "problem_solving",
+        "operator": ">=",
+        "target": 25
+      },
+      "rewards": {
+        "xp": 130,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-077",
+      "category": "Problem Solving",
+      "name": "Bug Finder 3",
+      "description": "Complete 10 problem solving milestones tied to bug finder.",
+      "trigger": {
+        "metric": "problem_solving",
+        "operator": ">=",
+        "target": 10
+      },
+      "rewards": {
+        "xp": 125,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-078",
+      "category": "Problem Solving",
+      "name": "Edge Case Hunter 3",
+      "description": "Complete 20 problem solving milestones tied to edge case hunter.",
+      "trigger": {
+        "metric": "problem_solving",
+        "operator": ">=",
+        "target": 20
+      },
+      "rewards": {
+        "xp": 135,
+        "coins": 65,
+        "cosmetic": "problem-solving-badge-frame-3"
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-079",
+      "category": "Problem Solving",
+      "name": "First Try Solve 3",
+      "description": "Complete 30 problem solving milestones tied to first try solve.",
+      "trigger": {
+        "metric": "problem_solving",
+        "operator": ">=",
+        "target": 30
+      },
+      "rewards": {
+        "xp": 145,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "secret_until_unlocked",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-080",
+      "category": "Problem Solving",
+      "name": "Refactor Win 3",
+      "description": "Complete 40 problem solving milestones tied to refactor win.",
+      "trigger": {
+        "metric": "problem_solving",
+        "operator": ">=",
+        "target": 40
+      },
+      "rewards": {
+        "xp": 155,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-081",
+      "category": "Problem Solving",
+      "name": "Trace Master 3",
+      "description": "Complete 50 problem solving milestones tied to trace master.",
+      "trigger": {
+        "metric": "problem_solving",
+        "operator": ">=",
+        "target": 50
+      },
+      "rewards": {
+        "xp": 125,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-082",
+      "category": "Problem Solving",
+      "name": "Logic Builder 3",
+      "description": "Complete 10 problem solving milestones tied to logic builder.",
+      "trigger": {
+        "metric": "problem_solving",
+        "operator": ">=",
+        "target": 10
+      },
+      "rewards": {
+        "xp": 135,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-083",
+      "category": "Problem Solving",
+      "name": "Algorithm Climber 3",
+      "description": "Complete 20 problem solving milestones tied to algorithm climber.",
+      "trigger": {
+        "metric": "problem_solving",
+        "operator": ">=",
+        "target": 20
+      },
+      "rewards": {
+        "xp": 145,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-084",
+      "category": "Problem Solving",
+      "name": "Debug Calm 3",
+      "description": "Complete 30 problem solving milestones tied to debug calm.",
+      "trigger": {
+        "metric": "problem_solving",
+        "operator": ">=",
+        "target": 30
+      },
+      "rewards": {
+        "xp": 155,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-085",
+      "category": "Projects",
+      "name": "Calculator Shipped",
+      "description": "Complete 1 projects milestone tied to calculator shipped.",
+      "trigger": {
+        "metric": "projects",
+        "operator": ">=",
+        "target": 1
+      },
+      "rewards": {
+        "xp": 75,
+        "coins": 35,
+        "cosmetic": "projects-badge-frame-1"
+      },
+      "visibility": "secret_until_unlocked",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-086",
+      "category": "Projects",
+      "name": "Expense Tracker Shipped",
+      "description": "Complete 2 projects milestones tied to expense tracker shipped.",
+      "trigger": {
+        "metric": "projects",
+        "operator": ">=",
+        "target": 2
+      },
+      "rewards": {
+        "xp": 85,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-087",
+      "category": "Projects",
+      "name": "Weather App Shipped",
+      "description": "Complete 3 projects milestones tied to weather app shipped.",
+      "trigger": {
+        "metric": "projects",
+        "operator": ">=",
+        "target": 3
+      },
+      "rewards": {
+        "xp": 95,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-088",
+      "category": "Projects",
+      "name": "REST API Shipped",
+      "description": "Complete 4 projects milestones tied to rest api shipped.",
+      "trigger": {
+        "metric": "projects",
+        "operator": ">=",
+        "target": 4
+      },
+      "rewards": {
+        "xp": 105,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-089",
+      "category": "Projects",
+      "name": "Scraper Shipped",
+      "description": "Complete 5 projects milestones tied to scraper shipped.",
+      "trigger": {
+        "metric": "projects",
+        "operator": ">=",
+        "target": 5
+      },
+      "rewards": {
+        "xp": 75,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-090",
+      "category": "Projects",
+      "name": "Automation Shipped",
+      "description": "Complete 1 projects milestone tied to automation shipped.",
+      "trigger": {
+        "metric": "projects",
+        "operator": ">=",
+        "target": 1
+      },
+      "rewards": {
+        "xp": 85,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-091",
+      "category": "Projects",
+      "name": "AI Chatbot Shipped",
+      "description": "Complete 2 projects milestones tied to ai chatbot shipped.",
+      "trigger": {
+        "metric": "projects",
+        "operator": ">=",
+        "target": 2
+      },
+      "rewards": {
+        "xp": 95,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-092",
+      "category": "Projects",
+      "name": "Portfolio Builder",
+      "description": "Complete 3 projects milestones tied to portfolio builder.",
+      "trigger": {
+        "metric": "projects",
+        "operator": ">=",
+        "target": 3
+      },
+      "rewards": {
+        "xp": 105,
+        "coins": 35,
+        "cosmetic": "projects-badge-frame-1"
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-093",
+      "category": "Projects",
+      "name": "Revision Champion",
+      "description": "Complete 4 projects milestones tied to revision champion.",
+      "trigger": {
+        "metric": "projects",
+        "operator": ">=",
+        "target": 4
+      },
+      "rewards": {
+        "xp": 75,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-094",
+      "category": "Projects",
+      "name": "Capstone Finisher",
+      "description": "Complete 5 projects milestones tied to capstone finisher.",
+      "trigger": {
+        "metric": "projects",
+        "operator": ">=",
+        "target": 5
+      },
+      "rewards": {
+        "xp": 85,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-095",
+      "category": "Projects",
+      "name": "Calculator Shipped 2",
+      "description": "Complete 5 projects milestones tied to calculator shipped.",
+      "trigger": {
+        "metric": "projects",
+        "operator": ">=",
+        "target": 5
+      },
+      "rewards": {
+        "xp": 120,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-096",
+      "category": "Projects",
+      "name": "Expense Tracker Shipped 2",
+      "description": "Complete 10 projects milestones tied to expense tracker shipped.",
+      "trigger": {
+        "metric": "projects",
+        "operator": ">=",
+        "target": 10
+      },
+      "rewards": {
+        "xp": 130,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "secret_until_unlocked",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-097",
+      "category": "Projects",
+      "name": "Weather App Shipped 2",
+      "description": "Complete 15 projects milestones tied to weather app shipped.",
+      "trigger": {
+        "metric": "projects",
+        "operator": ">=",
+        "target": 15
+      },
+      "rewards": {
+        "xp": 100,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-098",
+      "category": "Projects",
+      "name": "REST API Shipped 2",
+      "description": "Complete 20 projects milestones tied to rest api shipped.",
+      "trigger": {
+        "metric": "projects",
+        "operator": ">=",
+        "target": 20
+      },
+      "rewards": {
+        "xp": 110,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-099",
+      "category": "Projects",
+      "name": "Scraper Shipped 2",
+      "description": "Complete 25 projects milestones tied to scraper shipped.",
+      "trigger": {
+        "metric": "projects",
+        "operator": ">=",
+        "target": 25
+      },
+      "rewards": {
+        "xp": 120,
+        "coins": 50,
+        "cosmetic": "projects-badge-frame-2"
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-100",
+      "category": "Projects",
+      "name": "Automation Shipped 2",
+      "description": "Complete 5 projects milestones tied to automation shipped.",
+      "trigger": {
+        "metric": "projects",
+        "operator": ">=",
+        "target": 5
+      },
+      "rewards": {
+        "xp": 130,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-101",
+      "category": "Projects",
+      "name": "AI Chatbot Shipped 2",
+      "description": "Complete 10 projects milestones tied to ai chatbot shipped.",
+      "trigger": {
+        "metric": "projects",
+        "operator": ">=",
+        "target": 10
+      },
+      "rewards": {
+        "xp": 100,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-102",
+      "category": "Projects",
+      "name": "Portfolio Builder 2",
+      "description": "Complete 15 projects milestones tied to portfolio builder.",
+      "trigger": {
+        "metric": "projects",
+        "operator": ">=",
+        "target": 15
+      },
+      "rewards": {
+        "xp": 110,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-103",
+      "category": "Projects",
+      "name": "Revision Champion 2",
+      "description": "Complete 20 projects milestones tied to revision champion.",
+      "trigger": {
+        "metric": "projects",
+        "operator": ">=",
+        "target": 20
+      },
+      "rewards": {
+        "xp": 120,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-104",
+      "category": "Projects",
+      "name": "Capstone Finisher 2",
+      "description": "Complete 25 projects milestones tied to capstone finisher.",
+      "trigger": {
+        "metric": "projects",
+        "operator": ">=",
+        "target": 25
+      },
+      "rewards": {
+        "xp": 130,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-105",
+      "category": "Projects",
+      "name": "Calculator Shipped 3",
+      "description": "Complete 10 projects milestones tied to calculator shipped.",
+      "trigger": {
+        "metric": "projects",
+        "operator": ">=",
+        "target": 10
+      },
+      "rewards": {
+        "xp": 125,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-106",
+      "category": "Projects",
+      "name": "Expense Tracker Shipped 3",
+      "description": "Complete 20 projects milestones tied to expense tracker shipped.",
+      "trigger": {
+        "metric": "projects",
+        "operator": ">=",
+        "target": 20
+      },
+      "rewards": {
+        "xp": 135,
+        "coins": 65,
+        "cosmetic": "projects-badge-frame-3"
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-107",
+      "category": "Projects",
+      "name": "Weather App Shipped 3",
+      "description": "Complete 30 projects milestones tied to weather app shipped.",
+      "trigger": {
+        "metric": "projects",
+        "operator": ">=",
+        "target": 30
+      },
+      "rewards": {
+        "xp": 145,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "secret_until_unlocked",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-108",
+      "category": "Projects",
+      "name": "REST API Shipped 3",
+      "description": "Complete 40 projects milestones tied to rest api shipped.",
+      "trigger": {
+        "metric": "projects",
+        "operator": ">=",
+        "target": 40
+      },
+      "rewards": {
+        "xp": 155,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-109",
+      "category": "Projects",
+      "name": "Scraper Shipped 3",
+      "description": "Complete 50 projects milestones tied to scraper shipped.",
+      "trigger": {
+        "metric": "projects",
+        "operator": ">=",
+        "target": 50
+      },
+      "rewards": {
+        "xp": 125,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-110",
+      "category": "Projects",
+      "name": "Automation Shipped 3",
+      "description": "Complete 10 projects milestones tied to automation shipped.",
+      "trigger": {
+        "metric": "projects",
+        "operator": ">=",
+        "target": 10
+      },
+      "rewards": {
+        "xp": 135,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-111",
+      "category": "Projects",
+      "name": "AI Chatbot Shipped 3",
+      "description": "Complete 20 projects milestones tied to ai chatbot shipped.",
+      "trigger": {
+        "metric": "projects",
+        "operator": ">=",
+        "target": 20
+      },
+      "rewards": {
+        "xp": 145,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-112",
+      "category": "Projects",
+      "name": "Portfolio Builder 3",
+      "description": "Complete 30 projects milestones tied to portfolio builder.",
+      "trigger": {
+        "metric": "projects",
+        "operator": ">=",
+        "target": 30
+      },
+      "rewards": {
+        "xp": 155,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-113",
+      "category": "Community",
+      "name": "First Helpful Reply",
+      "description": "Complete 1 community milestone tied to first helpful reply.",
+      "trigger": {
+        "metric": "community",
+        "operator": ">=",
+        "target": 1
+      },
+      "rewards": {
+        "xp": 75,
+        "coins": 35,
+        "cosmetic": "community-badge-frame-1"
+      },
+      "visibility": "secret_until_unlocked",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-114",
+      "category": "Community",
+      "name": "Kind Reviewer",
+      "description": "Complete 2 community milestones tied to kind reviewer.",
+      "trigger": {
+        "metric": "community",
+        "operator": ">=",
+        "target": 2
+      },
+      "rewards": {
+        "xp": 85,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-115",
+      "category": "Community",
+      "name": "Question Asker",
+      "description": "Complete 3 community milestones tied to question asker.",
+      "trigger": {
+        "metric": "community",
+        "operator": ">=",
+        "target": 3
+      },
+      "rewards": {
+        "xp": 95,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-116",
+      "category": "Community",
+      "name": "Mentor Moment",
+      "description": "Complete 4 community milestones tied to mentor moment.",
+      "trigger": {
+        "metric": "community",
+        "operator": ">=",
+        "target": 4
+      },
+      "rewards": {
+        "xp": 105,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-117",
+      "category": "Community",
+      "name": "Study Buddy",
+      "description": "Complete 5 community milestones tied to study buddy.",
+      "trigger": {
+        "metric": "community",
+        "operator": ">=",
+        "target": 5
+      },
+      "rewards": {
+        "xp": 75,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-118",
+      "category": "Community",
+      "name": "Peer Debugger",
+      "description": "Complete 1 community milestone tied to peer debugger.",
+      "trigger": {
+        "metric": "community",
+        "operator": ">=",
+        "target": 1
+      },
+      "rewards": {
+        "xp": 85,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-119",
+      "category": "Community",
+      "name": "Docs Contributor",
+      "description": "Complete 2 community milestones tied to docs contributor.",
+      "trigger": {
+        "metric": "community",
+        "operator": ">=",
+        "target": 2
+      },
+      "rewards": {
+        "xp": 95,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-120",
+      "category": "Community",
+      "name": "Forum Helper",
+      "description": "Complete 3 community milestones tied to forum helper.",
+      "trigger": {
+        "metric": "community",
+        "operator": ">=",
+        "target": 3
+      },
+      "rewards": {
+        "xp": 105,
+        "coins": 35,
+        "cosmetic": "community-badge-frame-1"
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-121",
+      "category": "Community",
+      "name": "Feedback Giver",
+      "description": "Complete 4 community milestones tied to feedback giver.",
+      "trigger": {
+        "metric": "community",
+        "operator": ">=",
+        "target": 4
+      },
+      "rewards": {
+        "xp": 75,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-122",
+      "category": "Community",
+      "name": "Team Player",
+      "description": "Complete 5 community milestones tied to team player.",
+      "trigger": {
+        "metric": "community",
+        "operator": ">=",
+        "target": 5
+      },
+      "rewards": {
+        "xp": 85,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-123",
+      "category": "Community",
+      "name": "First Helpful Reply 2",
+      "description": "Complete 5 community milestones tied to first helpful reply.",
+      "trigger": {
+        "metric": "community",
+        "operator": ">=",
+        "target": 5
+      },
+      "rewards": {
+        "xp": 120,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-124",
+      "category": "Community",
+      "name": "Kind Reviewer 2",
+      "description": "Complete 10 community milestones tied to kind reviewer.",
+      "trigger": {
+        "metric": "community",
+        "operator": ">=",
+        "target": 10
+      },
+      "rewards": {
+        "xp": 130,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "secret_until_unlocked",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-125",
+      "category": "Community",
+      "name": "Question Asker 2",
+      "description": "Complete 15 community milestones tied to question asker.",
+      "trigger": {
+        "metric": "community",
+        "operator": ">=",
+        "target": 15
+      },
+      "rewards": {
+        "xp": 100,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-126",
+      "category": "Community",
+      "name": "Mentor Moment 2",
+      "description": "Complete 20 community milestones tied to mentor moment.",
+      "trigger": {
+        "metric": "community",
+        "operator": ">=",
+        "target": 20
+      },
+      "rewards": {
+        "xp": 110,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-127",
+      "category": "Community",
+      "name": "Study Buddy 2",
+      "description": "Complete 25 community milestones tied to study buddy.",
+      "trigger": {
+        "metric": "community",
+        "operator": ">=",
+        "target": 25
+      },
+      "rewards": {
+        "xp": 120,
+        "coins": 50,
+        "cosmetic": "community-badge-frame-2"
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-128",
+      "category": "Community",
+      "name": "Peer Debugger 2",
+      "description": "Complete 5 community milestones tied to peer debugger.",
+      "trigger": {
+        "metric": "community",
+        "operator": ">=",
+        "target": 5
+      },
+      "rewards": {
+        "xp": 130,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-129",
+      "category": "Community",
+      "name": "Docs Contributor 2",
+      "description": "Complete 10 community milestones tied to docs contributor.",
+      "trigger": {
+        "metric": "community",
+        "operator": ">=",
+        "target": 10
+      },
+      "rewards": {
+        "xp": 100,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-130",
+      "category": "Community",
+      "name": "Forum Helper 2",
+      "description": "Complete 15 community milestones tied to forum helper.",
+      "trigger": {
+        "metric": "community",
+        "operator": ">=",
+        "target": 15
+      },
+      "rewards": {
+        "xp": 110,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-131",
+      "category": "Community",
+      "name": "Feedback Giver 2",
+      "description": "Complete 20 community milestones tied to feedback giver.",
+      "trigger": {
+        "metric": "community",
+        "operator": ">=",
+        "target": 20
+      },
+      "rewards": {
+        "xp": 120,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-132",
+      "category": "Community",
+      "name": "Team Player 2",
+      "description": "Complete 25 community milestones tied to team player.",
+      "trigger": {
+        "metric": "community",
+        "operator": ">=",
+        "target": 25
+      },
+      "rewards": {
+        "xp": 130,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-133",
+      "category": "Community",
+      "name": "First Helpful Reply 3",
+      "description": "Complete 10 community milestones tied to first helpful reply.",
+      "trigger": {
+        "metric": "community",
+        "operator": ">=",
+        "target": 10
+      },
+      "rewards": {
+        "xp": 125,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-134",
+      "category": "Community",
+      "name": "Kind Reviewer 3",
+      "description": "Complete 20 community milestones tied to kind reviewer.",
+      "trigger": {
+        "metric": "community",
+        "operator": ">=",
+        "target": 20
+      },
+      "rewards": {
+        "xp": 135,
+        "coins": 65,
+        "cosmetic": "community-badge-frame-3"
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-135",
+      "category": "Community",
+      "name": "Question Asker 3",
+      "description": "Complete 30 community milestones tied to question asker.",
+      "trigger": {
+        "metric": "community",
+        "operator": ">=",
+        "target": 30
+      },
+      "rewards": {
+        "xp": 145,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "secret_until_unlocked",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-136",
+      "category": "Community",
+      "name": "Mentor Moment 3",
+      "description": "Complete 40 community milestones tied to mentor moment.",
+      "trigger": {
+        "metric": "community",
+        "operator": ">=",
+        "target": 40
+      },
+      "rewards": {
+        "xp": 155,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-137",
+      "category": "Community",
+      "name": "Study Buddy 3",
+      "description": "Complete 50 community milestones tied to study buddy.",
+      "trigger": {
+        "metric": "community",
+        "operator": ">=",
+        "target": 50
+      },
+      "rewards": {
+        "xp": 125,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-138",
+      "category": "Community",
+      "name": "Peer Debugger 3",
+      "description": "Complete 10 community milestones tied to peer debugger.",
+      "trigger": {
+        "metric": "community",
+        "operator": ">=",
+        "target": 10
+      },
+      "rewards": {
+        "xp": 135,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-139",
+      "category": "Community",
+      "name": "Docs Contributor 3",
+      "description": "Complete 20 community milestones tied to docs contributor.",
+      "trigger": {
+        "metric": "community",
+        "operator": ">=",
+        "target": 20
+      },
+      "rewards": {
+        "xp": 145,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-140",
+      "category": "Community",
+      "name": "Forum Helper 3",
+      "description": "Complete 30 community milestones tied to forum helper.",
+      "trigger": {
+        "metric": "community",
+        "operator": ">=",
+        "target": 30
+      },
+      "rewards": {
+        "xp": 155,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-141",
+      "category": "Speed",
+      "name": "Quick Quiz",
+      "description": "Complete 1 speed milestone tied to quick quiz.",
+      "trigger": {
+        "metric": "speed",
+        "operator": ">=",
+        "target": 1
+      },
+      "rewards": {
+        "xp": 75,
+        "coins": 35,
+        "cosmetic": "speed-badge-frame-1"
+      },
+      "visibility": "secret_until_unlocked",
+      "anti_abuse_notes": "Speed achievements require correctness to qualify."
+    },
+    {
+      "achievement_id": "ach-142",
+      "category": "Speed",
+      "name": "Fast Fix",
+      "description": "Complete 2 speed milestones tied to fast fix.",
+      "trigger": {
+        "metric": "speed",
+        "operator": ">=",
+        "target": 2
+      },
+      "rewards": {
+        "xp": 85,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Speed achievements require correctness to qualify."
+    },
+    {
+      "achievement_id": "ach-143",
+      "category": "Speed",
+      "name": "Sprint Starter",
+      "description": "Complete 3 speed milestones tied to sprint starter.",
+      "trigger": {
+        "metric": "speed",
+        "operator": ">=",
+        "target": 3
+      },
+      "rewards": {
+        "xp": 95,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Speed achievements require correctness to qualify."
+    },
+    {
+      "achievement_id": "ach-144",
+      "category": "Speed",
+      "name": "Rapid Review",
+      "description": "Complete 4 speed milestones tied to rapid review.",
+      "trigger": {
+        "metric": "speed",
+        "operator": ">=",
+        "target": 4
+      },
+      "rewards": {
+        "xp": 105,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Speed achievements require correctness to qualify."
+    },
+    {
+      "achievement_id": "ach-145",
+      "category": "Speed",
+      "name": "Challenge Dash",
+      "description": "Complete 5 speed milestones tied to challenge dash.",
+      "trigger": {
+        "metric": "speed",
+        "operator": ">=",
+        "target": 5
+      },
+      "rewards": {
+        "xp": 75,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Speed achievements require correctness to qualify."
+    },
+    {
+      "achievement_id": "ach-146",
+      "category": "Speed",
+      "name": "Keyboard Flow",
+      "description": "Complete 1 speed milestone tied to keyboard flow.",
+      "trigger": {
+        "metric": "speed",
+        "operator": ">=",
+        "target": 1
+      },
+      "rewards": {
+        "xp": 85,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Speed achievements require correctness to qualify."
+    },
+    {
+      "achievement_id": "ach-147",
+      "category": "Speed",
+      "name": "No Hesitation",
+      "description": "Complete 2 speed milestones tied to no hesitation.",
+      "trigger": {
+        "metric": "speed",
+        "operator": ">=",
+        "target": 2
+      },
+      "rewards": {
+        "xp": 95,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Speed achievements require correctness to qualify."
+    },
+    {
+      "achievement_id": "ach-148",
+      "category": "Speed",
+      "name": "Timed Solver",
+      "description": "Complete 3 speed milestones tied to timed solver.",
+      "trigger": {
+        "metric": "speed",
+        "operator": ">=",
+        "target": 3
+      },
+      "rewards": {
+        "xp": 105,
+        "coins": 35,
+        "cosmetic": "speed-badge-frame-1"
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Speed achievements require correctness to qualify."
+    },
+    {
+      "achievement_id": "ach-149",
+      "category": "Speed",
+      "name": "Momentum Run",
+      "description": "Complete 4 speed milestones tied to momentum run.",
+      "trigger": {
+        "metric": "speed",
+        "operator": ">=",
+        "target": 4
+      },
+      "rewards": {
+        "xp": 75,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Speed achievements require correctness to qualify."
+    },
+    {
+      "achievement_id": "ach-150",
+      "category": "Speed",
+      "name": "Flash Finish",
+      "description": "Complete 5 speed milestones tied to flash finish.",
+      "trigger": {
+        "metric": "speed",
+        "operator": ">=",
+        "target": 5
+      },
+      "rewards": {
+        "xp": 85,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Speed achievements require correctness to qualify."
+    },
+    {
+      "achievement_id": "ach-151",
+      "category": "Speed",
+      "name": "Quick Quiz 2",
+      "description": "Complete 5 speed milestones tied to quick quiz.",
+      "trigger": {
+        "metric": "speed",
+        "operator": ">=",
+        "target": 5
+      },
+      "rewards": {
+        "xp": 120,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Speed achievements require correctness to qualify."
+    },
+    {
+      "achievement_id": "ach-152",
+      "category": "Speed",
+      "name": "Fast Fix 2",
+      "description": "Complete 10 speed milestones tied to fast fix.",
+      "trigger": {
+        "metric": "speed",
+        "operator": ">=",
+        "target": 10
+      },
+      "rewards": {
+        "xp": 130,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "secret_until_unlocked",
+      "anti_abuse_notes": "Speed achievements require correctness to qualify."
+    },
+    {
+      "achievement_id": "ach-153",
+      "category": "Speed",
+      "name": "Sprint Starter 2",
+      "description": "Complete 15 speed milestones tied to sprint starter.",
+      "trigger": {
+        "metric": "speed",
+        "operator": ">=",
+        "target": 15
+      },
+      "rewards": {
+        "xp": 100,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Speed achievements require correctness to qualify."
+    },
+    {
+      "achievement_id": "ach-154",
+      "category": "Speed",
+      "name": "Rapid Review 2",
+      "description": "Complete 20 speed milestones tied to rapid review.",
+      "trigger": {
+        "metric": "speed",
+        "operator": ">=",
+        "target": 20
+      },
+      "rewards": {
+        "xp": 110,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Speed achievements require correctness to qualify."
+    },
+    {
+      "achievement_id": "ach-155",
+      "category": "Speed",
+      "name": "Challenge Dash 2",
+      "description": "Complete 25 speed milestones tied to challenge dash.",
+      "trigger": {
+        "metric": "speed",
+        "operator": ">=",
+        "target": 25
+      },
+      "rewards": {
+        "xp": 120,
+        "coins": 50,
+        "cosmetic": "speed-badge-frame-2"
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Speed achievements require correctness to qualify."
+    },
+    {
+      "achievement_id": "ach-156",
+      "category": "Speed",
+      "name": "Keyboard Flow 2",
+      "description": "Complete 5 speed milestones tied to keyboard flow.",
+      "trigger": {
+        "metric": "speed",
+        "operator": ">=",
+        "target": 5
+      },
+      "rewards": {
+        "xp": 130,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Speed achievements require correctness to qualify."
+    },
+    {
+      "achievement_id": "ach-157",
+      "category": "Speed",
+      "name": "No Hesitation 2",
+      "description": "Complete 10 speed milestones tied to no hesitation.",
+      "trigger": {
+        "metric": "speed",
+        "operator": ">=",
+        "target": 10
+      },
+      "rewards": {
+        "xp": 100,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Speed achievements require correctness to qualify."
+    },
+    {
+      "achievement_id": "ach-158",
+      "category": "Speed",
+      "name": "Timed Solver 2",
+      "description": "Complete 15 speed milestones tied to timed solver.",
+      "trigger": {
+        "metric": "speed",
+        "operator": ">=",
+        "target": 15
+      },
+      "rewards": {
+        "xp": 110,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Speed achievements require correctness to qualify."
+    },
+    {
+      "achievement_id": "ach-159",
+      "category": "Speed",
+      "name": "Momentum Run 2",
+      "description": "Complete 20 speed milestones tied to momentum run.",
+      "trigger": {
+        "metric": "speed",
+        "operator": ">=",
+        "target": 20
+      },
+      "rewards": {
+        "xp": 120,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Speed achievements require correctness to qualify."
+    },
+    {
+      "achievement_id": "ach-160",
+      "category": "Speed",
+      "name": "Flash Finish 2",
+      "description": "Complete 25 speed milestones tied to flash finish.",
+      "trigger": {
+        "metric": "speed",
+        "operator": ">=",
+        "target": 25
+      },
+      "rewards": {
+        "xp": 130,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Speed achievements require correctness to qualify."
+    },
+    {
+      "achievement_id": "ach-161",
+      "category": "Speed",
+      "name": "Quick Quiz 3",
+      "description": "Complete 10 speed milestones tied to quick quiz.",
+      "trigger": {
+        "metric": "speed",
+        "operator": ">=",
+        "target": 10
+      },
+      "rewards": {
+        "xp": 125,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Speed achievements require correctness to qualify."
+    },
+    {
+      "achievement_id": "ach-162",
+      "category": "Speed",
+      "name": "Fast Fix 3",
+      "description": "Complete 20 speed milestones tied to fast fix.",
+      "trigger": {
+        "metric": "speed",
+        "operator": ">=",
+        "target": 20
+      },
+      "rewards": {
+        "xp": 135,
+        "coins": 65,
+        "cosmetic": "speed-badge-frame-3"
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Speed achievements require correctness to qualify."
+    },
+    {
+      "achievement_id": "ach-163",
+      "category": "Speed",
+      "name": "Sprint Starter 3",
+      "description": "Complete 30 speed milestones tied to sprint starter.",
+      "trigger": {
+        "metric": "speed",
+        "operator": ">=",
+        "target": 30
+      },
+      "rewards": {
+        "xp": 145,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "secret_until_unlocked",
+      "anti_abuse_notes": "Speed achievements require correctness to qualify."
+    },
+    {
+      "achievement_id": "ach-164",
+      "category": "Speed",
+      "name": "Rapid Review 3",
+      "description": "Complete 40 speed milestones tied to rapid review.",
+      "trigger": {
+        "metric": "speed",
+        "operator": ">=",
+        "target": 40
+      },
+      "rewards": {
+        "xp": 155,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Speed achievements require correctness to qualify."
+    },
+    {
+      "achievement_id": "ach-165",
+      "category": "Speed",
+      "name": "Challenge Dash 3",
+      "description": "Complete 50 speed milestones tied to challenge dash.",
+      "trigger": {
+        "metric": "speed",
+        "operator": ">=",
+        "target": 50
+      },
+      "rewards": {
+        "xp": 125,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Speed achievements require correctness to qualify."
+    },
+    {
+      "achievement_id": "ach-166",
+      "category": "Speed",
+      "name": "Keyboard Flow 3",
+      "description": "Complete 10 speed milestones tied to keyboard flow.",
+      "trigger": {
+        "metric": "speed",
+        "operator": ">=",
+        "target": 10
+      },
+      "rewards": {
+        "xp": 135,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Speed achievements require correctness to qualify."
+    },
+    {
+      "achievement_id": "ach-167",
+      "category": "Speed",
+      "name": "No Hesitation 3",
+      "description": "Complete 20 speed milestones tied to no hesitation.",
+      "trigger": {
+        "metric": "speed",
+        "operator": ">=",
+        "target": 20
+      },
+      "rewards": {
+        "xp": 145,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Speed achievements require correctness to qualify."
+    },
+    {
+      "achievement_id": "ach-168",
+      "category": "Speed",
+      "name": "Timed Solver 3",
+      "description": "Complete 30 speed milestones tied to timed solver.",
+      "trigger": {
+        "metric": "speed",
+        "operator": ">=",
+        "target": 30
+      },
+      "rewards": {
+        "xp": 155,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Speed achievements require correctness to qualify."
+    },
+    {
+      "achievement_id": "ach-169",
+      "category": "Accuracy",
+      "name": "Perfect Quiz",
+      "description": "Complete 1 accuracy milestone tied to perfect quiz.",
+      "trigger": {
+        "metric": "accuracy",
+        "operator": ">=",
+        "target": 1
+      },
+      "rewards": {
+        "xp": 75,
+        "coins": 35,
+        "cosmetic": "accuracy-badge-frame-1"
+      },
+      "visibility": "secret_until_unlocked",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-170",
+      "category": "Accuracy",
+      "name": "Clean Run",
+      "description": "Complete 2 accuracy milestones tied to clean run.",
+      "trigger": {
+        "metric": "accuracy",
+        "operator": ">=",
+        "target": 2
+      },
+      "rewards": {
+        "xp": 85,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-171",
+      "category": "Accuracy",
+      "name": "No Syntax Errors",
+      "description": "Complete 3 accuracy milestones tied to no syntax errors.",
+      "trigger": {
+        "metric": "accuracy",
+        "operator": ">=",
+        "target": 3
+      },
+      "rewards": {
+        "xp": 95,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-172",
+      "category": "Accuracy",
+      "name": "Exact Output",
+      "description": "Complete 4 accuracy milestones tied to exact output.",
+      "trigger": {
+        "metric": "accuracy",
+        "operator": ">=",
+        "target": 4
+      },
+      "rewards": {
+        "xp": 105,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-173",
+      "category": "Accuracy",
+      "name": "Test Passer",
+      "description": "Complete 5 accuracy milestones tied to test passer.",
+      "trigger": {
+        "metric": "accuracy",
+        "operator": ">=",
+        "target": 5
+      },
+      "rewards": {
+        "xp": 75,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-174",
+      "category": "Accuracy",
+      "name": "Careful Reader",
+      "description": "Complete 1 accuracy milestone tied to careful reader.",
+      "trigger": {
+        "metric": "accuracy",
+        "operator": ">=",
+        "target": 1
+      },
+      "rewards": {
+        "xp": 85,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-175",
+      "category": "Accuracy",
+      "name": "Precision Streak",
+      "description": "Complete 2 accuracy milestones tied to precision streak.",
+      "trigger": {
+        "metric": "accuracy",
+        "operator": ">=",
+        "target": 2
+      },
+      "rewards": {
+        "xp": 95,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-176",
+      "category": "Accuracy",
+      "name": "Bug-Free Batch",
+      "description": "Complete 3 accuracy milestones tied to bug-free batch.",
+      "trigger": {
+        "metric": "accuracy",
+        "operator": ">=",
+        "target": 3
+      },
+      "rewards": {
+        "xp": 105,
+        "coins": 35,
+        "cosmetic": "accuracy-badge-frame-1"
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-177",
+      "category": "Accuracy",
+      "name": "Reliable Solver",
+      "description": "Complete 4 accuracy milestones tied to reliable solver.",
+      "trigger": {
+        "metric": "accuracy",
+        "operator": ">=",
+        "target": 4
+      },
+      "rewards": {
+        "xp": 75,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-178",
+      "category": "Accuracy",
+      "name": "Quality Bar",
+      "description": "Complete 5 accuracy milestones tied to quality bar.",
+      "trigger": {
+        "metric": "accuracy",
+        "operator": ">=",
+        "target": 5
+      },
+      "rewards": {
+        "xp": 85,
+        "coins": 35,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-179",
+      "category": "Accuracy",
+      "name": "Perfect Quiz 2",
+      "description": "Complete 5 accuracy milestones tied to perfect quiz.",
+      "trigger": {
+        "metric": "accuracy",
+        "operator": ">=",
+        "target": 5
+      },
+      "rewards": {
+        "xp": 120,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-180",
+      "category": "Accuracy",
+      "name": "Clean Run 2",
+      "description": "Complete 10 accuracy milestones tied to clean run.",
+      "trigger": {
+        "metric": "accuracy",
+        "operator": ">=",
+        "target": 10
+      },
+      "rewards": {
+        "xp": 130,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "secret_until_unlocked",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-181",
+      "category": "Accuracy",
+      "name": "No Syntax Errors 2",
+      "description": "Complete 15 accuracy milestones tied to no syntax errors.",
+      "trigger": {
+        "metric": "accuracy",
+        "operator": ">=",
+        "target": 15
+      },
+      "rewards": {
+        "xp": 100,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-182",
+      "category": "Accuracy",
+      "name": "Exact Output 2",
+      "description": "Complete 20 accuracy milestones tied to exact output.",
+      "trigger": {
+        "metric": "accuracy",
+        "operator": ">=",
+        "target": 20
+      },
+      "rewards": {
+        "xp": 110,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-183",
+      "category": "Accuracy",
+      "name": "Test Passer 2",
+      "description": "Complete 25 accuracy milestones tied to test passer.",
+      "trigger": {
+        "metric": "accuracy",
+        "operator": ">=",
+        "target": 25
+      },
+      "rewards": {
+        "xp": 120,
+        "coins": 50,
+        "cosmetic": "accuracy-badge-frame-2"
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-184",
+      "category": "Accuracy",
+      "name": "Careful Reader 2",
+      "description": "Complete 5 accuracy milestones tied to careful reader.",
+      "trigger": {
+        "metric": "accuracy",
+        "operator": ">=",
+        "target": 5
+      },
+      "rewards": {
+        "xp": 130,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-185",
+      "category": "Accuracy",
+      "name": "Precision Streak 2",
+      "description": "Complete 10 accuracy milestones tied to precision streak.",
+      "trigger": {
+        "metric": "accuracy",
+        "operator": ">=",
+        "target": 10
+      },
+      "rewards": {
+        "xp": 100,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-186",
+      "category": "Accuracy",
+      "name": "Bug-Free Batch 2",
+      "description": "Complete 15 accuracy milestones tied to bug-free batch.",
+      "trigger": {
+        "metric": "accuracy",
+        "operator": ">=",
+        "target": 15
+      },
+      "rewards": {
+        "xp": 110,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-187",
+      "category": "Accuracy",
+      "name": "Reliable Solver 2",
+      "description": "Complete 20 accuracy milestones tied to reliable solver.",
+      "trigger": {
+        "metric": "accuracy",
+        "operator": ">=",
+        "target": 20
+      },
+      "rewards": {
+        "xp": 120,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-188",
+      "category": "Accuracy",
+      "name": "Quality Bar 2",
+      "description": "Complete 25 accuracy milestones tied to quality bar.",
+      "trigger": {
+        "metric": "accuracy",
+        "operator": ">=",
+        "target": 25
+      },
+      "rewards": {
+        "xp": 130,
+        "coins": 50,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-189",
+      "category": "Accuracy",
+      "name": "Perfect Quiz 3",
+      "description": "Complete 10 accuracy milestones tied to perfect quiz.",
+      "trigger": {
+        "metric": "accuracy",
+        "operator": ">=",
+        "target": 10
+      },
+      "rewards": {
+        "xp": 125,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-190",
+      "category": "Accuracy",
+      "name": "Clean Run 3",
+      "description": "Complete 20 accuracy milestones tied to clean run.",
+      "trigger": {
+        "metric": "accuracy",
+        "operator": ">=",
+        "target": 20
+      },
+      "rewards": {
+        "xp": 135,
+        "coins": 65,
+        "cosmetic": "accuracy-badge-frame-3"
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-191",
+      "category": "Accuracy",
+      "name": "No Syntax Errors 3",
+      "description": "Complete 30 accuracy milestones tied to no syntax errors.",
+      "trigger": {
+        "metric": "accuracy",
+        "operator": ">=",
+        "target": 30
+      },
+      "rewards": {
+        "xp": 145,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "secret_until_unlocked",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-192",
+      "category": "Accuracy",
+      "name": "Exact Output 3",
+      "description": "Complete 40 accuracy milestones tied to exact output.",
+      "trigger": {
+        "metric": "accuracy",
+        "operator": ">=",
+        "target": 40
+      },
+      "rewards": {
+        "xp": 155,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-193",
+      "category": "Accuracy",
+      "name": "Test Passer 3",
+      "description": "Complete 50 accuracy milestones tied to test passer.",
+      "trigger": {
+        "metric": "accuracy",
+        "operator": ">=",
+        "target": 50
+      },
+      "rewards": {
+        "xp": 125,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-194",
+      "category": "Accuracy",
+      "name": "Careful Reader 3",
+      "description": "Complete 10 accuracy milestones tied to careful reader.",
+      "trigger": {
+        "metric": "accuracy",
+        "operator": ">=",
+        "target": 10
+      },
+      "rewards": {
+        "xp": 135,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-195",
+      "category": "Accuracy",
+      "name": "Precision Streak 3",
+      "description": "Complete 20 accuracy milestones tied to precision streak.",
+      "trigger": {
+        "metric": "accuracy",
+        "operator": ">=",
+        "target": 20
+      },
+      "rewards": {
+        "xp": 145,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-196",
+      "category": "Accuracy",
+      "name": "Bug-Free Batch 3",
+      "description": "Complete 30 accuracy milestones tied to bug-free batch.",
+      "trigger": {
+        "metric": "accuracy",
+        "operator": ">=",
+        "target": 30
+      },
+      "rewards": {
+        "xp": 155,
+        "coins": 65,
+        "cosmetic": null
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Progress must come from completed learning actions."
+    },
+    {
+      "achievement_id": "ach-197",
+      "category": "Accuracy",
+      "name": "Mastery Marker 1",
+      "description": "Demonstrate high accuracy across advanced review checkpoints 1.",
+      "trigger": {
+        "metric": "advanced_accuracy_checkpoints",
+        "operator": ">=",
+        "target": 1
+      },
+      "rewards": {
+        "xp": 175,
+        "coins": 80,
+        "cosmetic": "mastery-marker-1"
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Requires unique checkpoint completion."
+    },
+    {
+      "achievement_id": "ach-198",
+      "category": "Accuracy",
+      "name": "Mastery Marker 2",
+      "description": "Demonstrate high accuracy across advanced review checkpoints 2.",
+      "trigger": {
+        "metric": "advanced_accuracy_checkpoints",
+        "operator": ">=",
+        "target": 2
+      },
+      "rewards": {
+        "xp": 175,
+        "coins": 80,
+        "cosmetic": "mastery-marker-2"
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Requires unique checkpoint completion."
+    },
+    {
+      "achievement_id": "ach-199",
+      "category": "Accuracy",
+      "name": "Mastery Marker 3",
+      "description": "Demonstrate high accuracy across advanced review checkpoints 3.",
+      "trigger": {
+        "metric": "advanced_accuracy_checkpoints",
+        "operator": ">=",
+        "target": 3
+      },
+      "rewards": {
+        "xp": 175,
+        "coins": 80,
+        "cosmetic": "mastery-marker-3"
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Requires unique checkpoint completion."
+    },
+    {
+      "achievement_id": "ach-200",
+      "category": "Accuracy",
+      "name": "Mastery Marker 4",
+      "description": "Demonstrate high accuracy across advanced review checkpoints 4.",
+      "trigger": {
+        "metric": "advanced_accuracy_checkpoints",
+        "operator": ">=",
+        "target": 4
+      },
+      "rewards": {
+        "xp": 175,
+        "coins": 80,
+        "cosmetic": "mastery-marker-4"
+      },
+      "visibility": "visible",
+      "anti_abuse_notes": "Requires unique checkpoint completion."
+    }
+  ]
+}
