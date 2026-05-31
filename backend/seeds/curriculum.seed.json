@@ -1,0 +1,2200 @@
+{
+  "version": "1.0.0",
+  "audience": [
+    "Complete Beginners",
+    "Non Technical Users",
+    "Career Changers",
+    "Students",
+    "QA Engineers moving into Python"
+  ],
+  "curriculum": [
+    {
+      "level_id": "level-01",
+      "level_name": "Python Basics",
+      "level_order": 1,
+      "lessons": [
+        {
+          "lesson_id": "py-basics-001",
+          "lesson_name": "What Python Is and How Programs Run",
+          "difficulty": "beginner",
+          "xp_reward": 50,
+          "estimated_time_minutes": 25,
+          "learning_objectives": [
+            "Explain what Python is used for",
+            "Describe how source code becomes program output",
+            "Run a first Python program",
+            "Read simple error messages without panic"
+          ],
+          "concepts": [
+            {
+              "concept_id": "concept-python-runtime",
+              "concept_name": "Python programs and execution",
+              "explanation": "Python is a programming language used to give precise instructions to a computer. A Python program is a text file containing instructions. The Python interpreter reads those instructions from top to bottom and performs them.",
+              "real_world_analogy": "Think of Python like a recipe card. The recipe is not the cake; it is the instructions. The Python interpreter is the person following the recipe step by step.",
+              "examples": [
+                {
+                  "title": "First output",
+                  "code": "print(\"Hello, Python learner!\")",
+                  "expected_output": "Hello, Python learner!"
+                },
+                {
+                  "title": "Multiple steps",
+                  "code": "print(\"Step 1\")\nprint(\"Step 2\")",
+                  "expected_output": "Step 1\nStep 2"
+                }
+              ],
+              "common_mistakes": [
+                "Forgetting quotation marks around text",
+                "Using smart quotes copied from documents instead of normal quotes",
+                "Assuming an error means failure instead of feedback",
+                "Changing many lines at once before testing"
+              ],
+              "interactive_exercises": [
+                {
+                  "exercise_id": "ex-basics-print-name",
+                  "prompt": "Print your name and one reason you want to learn Python.",
+                  "starter_code": "print(\"My name is ...\")\nprint(\"I want to learn Python because ...\")",
+                  "success_criteria": "The program prints two separate lines."
+                },
+                {
+                  "exercise_id": "ex-basics-fix-quotes",
+                  "prompt": "Fix the broken program so it prints the message.",
+                  "starter_code": "print(Hello Python)",
+                  "success_criteria": "The text is wrapped in quotes and runs without syntax errors."
+                }
+              ],
+              "quiz_questions": [
+                {
+                  "question_id": "quiz-basics-runtime-001",
+                  "type": "multiple_choice",
+                  "question": "What does the Python interpreter do?",
+                  "options": [
+                    "Reads and runs Python instructions",
+                    "Designs websites automatically",
+                    "Stores files in the cloud",
+                    "Deletes errors from programs"
+                  ],
+                  "answer": "Reads and runs Python instructions",
+                  "explanation": "The interpreter executes Python code step by step."
+                },
+                {
+                  "question_id": "quiz-basics-runtime-002",
+                  "type": "true_false",
+                  "question": "A syntax error is useful feedback about what Python could not understand.",
+                  "answer": true,
+                  "explanation": "Syntax errors point to code that Python cannot parse."
+                }
+              ],
+              "coding_challenges": [
+                {
+                  "challenge_id": "challenge-basics-greeting-card",
+                  "title": "Greeting Card",
+                  "prompt": "Write a program that prints three lines: a greeting, your name, and one goal.",
+                  "starter_code": "",
+                  "expected_behavior": "The program prints exactly three meaningful lines.",
+                  "test_cases": [
+                    {
+                      "input": "",
+                      "expected_contains": ["Hello", "goal"]
+                    }
+                  ],
+                  "hints": [
+                    "Use one print call per line.",
+                    "Put text inside quotes."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "lesson_id": "py-basics-002",
+          "lesson_name": "Comments, Readability, and Debugging Mindset",
+          "difficulty": "beginner",
+          "xp_reward": 55,
+          "estimated_time_minutes": 30,
+          "learning_objectives": [
+            "Use comments to explain intent",
+            "Format simple Python code consistently",
+            "Apply a calm debugging checklist",
+            "Distinguish code from notes"
+          ],
+          "concepts": [
+            {
+              "concept_id": "concept-comments-debugging",
+              "concept_name": "Readable code and debugging",
+              "explanation": "Comments are notes for humans. Python ignores comments when running code. Readable code helps you and other people understand what the program is meant to do. Debugging is the process of finding the difference between what you expected and what actually happened.",
+              "real_world_analogy": "Comments are like sticky notes on a checklist. They do not perform the task, but they help the next person understand why the task exists.",
+              "examples": [
+                {
+                  "title": "Helpful comment",
+                  "code": "# Show the learner's welcome message\nprint(\"Welcome to Python!\")",
+                  "expected_output": "Welcome to Python!"
+                },
+                {
+                  "title": "Commented out code",
+                  "code": "# print(\"This will not run\")\nprint(\"This will run\")",
+                  "expected_output": "This will run"
+                }
+              ],
+              "common_mistakes": [
+                "Writing comments that repeat obvious code",
+                "Leaving outdated comments after changing code",
+                "Trying to use comments as a replacement for clear names",
+                "Debugging by guessing instead of reading the error"
+              ],
+              "interactive_exercises": [
+                {
+                  "exercise_id": "ex-basics-add-comment",
+                  "prompt": "Add one useful comment above a print statement.",
+                  "starter_code": "print(\"Daily progress matters\")",
+                  "success_criteria": "A comment explains why the message is shown."
+                },
+                {
+                  "exercise_id": "ex-basics-debug-checklist",
+                  "prompt": "Run the broken code, read the error, and fix the missing quote.",
+                  "starter_code": "print(\"Small steps win)",
+                  "success_criteria": "The program runs and prints the message."
+                }
+              ],
+              "quiz_questions": [
+                {
+                  "question_id": "quiz-comments-001",
+                  "type": "multiple_choice",
+                  "question": "Which symbol starts a single-line comment in Python?",
+                  "options": ["#", "//", "<!--", "--"],
+                  "answer": "#",
+                  "explanation": "Python uses # for single-line comments."
+                },
+                {
+                  "question_id": "quiz-debugging-001",
+                  "type": "multiple_choice",
+                  "question": "What is a good first step when code fails?",
+                  "options": [
+                    "Read the error message carefully",
+                    "Delete the whole file",
+                    "Change random lines",
+                    "Ignore the problem"
+                  ],
+                  "answer": "Read the error message carefully",
+                  "explanation": "Error messages usually contain the location and type of problem."
+                }
+              ],
+              "coding_challenges": [
+                {
+                  "challenge_id": "challenge-comments-fix-message",
+                  "title": "Readable Welcome Script",
+                  "prompt": "Create a short welcome script with at least two print statements and one useful comment.",
+                  "starter_code": "# Write your welcome script below\n",
+                  "expected_behavior": "The script prints a welcome message and includes one useful comment.",
+                  "test_cases": [
+                    {
+                      "input": "",
+                      "expected_contains": ["Welcome"]
+                    }
+                  ],
+                  "hints": [
+                    "Comments begin with #.",
+                    "Use comments to explain intent, not every tiny detail."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level_id": "level-02",
+      "level_name": "Variables",
+      "level_order": 2,
+      "lessons": [
+        {
+          "lesson_id": "variables-001",
+          "lesson_name": "Storing Information with Variables",
+          "difficulty": "beginner",
+          "xp_reward": 60,
+          "estimated_time_minutes": 30,
+          "learning_objectives": [
+            "Create variables with descriptive names",
+            "Update variable values",
+            "Use variables inside print statements",
+            "Avoid invalid variable names"
+          ],
+          "concepts": [
+            {
+              "concept_id": "concept-variable-assignment",
+              "concept_name": "Variable assignment",
+              "explanation": "A variable is a name that points to a value. You create one with the assignment operator, equals sign. The name goes on the left and the value goes on the right.",
+              "real_world_analogy": "A variable is like a labeled box. The label helps you find what is inside, and you can replace the contents later.",
+              "examples": [
+                {
+                  "title": "Store a name",
+                  "code": "learner_name = \"Maya\"\nprint(learner_name)",
+                  "expected_output": "Maya"
+                },
+                {
+                  "title": "Update progress",
+                  "code": "xp = 10\nxp = xp + 5\nprint(xp)",
+                  "expected_output": "15"
+                }
+              ],
+              "common_mistakes": [
+                "Using spaces in variable names",
+                "Starting variable names with numbers",
+                "Confusing assignment with equality comparison",
+                "Choosing vague names like x when a clearer name is possible"
+              ],
+              "interactive_exercises": [
+                {
+                  "exercise_id": "ex-vars-profile",
+                  "prompt": "Create variables for name, goal, and weekly study hours, then print them.",
+                  "starter_code": "name = \"\"\ngoal = \"\"\nstudy_hours = 0\n",
+                  "success_criteria": "All three variables are assigned and printed."
+                },
+                {
+                  "exercise_id": "ex-vars-update-xp",
+                  "prompt": "Start with 100 XP, add 25 XP, and print the result.",
+                  "starter_code": "xp = 100\n# add 25 here\nprint(xp)",
+                  "success_criteria": "The output is 125."
+                }
+              ],
+              "quiz_questions": [
+                {
+                  "question_id": "quiz-vars-001",
+                  "type": "multiple_choice",
+                  "question": "Which variable name is valid in Python?",
+                  "options": ["weekly_hours", "weekly hours", "2hours", "study-hours"],
+                  "answer": "weekly_hours",
+                  "explanation": "Variable names can contain letters, numbers, and underscores, but cannot start with a number."
+                }
+              ],
+              "coding_challenges": [
+                {
+                  "challenge_id": "challenge-vars-study-plan",
+                  "title": "Study Plan Summary",
+                  "prompt": "Create variables for learner name, track name, and weekly hours. Print a readable study summary.",
+                  "starter_code": "learner_name = \"\"\ntrack_name = \"Python Basics\"\nweekly_hours = 0\n",
+                  "expected_behavior": "The output includes the learner name, track, and weekly hours.",
+                  "test_cases": [
+                    {
+                      "input": "",
+                      "expected_contains": ["Python Basics"]
+                    }
+                  ],
+                  "hints": [
+                    "Use descriptive variable names.",
+                    "Print labels so the output is easy to read."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "lesson_id": "variables-002",
+          "lesson_name": "Input, Output, and Simple Calculations",
+          "difficulty": "beginner",
+          "xp_reward": 65,
+          "estimated_time_minutes": 35,
+          "learning_objectives": [
+            "Collect user input",
+            "Convert input from text to numbers",
+            "Perform basic arithmetic",
+            "Display calculated results"
+          ],
+          "concepts": [
+            {
+              "concept_id": "concept-input-calculation",
+              "concept_name": "Input and number conversion",
+              "explanation": "The input function collects text from the user. Even if the user types a number, Python receives it as text. Convert it with int or float before doing math.",
+              "real_world_analogy": "Input is like receiving a form submission. A number written on paper still needs to be read as a number before you can calculate with it.",
+              "examples": [
+                {
+                  "title": "Age next year",
+                  "code": "age = int(input(\"Age: \"))\nprint(age + 1)",
+                  "expected_output": "User dependent"
+                },
+                {
+                  "title": "Simple total",
+                  "code": "price = 12.50\nquantity = 2\nprint(price * quantity)",
+                  "expected_output": "25.0"
+                }
+              ],
+              "common_mistakes": [
+                "Trying to add input text directly to numbers",
+                "Using int for values that may include decimals",
+                "Forgetting that input pauses the program",
+                "Printing results without context"
+              ],
+              "interactive_exercises": [
+                {
+                  "exercise_id": "ex-input-total",
+                  "prompt": "Ask for item price and quantity, then print the total.",
+                  "starter_code": "price = float(input(\"Price: \"))\nquantity = int(input(\"Quantity: \"))\n",
+                  "success_criteria": "The program prints price multiplied by quantity."
+                }
+              ],
+              "quiz_questions": [
+                {
+                  "question_id": "quiz-input-001",
+                  "type": "true_false",
+                  "question": "The input function always returns text unless you convert it.",
+                  "answer": true,
+                  "explanation": "input returns a string."
+                }
+              ],
+              "coding_challenges": [
+                {
+                  "challenge_id": "challenge-input-budget",
+                  "title": "Weekly Budget Calculator",
+                  "prompt": "Ask for weekly income and weekly expenses. Print the remaining budget.",
+                  "starter_code": "income = float(input(\"Income: \"))\nexpenses = float(input(\"Expenses: \"))\n",
+                  "expected_behavior": "The program prints income minus expenses.",
+                  "test_cases": [
+                    {
+                      "input": "500\n125\n",
+                      "expected_contains": ["375"]
+                    }
+                  ],
+                  "hints": [
+                    "Convert both inputs with float.",
+                    "Remaining budget is income - expenses."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level_id": "level-03",
+      "level_name": "Data Types",
+      "level_order": 3,
+      "lessons": [
+        {
+          "lesson_id": "types-001",
+          "lesson_name": "Strings, Integers, Floats, and Booleans",
+          "difficulty": "beginner",
+          "xp_reward": 70,
+          "estimated_time_minutes": 35,
+          "learning_objectives": [
+            "Identify common Python data types",
+            "Choose appropriate types for common tasks",
+            "Use type conversion safely",
+            "Explain why type errors happen"
+          ],
+          "concepts": [
+            {
+              "concept_id": "concept-core-types",
+              "concept_name": "Core scalar data types",
+              "explanation": "Python values have types. Strings hold text, integers hold whole numbers, floats hold decimal numbers, and booleans hold True or False. Types determine what operations make sense.",
+              "real_world_analogy": "A spreadsheet column has a meaning. A date, a price, and a yes/no field may all look like cells, but you treat them differently.",
+              "examples": [
+                {
+                  "title": "Inspect types",
+                  "code": "print(type(\"Python\"))\nprint(type(42))\nprint(type(3.14))\nprint(type(True))",
+                  "expected_output": "<class 'str'>\n<class 'int'>\n<class 'float'>\n<class 'bool'>"
+                }
+              ],
+              "common_mistakes": [
+                "Mixing strings and numbers without conversion",
+                "Using floats for exact money calculations in advanced cases",
+                "Writing true instead of True",
+                "Assuming quoted numbers behave like numbers"
+              ],
+              "interactive_exercises": [
+                {
+                  "exercise_id": "ex-types-profile",
+                  "prompt": "Create one string, one integer, one float, and one boolean that describe a learner.",
+                  "starter_code": "name = \"\"\ncompleted_lessons = 0\naverage_score = 0.0\nis_active = True\n",
+                  "success_criteria": "Each variable uses the appropriate type."
+                }
+              ],
+              "quiz_questions": [
+                {
+                  "question_id": "quiz-types-001",
+                  "type": "multiple_choice",
+                  "question": "What type is the value \"42\"?",
+                  "options": ["str", "int", "float", "bool"],
+                  "answer": "str",
+                  "explanation": "Quotes make it a string."
+                }
+              ],
+              "coding_challenges": [
+                {
+                  "challenge_id": "challenge-types-convert",
+                  "title": "Score Converter",
+                  "prompt": "Convert a score stored as text into an integer and add 10 bonus points.",
+                  "starter_code": "score_text = \"85\"\n",
+                  "expected_behavior": "The program prints 95.",
+                  "test_cases": [
+                    {
+                      "input": "",
+                      "expected_contains": ["95"]
+                    }
+                  ],
+                  "hints": [
+                    "Use int(score_text).",
+                    "Store the converted value before adding."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "lesson_id": "types-002",
+          "lesson_name": "String Formatting and Type-Safe Output",
+          "difficulty": "beginner",
+          "xp_reward": 75,
+          "estimated_time_minutes": 35,
+          "learning_objectives": [
+            "Build readable output with f-strings",
+            "Format numbers inside strings",
+            "Avoid manual string concatenation problems",
+            "Write user-friendly messages"
+          ],
+          "concepts": [
+            {
+              "concept_id": "concept-f-strings",
+              "concept_name": "f-strings",
+              "explanation": "An f-string lets you place variable values inside text using braces. It is usually clearer than adding many pieces of text together.",
+              "real_world_analogy": "An f-string is like a mail merge template. The sentence stays the same, and specific values fill the blanks.",
+              "examples": [
+                {
+                  "title": "Profile message",
+                  "code": "name = \"Maya\"\nxp = 150\nprint(f\"{name} has {xp} XP\")",
+                  "expected_output": "Maya has 150 XP"
+                }
+              ],
+              "common_mistakes": [
+                "Forgetting the f before the opening quote",
+                "Using parentheses instead of braces",
+                "Building long messages with plus signs when f-strings are clearer",
+                "Formatting numbers inconsistently"
+              ],
+              "interactive_exercises": [
+                {
+                  "exercise_id": "ex-fstring-summary",
+                  "prompt": "Print a sentence that includes name, track, and XP using an f-string.",
+                  "starter_code": "name = \"Alex\"\ntrack = \"Python Basics\"\nxp = 80\n",
+                  "success_criteria": "The output includes all three values in one readable sentence."
+                }
+              ],
+              "quiz_questions": [
+                {
+                  "question_id": "quiz-fstring-001",
+                  "type": "multiple_choice",
+                  "question": "What makes this an f-string?",
+                  "options": ["The f before the quote", "The variable name", "The print function", "The equals sign"],
+                  "answer": "The f before the quote",
+                  "explanation": "The f activates expression interpolation inside braces."
+                }
+              ],
+              "coding_challenges": [
+                {
+                  "challenge_id": "challenge-fstring-receipt",
+                  "title": "Receipt Line",
+                  "prompt": "Create variables for item, quantity, and price. Print a receipt sentence using an f-string.",
+                  "starter_code": "item = \"Notebook\"\nquantity = 3\nprice = 4.5\n",
+                  "expected_behavior": "The output mentions item, quantity, price, and total.",
+                  "test_cases": [
+                    {
+                      "input": "",
+                      "expected_contains": ["Notebook", "3"]
+                    }
+                  ],
+                  "hints": [
+                    "Calculate total = quantity * price.",
+                    "Use f\"...{total}...\"."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level_id": "level-04",
+      "level_name": "Conditions",
+      "level_order": 4,
+      "lessons": [
+        {
+          "lesson_id": "conditions-001",
+          "lesson_name": "Making Decisions with if Statements",
+          "difficulty": "beginner",
+          "xp_reward": 80,
+          "estimated_time_minutes": 40,
+          "learning_objectives": [
+            "Write if, elif, and else branches",
+            "Use comparison operators",
+            "Trace which branch will run",
+            "Handle simple business rules"
+          ],
+          "concepts": [
+            {
+              "concept_id": "concept-if-elif-else",
+              "concept_name": "Conditional branching",
+              "explanation": "Conditions let a program choose what to do based on whether an expression is True or False. Python uses indentation to show which code belongs to each branch.",
+              "real_world_analogy": "A condition is like a decision policy: if the customer is a member, apply the member discount; otherwise use the regular price.",
+              "examples": [
+                {
+                  "title": "Pass or retry",
+                  "code": "score = 72\nif score >= 70:\n    print(\"Pass\")\nelse:\n    print(\"Retry\")",
+                  "expected_output": "Pass"
+                }
+              ],
+              "common_mistakes": [
+                "Forgetting the colon after if or else",
+                "Incorrect indentation",
+                "Using = instead of ==",
+                "Writing overlapping conditions in the wrong order"
+              ],
+              "interactive_exercises": [
+                {
+                  "exercise_id": "ex-condition-pass",
+                  "prompt": "Print 'Pass' for scores 70 or higher, otherwise print 'Keep practicing'.",
+                  "starter_code": "score = 68\n",
+                  "success_criteria": "The output changes correctly when score changes."
+                }
+              ],
+              "quiz_questions": [
+                {
+                  "question_id": "quiz-condition-001",
+                  "type": "multiple_choice",
+                  "question": "Which operator checks equality?",
+                  "options": ["==", "=", "!=", ">="],
+                  "answer": "==",
+                  "explanation": "= assigns a value; == compares values."
+                }
+              ],
+              "coding_challenges": [
+                {
+                  "challenge_id": "challenge-condition-discount",
+                  "title": "Discount Eligibility",
+                  "prompt": "If a user has at least 1000 XP, print 'Gold discount'. Otherwise print 'Standard price'.",
+                  "starter_code": "xp = 1200\n",
+                  "expected_behavior": "The correct discount message prints based on XP.",
+                  "test_cases": [
+                    {
+                      "input": "",
+                      "expected_contains": ["Gold discount"]
+                    }
+                  ],
+                  "hints": [
+                    "Use if xp >= 1000.",
+                    "Remember the colon and indentation."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "lesson_id": "conditions-002",
+          "lesson_name": "Combining Rules with and, or, and not",
+          "difficulty": "beginner",
+          "xp_reward": 85,
+          "estimated_time_minutes": 40,
+          "learning_objectives": [
+            "Combine boolean expressions",
+            "Use and, or, and not correctly",
+            "Validate user input with multiple rules",
+            "Avoid confusing condition order"
+          ],
+          "concepts": [
+            {
+              "concept_id": "concept-boolean-logic",
+              "concept_name": "Boolean logic",
+              "explanation": "Boolean logic combines True or False values. and requires both conditions to be true. or requires at least one condition to be true. not reverses a boolean value.",
+              "real_world_analogy": "A job requirement might say you need Python experience and testing experience. A notification rule might say email or SMS is acceptable.",
+              "examples": [
+                {
+                  "title": "Access rule",
+                  "code": "has_account = True\nis_blocked = False\nif has_account and not is_blocked:\n    print(\"Access granted\")",
+                  "expected_output": "Access granted"
+                }
+              ],
+              "common_mistakes": [
+                "Using and when or is needed",
+                "Forgetting not applies to the expression immediately after it",
+                "Writing conditions that are always true",
+                "Skipping parentheses when logic becomes hard to read"
+              ],
+              "interactive_exercises": [
+                {
+                  "exercise_id": "ex-boolean-login",
+                  "prompt": "Grant access only if the user is active and email is verified.",
+                  "starter_code": "is_active = True\nemail_verified = False\n",
+                  "success_criteria": "The program denies access when either value is False."
+                }
+              ],
+              "quiz_questions": [
+                {
+                  "question_id": "quiz-boolean-001",
+                  "type": "true_false",
+                  "question": "True and False evaluates to True.",
+                  "answer": false,
+                  "explanation": "and requires both sides to be True."
+                }
+              ],
+              "coding_challenges": [
+                {
+                  "challenge_id": "challenge-boolean-login",
+                  "title": "Login Gate",
+                  "prompt": "Print 'Login allowed' only when a user is active, verified, and not locked.",
+                  "starter_code": "is_active = True\nis_verified = True\nis_locked = False\n",
+                  "expected_behavior": "Only valid users are allowed.",
+                  "test_cases": [
+                    {
+                      "input": "",
+                      "expected_contains": ["Login allowed"]
+                    }
+                  ],
+                  "hints": [
+                    "Use and for required conditions.",
+                    "Use not is_locked."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level_id": "level-05",
+      "level_name": "Loops",
+      "level_order": 5,
+      "lessons": [
+        {
+          "lesson_id": "loops-001",
+          "lesson_name": "Repeating Work with for Loops",
+          "difficulty": "beginner",
+          "xp_reward": 90,
+          "estimated_time_minutes": 45,
+          "learning_objectives": [
+            "Loop over strings and lists",
+            "Use range for repeated actions",
+            "Accumulate totals",
+            "Avoid off-by-one errors"
+          ],
+          "concepts": [
+            {
+              "concept_id": "concept-for-loop",
+              "concept_name": "for loops",
+              "explanation": "A for loop repeats a block of code once for each item in a sequence. It is ideal when you know what collection or range you want to process.",
+              "real_world_analogy": "A for loop is like checking every item on a packing list. You perform the same kind of check for each item.",
+              "examples": [
+                {
+                  "title": "Print names",
+                  "code": "names = [\"Ada\", \"Grace\", \"Linus\"]\nfor name in names:\n    print(name)",
+                  "expected_output": "Ada\nGrace\nLinus"
+                }
+              ],
+              "common_mistakes": [
+                "Forgetting indentation inside the loop",
+                "Changing the list while looping over it",
+                "Expecting range(5) to include 5",
+                "Using a loop when a direct expression would be clearer"
+              ],
+              "interactive_exercises": [
+                {
+                  "exercise_id": "ex-loop-print-tracks",
+                  "prompt": "Loop over a list of three track names and print each one.",
+                  "starter_code": "tracks = [\"Basics\", \"Loops\", \"Functions\"]\n",
+                  "success_criteria": "Each track appears on its own line."
+                }
+              ],
+              "quiz_questions": [
+                {
+                  "question_id": "quiz-loop-001",
+                  "type": "multiple_choice",
+                  "question": "How many numbers does range(3) produce?",
+                  "options": ["2", "3", "4", "0"],
+                  "answer": "3",
+                  "explanation": "range(3) produces 0, 1, and 2."
+                }
+              ],
+              "coding_challenges": [
+                {
+                  "challenge_id": "challenge-loop-total",
+                  "title": "XP Total",
+                  "prompt": "Given a list of XP rewards, calculate and print the total XP.",
+                  "starter_code": "rewards = [10, 25, 50]\ntotal = 0\n",
+                  "expected_behavior": "The program prints 85.",
+                  "test_cases": [
+                    {
+                      "input": "",
+                      "expected_contains": ["85"]
+                    }
+                  ],
+                  "hints": [
+                    "Start total at 0.",
+                    "Add each reward inside the loop."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "lesson_id": "loops-002",
+          "lesson_name": "while Loops and Stopping Conditions",
+          "difficulty": "beginner",
+          "xp_reward": 95,
+          "estimated_time_minutes": 45,
+          "learning_objectives": [
+            "Use while loops for repeated work with unknown length",
+            "Write safe stopping conditions",
+            "Understand infinite loops",
+            "Use counters carefully"
+          ],
+          "concepts": [
+            {
+              "concept_id": "concept-while-loop",
+              "concept_name": "while loops",
+              "explanation": "A while loop repeats as long as its condition remains True. It is useful when the number of repetitions depends on user input or changing state.",
+              "real_world_analogy": "A while loop is like saying, 'Keep filling the glass while it is not full.' You stop when the condition changes.",
+              "examples": [
+                {
+                  "title": "Countdown",
+                  "code": "count = 3\nwhile count > 0:\n    print(count)\n    count = count - 1",
+                  "expected_output": "3\n2\n1"
+                }
+              ],
+              "common_mistakes": [
+                "Forgetting to update the loop condition",
+                "Creating infinite loops",
+                "Using while when for would be simpler",
+                "Updating counters in the wrong place"
+              ],
+              "interactive_exercises": [
+                {
+                  "exercise_id": "ex-while-countdown",
+                  "prompt": "Write a countdown from 5 to 1.",
+                  "starter_code": "count = 5\n",
+                  "success_criteria": "The output prints 5, 4, 3, 2, 1 and stops."
+                }
+              ],
+              "quiz_questions": [
+                {
+                  "question_id": "quiz-while-001",
+                  "type": "multiple_choice",
+                  "question": "What usually causes an accidental infinite loop?",
+                  "options": [
+                    "The condition never becomes False",
+                    "The program has a print statement",
+                    "The loop uses a list",
+                    "The code has a comment"
+                  ],
+                  "answer": "The condition never becomes False",
+                  "explanation": "A while loop stops only when its condition is False."
+                }
+              ],
+              "coding_challenges": [
+                {
+                  "challenge_id": "challenge-while-savings",
+                  "title": "Savings Goal",
+                  "prompt": "Start at $0 and add $50 each loop until savings reach at least $200. Print each balance.",
+                  "starter_code": "savings = 0\n",
+                  "expected_behavior": "The program prints balances ending at 200.",
+                  "test_cases": [
+                    {
+                      "input": "",
+                      "expected_contains": ["200"]
+                    }
+                  ],
+                  "hints": [
+                    "Use while savings < 200.",
+                    "Increase savings inside the loop."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level_id": "level-06",
+      "level_name": "Functions",
+      "level_order": 6,
+      "lessons": [
+        {
+          "lesson_id": "functions-001",
+          "lesson_name": "Creating Reusable Functions",
+          "difficulty": "intermediate",
+          "xp_reward": 110,
+          "estimated_time_minutes": 50,
+          "learning_objectives": [
+            "Define functions with parameters",
+            "Return values from functions",
+            "Call functions with arguments",
+            "Separate reusable logic from one-off code"
+          ],
+          "concepts": [
+            {
+              "concept_id": "concept-function-def",
+              "concept_name": "Function definition and return",
+              "explanation": "A function packages a reusable task behind a name. Parameters are inputs. return sends a result back to the caller.",
+              "real_world_analogy": "A function is like a vending machine: you provide input, it follows a defined process, and it returns an output.",
+              "examples": [
+                {
+                  "title": "Calculate total",
+                  "code": "def calculate_total(price, quantity):\n    return price * quantity\n\nprint(calculate_total(5, 3))",
+                  "expected_output": "15"
+                }
+              ],
+              "common_mistakes": [
+                "Printing inside a function when returning is needed",
+                "Forgetting to call the function",
+                "Confusing parameters and arguments",
+                "Returning too early inside a function"
+              ],
+              "interactive_exercises": [
+                {
+                  "exercise_id": "ex-function-discount",
+                  "prompt": "Write a function that returns price after a 10% discount.",
+                  "starter_code": "def apply_discount(price):\n    # return discounted price\n",
+                  "success_criteria": "apply_discount(100) returns 90."
+                }
+              ],
+              "quiz_questions": [
+                {
+                  "question_id": "quiz-function-001",
+                  "type": "multiple_choice",
+                  "question": "What does return do?",
+                  "options": [
+                    "Sends a value back to the caller",
+                    "Prints a value to the screen",
+                    "Creates a loop",
+                    "Imports a library"
+                  ],
+                  "answer": "Sends a value back to the caller",
+                  "explanation": "return is how a function gives back a result."
+                }
+              ],
+              "coding_challenges": [
+                {
+                  "challenge_id": "challenge-function-tax",
+                  "title": "Tax Calculator",
+                  "prompt": "Write calculate_tax subtotal and tax_rate parameters. Return subtotal multiplied by tax_rate.",
+                  "starter_code": "def calculate_tax(subtotal, tax_rate):\n    pass\n\nprint(calculate_tax(100, 0.08))",
+                  "expected_behavior": "The program prints 8.0.",
+                  "test_cases": [
+                    {
+                      "input": "",
+                      "expected_contains": ["8.0"]
+                    }
+                  ],
+                  "hints": [
+                    "Replace pass with return subtotal * tax_rate.",
+                    "Do not hard-code 8."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "lesson_id": "functions-002",
+          "lesson_name": "Scope, Defaults, and Small Function Design",
+          "difficulty": "intermediate",
+          "xp_reward": 115,
+          "estimated_time_minutes": 55,
+          "learning_objectives": [
+            "Explain local scope",
+            "Use default parameter values",
+            "Design functions that do one clear job",
+            "Avoid hidden dependencies"
+          ],
+          "concepts": [
+            {
+              "concept_id": "concept-scope-defaults",
+              "concept_name": "Scope and defaults",
+              "explanation": "Variables created inside a function are local to that function. Default parameters let a function use a standard value when the caller does not provide one.",
+              "real_world_analogy": "A function is like a private workspace. Notes written inside the room stay there unless you deliberately hand something out.",
+              "examples": [
+                {
+                  "title": "Default greeting",
+                  "code": "def greet(name=\"learner\"):\n    return f\"Hello, {name}!\"\n\nprint(greet())",
+                  "expected_output": "Hello, learner!"
+                }
+              ],
+              "common_mistakes": [
+                "Expecting local variables to exist outside a function",
+                "Using global variables instead of parameters",
+                "Making one function do too many jobs",
+                "Using mutable default values too early without understanding them"
+              ],
+              "interactive_exercises": [
+                {
+                  "exercise_id": "ex-function-default",
+                  "prompt": "Create a greeting function with a default name.",
+                  "starter_code": "def greet(name=\"learner\"):\n    pass\n",
+                  "success_criteria": "greet() returns a default greeting and greet('Ada') uses Ada."
+                }
+              ],
+              "quiz_questions": [
+                {
+                  "question_id": "quiz-scope-001",
+                  "type": "true_false",
+                  "question": "A variable created inside a function is automatically available everywhere.",
+                  "answer": false,
+                  "explanation": "Function-local variables are scoped to the function."
+                }
+              ],
+              "coding_challenges": [
+                {
+                  "challenge_id": "challenge-function-format-user",
+                  "title": "User Label",
+                  "prompt": "Write format_user(name, role='student') that returns 'name - role'.",
+                  "starter_code": "def format_user(name, role=\"student\"):\n    pass\n\nprint(format_user(\"Maya\"))",
+                  "expected_behavior": "The program prints Maya - student.",
+                  "test_cases": [
+                    {
+                      "input": "",
+                      "expected_contains": ["Maya - student"]
+                    }
+                  ],
+                  "hints": [
+                    "Use an f-string.",
+                    "Return the string instead of printing inside the function."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level_id": "level-07",
+      "level_name": "Collections",
+      "level_order": 7,
+      "lessons": [
+        {
+          "lesson_id": "collections-001",
+          "lesson_name": "Lists and Tuples",
+          "difficulty": "intermediate",
+          "xp_reward": 120,
+          "estimated_time_minutes": 55,
+          "learning_objectives": [
+            "Store multiple values in lists",
+            "Access items by index",
+            "Add, remove, and update list items",
+            "Choose tuples for fixed groups"
+          ],
+          "concepts": [
+            {
+              "concept_id": "concept-lists-tuples",
+              "concept_name": "Ordered collections",
+              "explanation": "Lists and tuples store ordered values. Lists are mutable, so you can change them. Tuples are immutable, which makes them useful for fixed records.",
+              "real_world_analogy": "A list is like a editable checklist. A tuple is like a printed receipt: it has ordered information, but you do not change it.",
+              "examples": [
+                {
+                  "title": "List append",
+                  "code": "tasks = [\"read\", \"practice\"]\ntasks.append(\"review\")\nprint(tasks)",
+                  "expected_output": "['read', 'practice', 'review']"
+                }
+              ],
+              "common_mistakes": [
+                "Forgetting indexes start at 0",
+                "Modifying a list while looping without care",
+                "Using a tuple when values need to change",
+                "Assuming append returns the updated list"
+              ],
+              "interactive_exercises": [
+                {
+                  "exercise_id": "ex-list-add-task",
+                  "prompt": "Add a new task to a list and print the final list.",
+                  "starter_code": "tasks = [\"lesson\", \"quiz\"]\n",
+                  "success_criteria": "The output includes the new task."
+                }
+              ],
+              "quiz_questions": [
+                {
+                  "question_id": "quiz-list-001",
+                  "type": "multiple_choice",
+                  "question": "What is the index of the first list item?",
+                  "options": ["0", "1", "-1", "first"],
+                  "answer": "0",
+                  "explanation": "Python sequences are zero-indexed."
+                }
+              ],
+              "coding_challenges": [
+                {
+                  "challenge_id": "challenge-list-average",
+                  "title": "Average Quiz Score",
+                  "prompt": "Given a list of scores, calculate and print the average.",
+                  "starter_code": "scores = [80, 90, 100]\n",
+                  "expected_behavior": "The program prints 90.0.",
+                  "test_cases": [
+                    {
+                      "input": "",
+                      "expected_contains": ["90"]
+                    }
+                  ],
+                  "hints": [
+                    "Use sum(scores).",
+                    "Divide by len(scores)."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "lesson_id": "collections-002",
+          "lesson_name": "Dictionaries and Sets",
+          "difficulty": "intermediate",
+          "xp_reward": 125,
+          "estimated_time_minutes": 60,
+          "learning_objectives": [
+            "Store labeled values in dictionaries",
+            "Read and update dictionary values",
+            "Use sets for uniqueness",
+            "Model real-world records"
+          ],
+          "concepts": [
+            {
+              "concept_id": "concept-dicts-sets",
+              "concept_name": "Key-value and unique collections",
+              "explanation": "A dictionary stores values by key, which makes it good for records such as users, settings, and API responses. A set stores unique values.",
+              "real_world_analogy": "A dictionary is like a contact card with labels: name, email, phone. A set is like a guest list where duplicates are automatically removed.",
+              "examples": [
+                {
+                  "title": "User record",
+                  "code": "user = {\"name\": \"Maya\", \"xp\": 150}\nuser[\"xp\"] += 25\nprint(user[\"xp\"])",
+                  "expected_output": "175"
+                }
+              ],
+              "common_mistakes": [
+                "Accessing a missing key without checking",
+                "Confusing dictionary keys with list indexes",
+                "Expecting sets to keep insertion order as a design feature",
+                "Using lists when uniqueness matters"
+              ],
+              "interactive_exercises": [
+                {
+                  "exercise_id": "ex-dict-profile",
+                  "prompt": "Create a learner dictionary with name, track, and xp. Update xp.",
+                  "starter_code": "learner = {\"name\": \"\", \"track\": \"Python\", \"xp\": 0}\n",
+                  "success_criteria": "The dictionary contains updated XP."
+                }
+              ],
+              "quiz_questions": [
+                {
+                  "question_id": "quiz-dict-001",
+                  "type": "multiple_choice",
+                  "question": "Which collection is best for a user profile with labeled fields?",
+                  "options": ["dictionary", "set", "integer", "tuple only"],
+                  "answer": "dictionary",
+                  "explanation": "Dictionaries map field names to values."
+                }
+              ],
+              "coding_challenges": [
+                {
+                  "challenge_id": "challenge-dict-inventory",
+                  "title": "Inventory Update",
+                  "prompt": "Given an inventory dictionary, add 5 notebooks and print the new count.",
+                  "starter_code": "inventory = {\"notebooks\": 10, \"pens\": 20}\n",
+                  "expected_behavior": "The program prints 15.",
+                  "test_cases": [
+                    {
+                      "input": "",
+                      "expected_contains": ["15"]
+                    }
+                  ],
+                  "hints": [
+                    "Use inventory['notebooks'].",
+                    "Add 5 to the existing value."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level_id": "level-08",
+      "level_name": "OOP",
+      "level_order": 8,
+      "lessons": [
+        {
+          "lesson_id": "oop-001",
+          "lesson_name": "Classes and Objects",
+          "difficulty": "intermediate",
+          "xp_reward": 140,
+          "estimated_time_minutes": 65,
+          "learning_objectives": [
+            "Define a class",
+            "Create objects from a class",
+            "Use attributes and methods",
+            "Recognize when OOP improves organization"
+          ],
+          "concepts": [
+            {
+              "concept_id": "concept-classes-objects",
+              "concept_name": "Classes and objects",
+              "explanation": "A class is a blueprint for creating objects. Objects bundle data and behavior together. Attributes store object state; methods define object behavior.",
+              "real_world_analogy": "A class is a blueprint for a house. Each object is an actual house built from that blueprint, with its own address and details.",
+              "examples": [
+                {
+                  "title": "Learner class",
+                  "code": "class Learner:\n    def __init__(self, name):\n        self.name = name\n\n    def greet(self):\n        return f\"Hi, {self.name}\"\n\nprint(Learner(\"Maya\").greet())",
+                  "expected_output": "Hi, Maya"
+                }
+              ],
+              "common_mistakes": [
+                "Forgetting self in method definitions",
+                "Confusing a class with an object",
+                "Putting unrelated behavior into one class",
+                "Using OOP before the problem needs it"
+              ],
+              "interactive_exercises": [
+                {
+                  "exercise_id": "ex-oop-learner",
+                  "prompt": "Create a Learner class with name and xp attributes.",
+                  "starter_code": "class Learner:\n    pass\n",
+                  "success_criteria": "An object can be created and its attributes can be printed."
+                }
+              ],
+              "quiz_questions": [
+                {
+                  "question_id": "quiz-oop-001",
+                  "type": "multiple_choice",
+                  "question": "What is an object?",
+                  "options": [
+                    "An instance created from a class",
+                    "A Python comment",
+                    "Only a text value",
+                    "A package installer"
+                  ],
+                  "answer": "An instance created from a class",
+                  "explanation": "Objects are instances of classes."
+                }
+              ],
+              "coding_challenges": [
+                {
+                  "challenge_id": "challenge-oop-course",
+                  "title": "Course Object",
+                  "prompt": "Create a Course class with title and lessons. Add a summary method.",
+                  "starter_code": "class Course:\n    pass\n",
+                  "expected_behavior": "A Course object returns a readable summary.",
+                  "test_cases": [
+                    {
+                      "input": "",
+                      "expected_contains": ["lessons"]
+                    }
+                  ],
+                  "hints": [
+                    "Use __init__ for title and lessons.",
+                    "Use self.title inside methods."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "lesson_id": "oop-002",
+          "lesson_name": "Encapsulation and Inheritance",
+          "difficulty": "intermediate",
+          "xp_reward": 150,
+          "estimated_time_minutes": 70,
+          "learning_objectives": [
+            "Explain encapsulation",
+            "Use inheritance for shared behavior",
+            "Override methods in subclasses",
+            "Avoid inheritance when composition is simpler"
+          ],
+          "concepts": [
+            {
+              "concept_id": "concept-inheritance",
+              "concept_name": "Inheritance",
+              "explanation": "Inheritance lets one class reuse behavior from another class. A child class can extend or override parent behavior. Use it when objects truly share an is-a relationship.",
+              "real_world_analogy": "A QAEngineer is a type of Employee. It shares employee details but may add testing-specific skills.",
+              "examples": [
+                {
+                  "title": "Subclass",
+                  "code": "class User:\n    def role(self):\n        return \"user\"\n\nclass Admin(User):\n    def role(self):\n        return \"admin\"\n\nprint(Admin().role())",
+                  "expected_output": "admin"
+                }
+              ],
+              "common_mistakes": [
+                "Using inheritance for code sharing without a true relationship",
+                "Forgetting to call super when parent initialization is needed",
+                "Making deep class hierarchies",
+                "Overriding behavior accidentally"
+              ],
+              "interactive_exercises": [
+                {
+                  "exercise_id": "ex-oop-subclass",
+                  "prompt": "Create a PremiumLearner subclass that adds a mentor attribute.",
+                  "starter_code": "class Learner:\n    def __init__(self, name):\n        self.name = name\n",
+                  "success_criteria": "PremiumLearner has both name and mentor."
+                }
+              ],
+              "quiz_questions": [
+                {
+                  "question_id": "quiz-inheritance-001",
+                  "type": "true_false",
+                  "question": "Inheritance is best when the child class is a specialized version of the parent class.",
+                  "answer": true,
+                  "explanation": "Inheritance should model a meaningful is-a relationship."
+                }
+              ],
+              "coding_challenges": [
+                {
+                  "challenge_id": "challenge-oop-subscription",
+                  "title": "Subscription Types",
+                  "prompt": "Create a Subscription class and a ProSubscription subclass that overrides plan_name.",
+                  "starter_code": "class Subscription:\n    def plan_name(self):\n        return \"Basic\"\n",
+                  "expected_behavior": "ProSubscription returns Pro.",
+                  "test_cases": [
+                    {
+                      "input": "",
+                      "expected_contains": ["Pro"]
+                    }
+                  ],
+                  "hints": [
+                    "Define class ProSubscription(Subscription).",
+                    "Override plan_name."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level_id": "level-09",
+      "level_name": "File Handling",
+      "level_order": 9,
+      "lessons": [
+        {
+          "lesson_id": "files-001",
+          "lesson_name": "Reading and Writing Text Files",
+          "difficulty": "intermediate",
+          "xp_reward": 135,
+          "estimated_time_minutes": 55,
+          "learning_objectives": [
+            "Open files safely with with",
+            "Read text file contents",
+            "Write text files",
+            "Understand file paths"
+          ],
+          "concepts": [
+            {
+              "concept_id": "concept-text-files",
+              "concept_name": "Text file I/O",
+              "explanation": "Python can read from and write to files. The with statement safely opens a file and closes it automatically, even if an error happens.",
+              "real_world_analogy": "Opening a file is like borrowing a notebook. The with statement makes sure you return it when you are done.",
+              "examples": [
+                {
+                  "title": "Write and read",
+                  "code": "with open(\"note.txt\", \"w\", encoding=\"utf-8\") as file:\n    file.write(\"Practice daily\")\n\nwith open(\"note.txt\", \"r\", encoding=\"utf-8\") as file:\n    print(file.read())",
+                  "expected_output": "Practice daily"
+                }
+              ],
+              "common_mistakes": [
+                "Forgetting to close files when not using with",
+                "Using the wrong mode such as w when you meant a",
+                "Assuming paths are relative to the file instead of the working directory",
+                "Ignoring encoding"
+              ],
+              "interactive_exercises": [
+                {
+                  "exercise_id": "ex-file-write",
+                  "prompt": "Write three study goals to a file.",
+                  "starter_code": "goals = [\"learn basics\", \"practice loops\", \"build project\"]\n",
+                  "success_criteria": "The file contains all three goals."
+                }
+              ],
+              "quiz_questions": [
+                {
+                  "question_id": "quiz-files-001",
+                  "type": "multiple_choice",
+                  "question": "What does mode 'w' do?",
+                  "options": ["Writes and replaces file contents", "Reads only", "Appends only", "Deletes Python"],
+                  "answer": "Writes and replaces file contents",
+                  "explanation": "w opens a file for writing and overwrites existing contents."
+                }
+              ],
+              "coding_challenges": [
+                {
+                  "challenge_id": "challenge-files-journal",
+                  "title": "Learning Journal",
+                  "prompt": "Write a short learning journal entry to journal.txt, then read and print it.",
+                  "starter_code": "entry = \"Today I practiced Python files.\"\n",
+                  "expected_behavior": "The program prints the journal entry.",
+                  "test_cases": [
+                    {
+                      "input": "",
+                      "expected_contains": ["Python files"]
+                    }
+                  ],
+                  "hints": [
+                    "Use with open(..., 'w').",
+                    "Read the file after writing."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "lesson_id": "files-002",
+          "lesson_name": "CSV and JSON Basics",
+          "difficulty": "intermediate",
+          "xp_reward": 145,
+          "estimated_time_minutes": 60,
+          "learning_objectives": [
+            "Explain CSV and JSON use cases",
+            "Read structured data from JSON",
+            "Write dictionaries as JSON",
+            "Recognize common file parsing errors"
+          ],
+          "concepts": [
+            {
+              "concept_id": "concept-json-csv",
+              "concept_name": "Structured files",
+              "explanation": "CSV stores table-like data. JSON stores nested data using objects and arrays. APIs often use JSON because it maps naturally to dictionaries and lists.",
+              "real_world_analogy": "CSV is like a spreadsheet. JSON is like a labeled folder containing smaller folders, lists, and values.",
+              "examples": [
+                {
+                  "title": "JSON round trip",
+                  "code": "import json\nprofile = {\"name\": \"Maya\", \"xp\": 150}\ntext = json.dumps(profile)\nprint(json.loads(text)[\"xp\"])",
+                  "expected_output": "150"
+                }
+              ],
+              "common_mistakes": [
+                "Using single quotes in raw JSON",
+                "Forgetting to import json",
+                "Treating JSON text as a dictionary before parsing",
+                "Not handling missing fields"
+              ],
+              "interactive_exercises": [
+                {
+                  "exercise_id": "ex-json-profile",
+                  "prompt": "Convert a learner dictionary to JSON text and back.",
+                  "starter_code": "import json\nlearner = {\"name\": \"Alex\", \"xp\": 200}\n",
+                  "success_criteria": "The parsed data can access the xp value."
+                }
+              ],
+              "quiz_questions": [
+                {
+                  "question_id": "quiz-json-001",
+                  "type": "multiple_choice",
+                  "question": "Which Python module handles JSON?",
+                  "options": ["json", "csvjson", "files", "requests"],
+                  "answer": "json",
+                  "explanation": "The standard library json module parses and writes JSON."
+                }
+              ],
+              "coding_challenges": [
+                {
+                  "challenge_id": "challenge-json-settings",
+                  "title": "Settings JSON",
+                  "prompt": "Create a settings dictionary, convert it to JSON, then parse it back and print the theme.",
+                  "starter_code": "import json\nsettings = {\"theme\": \"dark\", \"notifications\": True}\n",
+                  "expected_behavior": "The program prints dark.",
+                  "test_cases": [
+                    {
+                      "input": "",
+                      "expected_contains": ["dark"]
+                    }
+                  ],
+                  "hints": [
+                    "Use json.dumps.",
+                    "Use json.loads."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level_id": "level-10",
+      "level_name": "APIs",
+      "level_order": 10,
+      "lessons": [
+        {
+          "lesson_id": "apis-001",
+          "lesson_name": "HTTP and REST API Fundamentals",
+          "difficulty": "intermediate",
+          "xp_reward": 160,
+          "estimated_time_minutes": 65,
+          "learning_objectives": [
+            "Explain client-server communication",
+            "Identify common HTTP methods",
+            "Read status codes",
+            "Understand JSON API responses"
+          ],
+          "concepts": [
+            {
+              "concept_id": "concept-http-rest",
+              "concept_name": "HTTP APIs",
+              "explanation": "An API lets programs communicate. HTTP APIs use requests and responses. Common methods include GET for reading, POST for creating, PUT or PATCH for updating, and DELETE for removing.",
+              "real_world_analogy": "An API is like a restaurant menu and ordering window. The menu tells you what you can ask for, and the kitchen sends back a response.",
+              "examples": [
+                {
+                  "title": "Status code meaning",
+                  "code": "status_code = 200\nif status_code == 200:\n    print(\"Success\")",
+                  "expected_output": "Success"
+                }
+              ],
+              "common_mistakes": [
+                "Ignoring status codes",
+                "Assuming every response is JSON",
+                "Sending data in the wrong shape",
+                "Confusing authentication with authorization"
+              ],
+              "interactive_exercises": [
+                {
+                  "exercise_id": "ex-api-status",
+                  "prompt": "Write conditions that print messages for 200, 404, and 500 status codes.",
+                  "starter_code": "status_code = 404\n",
+                  "success_criteria": "Each status code maps to a useful message."
+                }
+              ],
+              "quiz_questions": [
+                {
+                  "question_id": "quiz-api-001",
+                  "type": "multiple_choice",
+                  "question": "Which HTTP method is usually used to read data?",
+                  "options": ["GET", "POST", "DELETE", "PATCH"],
+                  "answer": "GET",
+                  "explanation": "GET requests retrieve resources."
+                }
+              ],
+              "coding_challenges": [
+                {
+                  "challenge_id": "challenge-api-response-parser",
+                  "title": "Parse API Response",
+                  "prompt": "Given a dictionary representing an API response, print the user's email.",
+                  "starter_code": "response = {\"user\": {\"name\": \"Maya\", \"email\": \"maya@example.com\"}}\n",
+                  "expected_behavior": "The program prints maya@example.com.",
+                  "test_cases": [
+                    {
+                      "input": "",
+                      "expected_contains": ["maya@example.com"]
+                    }
+                  ],
+                  "hints": [
+                    "Access response['user'] first.",
+                    "Then access ['email']."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "lesson_id": "apis-002",
+          "lesson_name": "Building a FastAPI Endpoint",
+          "difficulty": "intermediate",
+          "xp_reward": 175,
+          "estimated_time_minutes": 75,
+          "learning_objectives": [
+            "Create a FastAPI app",
+            "Define a GET endpoint",
+            "Return JSON responses",
+            "Use request models for POST data"
+          ],
+          "concepts": [
+            {
+              "concept_id": "concept-fastapi-route",
+              "concept_name": "FastAPI routes",
+              "explanation": "FastAPI lets you define web API endpoints with Python functions. Decorators such as @app.get connect a URL path to a function.",
+              "real_world_analogy": "A route is like a service counter number. When someone goes to that counter, a specific staff member handles that request.",
+              "examples": [
+                {
+                  "title": "Health endpoint",
+                  "code": "from fastapi import FastAPI\n\napp = FastAPI()\n\n@app.get(\"/health\")\ndef health():\n    return {\"status\": \"ok\"}",
+                  "expected_output": "{\"status\": \"ok\"}"
+                }
+              ],
+              "common_mistakes": [
+                "Forgetting to return JSON-serializable data",
+                "Putting blocking work directly in high-traffic endpoints",
+                "Not validating input data",
+                "Using unclear route names"
+              ],
+              "interactive_exercises": [
+                {
+                  "exercise_id": "ex-fastapi-course-route",
+                  "prompt": "Create an endpoint that returns a course title and lesson count.",
+                  "starter_code": "from fastapi import FastAPI\napp = FastAPI()\n",
+                  "success_criteria": "GET endpoint returns a dictionary with title and lessons."
+                }
+              ],
+              "quiz_questions": [
+                {
+                  "question_id": "quiz-fastapi-001",
+                  "type": "multiple_choice",
+                  "question": "What does @app.get('/path') do?",
+                  "options": [
+                    "Connects a GET route to a function",
+                    "Creates a database table",
+                    "Runs a loop",
+                    "Installs FastAPI"
+                  ],
+                  "answer": "Connects a GET route to a function",
+                  "explanation": "The decorator registers a route handler."
+                }
+              ],
+              "coding_challenges": [
+                {
+                  "challenge_id": "challenge-fastapi-health",
+                  "title": "Health Check Endpoint",
+                  "prompt": "Build a FastAPI endpoint at /health that returns {'status': 'ok'}.",
+                  "starter_code": "from fastapi import FastAPI\n\napp = FastAPI()\n",
+                  "expected_behavior": "GET /health returns status ok.",
+                  "test_cases": [
+                    {
+                      "input": "GET /health",
+                      "expected_contains": ["ok"]
+                    }
+                  ],
+                  "hints": [
+                    "Use @app.get('/health').",
+                    "Return a dictionary."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level_id": "level-11",
+      "level_name": "Automation",
+      "level_order": 11,
+      "lessons": [
+        {
+          "lesson_id": "automation-001",
+          "lesson_name": "Automating Repetitive Tasks",
+          "difficulty": "intermediate",
+          "xp_reward": 160,
+          "estimated_time_minutes": 60,
+          "learning_objectives": [
+            "Identify tasks suitable for automation",
+            "Use scripts to repeat file and text operations",
+            "Add logging to automation scripts",
+            "Design scripts that are safe to rerun"
+          ],
+          "concepts": [
+            {
+              "concept_id": "concept-automation-scripts",
+              "concept_name": "Automation scripts",
+              "explanation": "Automation uses code to perform repetitive tasks consistently. Good automation is predictable, logged, and safe to rerun without damaging data.",
+              "real_world_analogy": "Automation is like a dishwasher: it handles a repeatable task the same way each time, freeing you for higher-value work.",
+              "examples": [
+                {
+                  "title": "Normalize names",
+                  "code": "names = [\" ada \", \" GRACE\"]\nfor name in names:\n    print(name.strip().title())",
+                  "expected_output": "Ada\nGrace"
+                }
+              ],
+              "common_mistakes": [
+                "Automating before understanding the manual process",
+                "Not testing with a small sample first",
+                "Overwriting files without backups",
+                "Skipping logs"
+              ],
+              "interactive_exercises": [
+                {
+                  "exercise_id": "ex-automation-clean-list",
+                  "prompt": "Clean a list of messy email addresses by stripping spaces and lowercasing them.",
+                  "starter_code": "emails = [\" USER@EXAMPLE.COM \", \"Admin@Example.com\"]\n",
+                  "success_criteria": "Each email is printed cleanly in lowercase."
+                }
+              ],
+              "quiz_questions": [
+                {
+                  "question_id": "quiz-automation-001",
+                  "type": "multiple_choice",
+                  "question": "What should you do before running automation on many files?",
+                  "options": [
+                    "Test on a small sample",
+                    "Delete the originals",
+                    "Ignore logs",
+                    "Run it only once and hope"
+                  ],
+                  "answer": "Test on a small sample",
+                  "explanation": "Small-sample testing reduces risk."
+                }
+              ],
+              "coding_challenges": [
+                {
+                  "challenge_id": "challenge-automation-clean-emails",
+                  "title": "Email Cleaner",
+                  "prompt": "Given a list of emails with spaces and mixed case, print cleaned emails.",
+                  "starter_code": "emails = [\" USER@EXAMPLE.COM \", \" qa@Company.COM \"]\n",
+                  "expected_behavior": "The program prints lowercase, stripped emails.",
+                  "test_cases": [
+                    {
+                      "input": "",
+                      "expected_contains": ["user@example.com", "qa@company.com"]
+                    }
+                  ],
+                  "hints": [
+                    "Use strip().",
+                    "Use lower()."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "lesson_id": "automation-002",
+          "lesson_name": "Scheduling and Reporting Scripts",
+          "difficulty": "intermediate",
+          "xp_reward": 170,
+          "estimated_time_minutes": 65,
+          "learning_objectives": [
+            "Design a script for scheduled execution",
+            "Create simple text reports",
+            "Separate configuration from logic",
+            "Handle missing or empty data"
+          ],
+          "concepts": [
+            {
+              "concept_id": "concept-reporting-scripts",
+              "concept_name": "Reports and scheduled jobs",
+              "explanation": "Scheduled scripts run at planned times to produce reports, sync data, or check conditions. A reliable script handles empty inputs and communicates what happened.",
+              "real_world_analogy": "A scheduled script is like a morning checklist that runs before the team starts work.",
+              "examples": [
+                {
+                  "title": "Daily report",
+                  "code": "completed = 7\nfailed = 1\nprint(f\"Daily report: {completed} passed, {failed} failed\")",
+                  "expected_output": "Daily report: 7 passed, 1 failed"
+                }
+              ],
+              "common_mistakes": [
+                "Hard-coding values that should be configuration",
+                "Not handling no-data days",
+                "Not making output readable",
+                "Ignoring script exit status"
+              ],
+              "interactive_exercises": [
+                {
+                  "exercise_id": "ex-report-summary",
+                  "prompt": "Create a QA report summary from passed and failed counts.",
+                  "starter_code": "passed = 12\nfailed = 3\n",
+                  "success_criteria": "The output includes total, passed, failed, and pass rate."
+                }
+              ],
+              "quiz_questions": [
+                {
+                  "question_id": "quiz-reporting-001",
+                  "type": "true_false",
+                  "question": "A scheduled script should handle the case where there is no new data.",
+                  "answer": true,
+                  "explanation": "Production scripts need predictable behavior on empty inputs."
+                }
+              ],
+              "coding_challenges": [
+                {
+                  "challenge_id": "challenge-report-pass-rate",
+                  "title": "QA Pass Rate Report",
+                  "prompt": "Given passed and failed test counts, calculate and print the pass rate percentage.",
+                  "starter_code": "passed = 18\nfailed = 2\n",
+                  "expected_behavior": "The program prints 90.0 or 90%.",
+                  "test_cases": [
+                    {
+                      "input": "",
+                      "expected_contains": ["90"]
+                    }
+                  ],
+                  "hints": [
+                    "total = passed + failed.",
+                    "pass_rate = passed / total * 100."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level_id": "level-12",
+      "level_name": "Testing",
+      "level_order": 12,
+      "lessons": [
+        {
+          "lesson_id": "testing-001",
+          "lesson_name": "Writing Unit Tests with pytest",
+          "difficulty": "intermediate",
+          "xp_reward": 175,
+          "estimated_time_minutes": 70,
+          "learning_objectives": [
+            "Explain what a unit test verifies",
+            "Write basic pytest tests",
+            "Use assert statements",
+            "Test normal and edge cases"
+          ],
+          "concepts": [
+            {
+              "concept_id": "concept-pytest-unit",
+              "concept_name": "Unit testing",
+              "explanation": "A unit test checks a small piece of code. In pytest, test functions usually start with test_ and use assert to compare actual behavior with expected behavior.",
+              "real_world_analogy": "A unit test is like checking one appliance before inspecting the whole house.",
+              "examples": [
+                {
+                  "title": "Simple test",
+                  "code": "def add(a, b):\n    return a + b\n\ndef test_add():\n    assert add(2, 3) == 5",
+                  "expected_output": "pytest passes"
+                }
+              ],
+              "common_mistakes": [
+                "Testing implementation details instead of behavior",
+                "Only testing happy paths",
+                "Writing tests that depend on execution order",
+                "Using vague test names"
+              ],
+              "interactive_exercises": [
+                {
+                  "exercise_id": "ex-pytest-discount",
+                  "prompt": "Write a test for a discount function.",
+                  "starter_code": "def apply_discount(price):\n    return price * 0.9\n\n",
+                  "success_criteria": "A test asserts apply_discount(100) equals 90."
+                }
+              ],
+              "quiz_questions": [
+                {
+                  "question_id": "quiz-pytest-001",
+                  "type": "multiple_choice",
+                  "question": "What does assert do in a test?",
+                  "options": [
+                    "Checks that a condition is true",
+                    "Starts a web server",
+                    "Creates a database",
+                    "Formats code"
+                  ],
+                  "answer": "Checks that a condition is true",
+                  "explanation": "If an assert condition is false, the test fails."
+                }
+              ],
+              "coding_challenges": [
+                {
+                  "challenge_id": "challenge-pytest-total",
+                  "title": "Test a Total Function",
+                  "prompt": "Write a sum_cart function and a pytest test for it.",
+                  "starter_code": "def sum_cart(items):\n    pass\n\n",
+                  "expected_behavior": "sum_cart([2, 3, 5]) returns 10 and the test passes.",
+                  "test_cases": [
+                    {
+                      "input": "",
+                      "expected_contains": ["assert"]
+                    }
+                  ],
+                  "hints": [
+                    "Use sum(items).",
+                    "Name the test test_sum_cart."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "lesson_id": "testing-002",
+          "lesson_name": "Fixtures, Mocks, and Test Strategy",
+          "difficulty": "advanced",
+          "xp_reward": 190,
+          "estimated_time_minutes": 80,
+          "learning_objectives": [
+            "Use fixtures for reusable setup",
+            "Explain mocking",
+            "Choose meaningful test boundaries",
+            "Design a practical test pyramid"
+          ],
+          "concepts": [
+            {
+              "concept_id": "concept-fixtures-mocks",
+              "concept_name": "Fixtures and mocks",
+              "explanation": "Fixtures provide reusable test setup. Mocks replace real dependencies so you can test code without calling slow, costly, or unreliable external systems.",
+              "real_world_analogy": "A fixture is like a prepared test kitchen. A mock is like a training prop that behaves enough like the real thing for practice.",
+              "examples": [
+                {
+                  "title": "Fixture shape",
+                  "code": "import pytest\n\n@pytest.fixture\ndef learner():\n    return {\"name\": \"Maya\", \"xp\": 100}\n\ndef test_learner_xp(learner):\n    assert learner[\"xp\"] == 100",
+                  "expected_output": "pytest passes"
+                }
+              ],
+              "common_mistakes": [
+                "Mocking the code under test instead of its dependency",
+                "Creating fixtures that hide too much",
+                "Writing brittle tests tied to internal details",
+                "Ignoring integration tests entirely"
+              ],
+              "interactive_exercises": [
+                {
+                  "exercise_id": "ex-fixture-user",
+                  "prompt": "Create a fixture for a learner dictionary and test its default XP.",
+                  "starter_code": "import pytest\n\n",
+                  "success_criteria": "The test receives the fixture and passes."
+                }
+              ],
+              "quiz_questions": [
+                {
+                  "question_id": "quiz-mock-001",
+                  "type": "multiple_choice",
+                  "question": "When is a mock useful?",
+                  "options": [
+                    "When replacing an external dependency in a test",
+                    "When deleting all tests",
+                    "When avoiding assertions",
+                    "When formatting strings"
+                  ],
+                  "answer": "When replacing an external dependency in a test",
+                  "explanation": "Mocks isolate the code under test from dependencies."
+                }
+              ],
+              "coding_challenges": [
+                {
+                  "challenge_id": "challenge-fixture-learner",
+                  "title": "Learner Fixture",
+                  "prompt": "Write a pytest fixture that returns a learner dict and test that it has an email.",
+                  "starter_code": "import pytest\n\n",
+                  "expected_behavior": "The test passes using fixture-provided data.",
+                  "test_cases": [
+                    {
+                      "input": "",
+                      "expected_contains": ["@pytest.fixture"]
+                    }
+                  ],
+                  "hints": [
+                    "Decorate a function with @pytest.fixture.",
+                    "Use the fixture name as a test parameter."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level_id": "level-13",
+      "level_name": "Data Science",
+      "level_order": 13,
+      "lessons": [
+        {
+          "lesson_id": "data-001",
+          "lesson_name": "Data Analysis with Lists, Dictionaries, and pandas",
+          "difficulty": "advanced",
+          "xp_reward": 200,
+          "estimated_time_minutes": 85,
+          "learning_objectives": [
+            "Explain rows, columns, and datasets",
+            "Summarize simple data",
+            "Understand pandas DataFrames",
+            "Ask useful data questions"
+          ],
+          "concepts": [
+            {
+              "concept_id": "concept-dataframes",
+              "concept_name": "DataFrames",
+              "explanation": "A DataFrame is a table-like data structure. It helps you filter, group, clean, and summarize data. Even before pandas, you can practice the same thinking with lists of dictionaries.",
+              "real_world_analogy": "A DataFrame is like a spreadsheet that you can control with code.",
+              "examples": [
+                {
+                  "title": "Summarize records",
+                  "code": "sales = [{\"amount\": 100}, {\"amount\": 150}]\nprint(sum(row[\"amount\"] for row in sales))",
+                  "expected_output": "250"
+                }
+              ],
+              "common_mistakes": [
+                "Analyzing data before checking quality",
+                "Confusing rows and columns",
+                "Ignoring missing values",
+                "Drawing conclusions from tiny samples"
+              ],
+              "interactive_exercises": [
+                {
+                  "exercise_id": "ex-data-total",
+                  "prompt": "Calculate total revenue from a list of sale dictionaries.",
+                  "starter_code": "sales = [{\"amount\": 40}, {\"amount\": 60}, {\"amount\": 100}]\n",
+                  "success_criteria": "The output is 200."
+                }
+              ],
+              "quiz_questions": [
+                {
+                  "question_id": "quiz-data-001",
+                  "type": "multiple_choice",
+                  "question": "What does each row usually represent in a dataset?",
+                  "options": ["One record or observation", "Only a function", "A Python package", "A color"],
+                  "answer": "One record or observation",
+                  "explanation": "Rows usually represent individual observations."
+                }
+              ],
+              "coding_challenges": [
+                {
+                  "challenge_id": "challenge-data-average",
+                  "title": "Average Order Value",
+                  "prompt": "Given orders with amounts, calculate average order value.",
+                  "starter_code": "orders = [{\"amount\": 20}, {\"amount\": 30}, {\"amount\": 100}]\n",
+                  "expected_behavior": "The program prints 50.0.",
+                  "test_cases": [
+                    {
+                      "input": "",
+                      "expected_contains": ["50"]
+                    }
+                  ],
+                  "hints": [
+                    "Sum the amount values.",
+                    "Divide by len(orders)."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "lesson_id": "data-002",
+          "lesson_name": "Cleaning and Visual Thinking",
+          "difficulty": "advanced",
+          "xp_reward": 210,
+          "estimated_time_minutes": 90,
+          "learning_objectives": [
+            "Detect messy data",
+            "Clean text values",
+            "Handle missing values deliberately",
+            "Choose simple chart types for questions"
+          ],
+          "concepts": [
+            {
+              "concept_id": "concept-data-cleaning",
+              "concept_name": "Data cleaning",
+              "explanation": "Data cleaning prepares raw data for analysis. It includes trimming text, standardizing categories, handling missing values, and checking for duplicates.",
+              "real_world_analogy": "Data cleaning is like organizing receipts before doing taxes. The analysis is only as trustworthy as the inputs.",
+              "examples": [
+                {
+                  "title": "Clean categories",
+                  "code": "categories = [\" Paid \", \"paid\", \"PAID\"]\ncleaned = [item.strip().lower() for item in categories]\nprint(cleaned)",
+                  "expected_output": "['paid', 'paid', 'paid']"
+                }
+              ],
+              "common_mistakes": [
+                "Dropping missing data without understanding why it is missing",
+                "Changing raw data without preserving the original",
+                "Over-cleaning categories incorrectly",
+                "Choosing charts before defining the question"
+              ],
+              "interactive_exercises": [
+                {
+                  "exercise_id": "ex-data-clean-categories",
+                  "prompt": "Normalize status values by stripping spaces and lowercasing.",
+                  "starter_code": "statuses = [\" Open\", \"open \", \"CLOSED\"]\n",
+                  "success_criteria": "The output contains open, open, closed."
+                }
+              ],
+              "quiz_questions": [
+                {
+                  "question_id": "quiz-cleaning-001",
+                  "type": "true_false",
+                  "question": "You should understand missing values before deleting them.",
+                  "answer": true,
+                  "explanation": "Missingness can contain important information."
+                }
+              ],
+              "coding_challenges": [
+                {
+                  "challenge_id": "challenge-data-clean-status",
+                  "title": "Clean Ticket Statuses",
+                  "prompt": "Clean a list of messy ticket statuses and count how many are open.",
+                  "starter_code": "statuses = [\" Open\", \"closed\", \"OPEN \", \"pending\"]\n",
+                  "expected_behavior": "The program prints 2.",
+                  "test_cases": [
+                    {
+                      "input": "",
+                      "expected_contains": ["2"]
+                    }
+                  ],
+                  "hints": [
+                    "Use strip().lower().",
+                    "Count values equal to 'open'."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level_id": "level-14",
+      "level_name": "AI Development",
+      "level_order": 14,
+      "lessons": [
+        {
+          "lesson_id": "ai-001",
+          "lesson_name": "Prompting and LLM Application Basics",
+          "difficulty": "advanced",
+          "xp_reward": 225,
+          "estimated_time_minutes": 90,
+          "learning_objectives": [
+            "Explain what an LLM does",
+            "Write specific prompts with context",
+            "Validate AI output",
+            "Design AI features with guardrails"
+          ],
+          "concepts": [
+            {
+              "concept_id": "concept-llm-prompting",
+              "concept_name": "Prompting LLMs",
+              "explanation": "An LLM generates text based on patterns learned from data and the context you provide. Good prompts include role, task, constraints, examples, and desired output format.",
+              "real_world_analogy": "Prompting is like briefing a new teammate. The better the context and success criteria, the better the first draft.",
+              "examples": [
+                {
+                  "title": "Structured prompt",
+                  "code": "prompt = \"Explain Python loops to a beginner using one analogy and one code example.\"\nprint(prompt)",
+                  "expected_output": "Explain Python loops to a beginner using one analogy and one code example."
+                }
+              ],
+              "common_mistakes": [
+                "Treating AI output as automatically correct",
+                "Providing vague prompts",
+                "Skipping output format requirements",
+                "Ignoring privacy and sensitive data concerns"
+              ],
+              "interactive_exercises": [
+                {
+                  "exercise_id": "ex-ai-prompt",
+                  "prompt": "Write a prompt that asks an AI tutor to explain functions to a non-technical learner.",
+                  "starter_code": "prompt = \"\"\n",
+                  "success_criteria": "The prompt includes audience, topic, tone, and requested format."
+                }
+              ],
+              "quiz_questions": [
+                {
+                  "question_id": "quiz-ai-001",
+                  "type": "multiple_choice",
+                  "question": "What should you do with important AI output?",
+                  "options": [
+                    "Verify it",
+                    "Assume it is always correct",
+                    "Hide the prompt",
+                    "Remove all context"
+                  ],
+                  "answer": "Verify it",
+                  "explanation": "AI output can be useful but still needs validation."
+                }
+              ],
+              "coding_challenges": [
+                {
+                  "challenge_id": "challenge-ai-prompt-template",
+                  "title": "Tutor Prompt Template",
+                  "prompt": "Create a function that builds a tutor prompt from topic and learner level.",
+                  "starter_code": "def build_tutor_prompt(topic, level):\n    pass\n\nprint(build_tutor_prompt(\"loops\", \"beginner\"))",
+                  "expected_behavior": "The prompt includes topic and level.",
+                  "test_cases": [
+                    {
+                      "input": "",
+                      "expected_contains": ["loops", "beginner"]
+                    }
+                  ],
+                  "hints": [
+                    "Return an f-string.",
+                    "Include clear instructions in the prompt."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "lesson_id": "ai-002",
+          "lesson_name": "RAG, Embeddings, and AI Code Review",
+          "difficulty": "advanced",
+          "xp_reward": 250,
+          "estimated_time_minutes": 100,
+          "learning_objectives": [
+            "Explain retrieval augmented generation",
+            "Describe embeddings at a high level",
+            "Design a grounded AI tutor flow",
+            "Create a rubric for AI code review"
+          ],
+          "concepts": [
+            {
+              "concept_id": "concept-rag-review",
+              "concept_name": "RAG and AI review systems",
+              "explanation": "RAG retrieves relevant source material before asking an AI model to answer. This helps ground answers in approved content. AI code review uses prompts, rubrics, and checks to provide feedback on correctness, readability, and tests.",
+              "real_world_analogy": "RAG is like an open-book exam. The model answers with the course material open instead of relying only on memory.",
+              "examples": [
+                {
+                  "title": "Review rubric",
+                  "code": "rubric = [\"correctness\", \"readability\", \"tests\", \"edge cases\"]\nfor item in rubric:\n    print(item)",
+                  "expected_output": "correctness\nreadability\ntests\nedge cases"
+                }
+              ],
+              "common_mistakes": [
+                "Retrieving irrelevant context",
+                "Putting too much context into the prompt",
+                "Skipping citations or source tracking",
+                "Letting AI review replace automated tests"
+              ],
+              "interactive_exercises": [
+                {
+                  "exercise_id": "ex-rag-sources",
+                  "prompt": "Design a list of three source chunks an AI tutor should retrieve for a question about loops.",
+                  "starter_code": "sources = []\n",
+                  "success_criteria": "Each source includes topic and short content."
+                }
+              ],
+              "quiz_questions": [
+                {
+                  "question_id": "quiz-rag-001",
+                  "type": "multiple_choice",
+                  "question": "What is the main purpose of RAG?",
+                  "options": [
+                    "Ground AI responses in retrieved context",
+                    "Replace all databases",
+                    "Make Python run faster",
+                    "Remove the need for tests"
+                  ],
+                  "answer": "Ground AI responses in retrieved context",
+                  "explanation": "RAG provides relevant context before generation."
+                }
+              ],
+              "coding_challenges": [
+                {
+                  "challenge_id": "challenge-review-rubric",
+                  "title": "Code Review Rubric",
+                  "prompt": "Create a function that returns review checklist items for a Python submission.",
+                  "starter_code": "def review_checklist():\n    pass\n\nprint(review_checklist())",
+                  "expected_behavior": "The function returns correctness, readability, tests, and edge cases.",
+                  "test_cases": [
+                    {
+                      "input": "",
+                      "expected_contains": ["correctness", "tests"]
+                    }
+                  ],
+                  "hints": [
+                    "Return a list of strings.",
+                    "Include both behavior and quality checks."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
