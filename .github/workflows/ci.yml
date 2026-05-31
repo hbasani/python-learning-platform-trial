@@ -24,6 +24,9 @@ jobs:
     defaults:
       run:
         working-directory: backend
+    env:
+      DATABASE_URL: postgresql+psycopg://learning:learning@localhost:5432/learning_test
+      REDIS_URL: redis://localhost:6379/0
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -31,4 +34,3 @@ jobs:
           python-version: "3.13"
       - run: pip install -r requirements.txt
       - run: pytest -q
-
