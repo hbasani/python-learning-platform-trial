@@ -3,6 +3,21 @@
 @tailwind utilities;
 
 :root {
+  --background-canvas: 222 33% 97%;
+  --background-subtle: 214 45% 94%;
+  --background-raised: 0 0% 100%;
+  --background-inverse: 222 47% 11%;
+  --border: 218 28% 88%;
+  --border-strong: 218 22% 78%;
+  --border-focus: 220 76% 50%;
+  --content-primary: 222 47% 11%;
+  --content-secondary: 218 17% 36%;
+  --content-muted: 217 13% 56%;
+  --content-inverse: 0 0% 100%;
+  --font-display: "Fraunces";
+  --font-heading: "Satoshi";
+  --font-body: "Satoshi";
+  --font-mono: "JetBrains Mono";
   --surface-page: #f7f8fb;
   --surface-card: #ffffff;
   --surface-elevated: #ffffff;
@@ -15,6 +30,31 @@
   --warning: #b7791f;
   --radius-panel: 18px;
   --shadow-panel: 0 18px 55px rgba(17, 24, 39, 0.08);
+}
+
+.dark {
+  --background-canvas: 222 47% 8%;
+  --background-subtle: 222 42% 12%;
+  --background-raised: 222 38% 15%;
+  --background-inverse: 0 0% 98%;
+  --border: 222 28% 22%;
+  --border-strong: 222 22% 32%;
+  --border-focus: 213 94% 68%;
+  --content-primary: 210 40% 98%;
+  --content-secondary: 214 24% 78%;
+  --content-muted: 215 17% 62%;
+  --content-inverse: 222 47% 11%;
+  --surface-page: #08111f;
+  --surface-card: #111c2e;
+  --surface-elevated: #162235;
+  --ink: #f8fafc;
+  --ink-muted: #a8b3c7;
+  --line: #263449;
+  --accent: #64a4ff;
+  --accent-soft: rgba(47, 125, 244, 0.16);
+  --success: #49c272;
+  --warning: #ffbf4a;
+  --shadow-panel: 0 24px 72px rgba(0, 0, 0, 0.38);
 }
 
 * {

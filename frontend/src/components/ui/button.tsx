@@ -9,10 +9,10 @@ export function Button({ variant = "default", className, ...props }: Props) {
   return (
     <button
       className={clsx(
-        "inline-flex min-h-11 items-center justify-center rounded-xl px-4 py-2 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60",
+        "inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 py-3 text-body-sm font-semibold transition duration-300 ease-premium focus-visible:outline-none focus-visible:ring-4 disabled:cursor-not-allowed disabled:opacity-50",
         variant === "default"
-          ? "bg-[#111827] text-white shadow-sm hover:bg-[#1f2937]"
-          : "border border-[#e4e7ec] bg-white text-[#344054] hover:bg-[#f8fafc]",
+          ? "bg-primary text-primary-foreground shadow-glow hover:-translate-y-0.5 hover:bg-primary-700 focus-visible:ring-primary-200"
+          : "border border-border bg-background-raised text-content-secondary shadow-inset hover:-translate-y-0.5 hover:border-border-strong hover:bg-background-subtle hover:text-content focus-visible:ring-primary-100",
         className
       )}
       {...props}
